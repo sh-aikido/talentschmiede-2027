@@ -1029,7 +1029,7 @@
 
           <div class="airport-node" style="text-align: right;">
             <span class="airport-code">SAD</span>
-            <span class="airport-name">SCHWANDORF (GF)</span>
+            <span class="airport-name">SCHWANDORF (HQ)</span>
           </div>
         </div>
 
@@ -1055,7 +1055,7 @@
             <div class="crt-hud-bottom">
               <span id="currentTime">00:00</span>
               <span style="color: var(--amber);" id="voiceIndicator">HORSCH STIMME // FLIGHT TS-02</span>
-              <strong id="totalDuration">00:25</strong>
+              <strong id="totalDuration">00:21</strong>
             </div>
           </div>
 
@@ -1070,7 +1070,7 @@
             </div>
           </button>
 
-          <!-- Teletype Transkript Briefing (Option C permanent) -->
+          <!-- Teletype Transkript Briefing (Option C ohne GF) -->
           <div class="transcript-briefing">
             <div class="briefing-head">
               <span id="transcriptTag">OFFIZIELLER BORDFUNK // FLIGHT TS-02</span>
@@ -1079,7 +1079,7 @@
             <div class="briefing-body" id="transcriptContent">
               „Tower Schwandorf, hier Flight TS-02. Samuel Haas meldet sich nach Curitiba zurück.<br><br>
               Nächster planmäßiger Halt: USA 2027. Sonderroute beantragt: <strong>Talentschmiede Lauf 2</strong>.<br><br>
-              Ein Jahr lang Reibung aushalten, bereichsübergreifend arbeiten und vor der Geschäftsführung abliefern.<br><br>
+              Ein Jahr lang Reibung aushalten, bereichsübergreifend arbeiten und abliefern.<br><br>
               Der Boarding Pass liegt vor Ihnen. <strong>Ich erbitte Startfreigabe.</strong>“
             </div>
           </div>
@@ -1359,7 +1359,7 @@
     // Audio Event Handlers
     nativeAudio.addEventListener('timeupdate', () => {
       const cur = nativeAudio.currentTime;
-      const dur = nativeAudio.duration || 25;
+      const dur = nativeAudio.duration || 21;
       document.getElementById('currentTime').innerText = formatTime(cur);
       const percent = Math.min((cur / dur) * 100, 100);
       document.getElementById('progressFill').style.width = percent + '%';
@@ -1386,7 +1386,7 @@
       const rect = bar.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const ratio = Math.max(0, Math.min(1, clickX / rect.width));
-      const dur = nativeAudio.duration || 25;
+      const dur = nativeAudio.duration || 21;
       nativeAudio.currentTime = ratio * dur;
     }
 
