@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>HORSCH // BOARDING PASS — Talentschmiede Lauf 2</title>
+  
+  <!-- Open Graph & Meta für Mobile Share -->
+  <meta name="description" content="Offizieller Boarding Pass für Samuel Haas zur HORSCH Talentschmiede Lauf 2. Route USA ➔ Schwandorf. In-Flight-Boarddurchsage abspielen.">
+  <meta property="og:title" content="HORSCH // BOARDING PASS — Talentschmiede Lauf 2">
+  <meta property="og:description" content="Bewerbung Samuel Haas · Flight TS-02 · Boarddurchsage der Flugleitung">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sh-aikido.github.io/talentschmiede-2027/">
+  <meta property="og:image" content="https://sh-aikido.github.io/talentschmiede-2027/qr_code_boarding_pass.png">
+  <meta name="theme-color" content="#07090d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       DESIGN TOKENS (Inspiration: PULSE Dark + Aviation Boardkarte)
+       ======================================================== */
+    :root {
+      --ink: #07090d;
+      --bg-radial: #0a0e15;
+      --graphite-950: #0a0d12;
+      --graphite-900: #0f131a;
+      --graphite-850: #141a24;
+      --graphite-800: #1a222f;
+      --graphite-700: #253041;
+      --graphite-600: #334155;
+      --graphite-400: #8fa0ba;
+      --graphite-300: #c2cfdf;
+      --white: #ffffff;
+      
+      --red: #da291c; /* HORSCH Rot */
+      --red-hover: #b82015;
+      --red-glow: rgba(218, 41, 28, 0.45);
+      --red-subtle: rgba(218, 41, 28, 0.12);
+      
+      --volt: #c8ff2e; /* PULSE Volt */
+      --volt-subtle: rgba(200, 255, 46, 0.1);
+      --cyan: #38bdf8;
+      --amber: #fbbf24;
+      --green: #22c55e;
+      
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --display: 'Space Grotesk', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--ink);
+      color: var(--white);
+      font-family: var(--sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 40px 16px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 5%, rgba(218, 41, 28, 0.16) 0%, transparent 65%),
+        radial-gradient(circle at 85% 90%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 10px 32px 10px;
+      }
+    }
+
+    /* Container: Auf dem PC breit & zentriert, mobil 100% */
+    .app-wrapper {
+      width: 100%;
+      max-width: 1080px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Top Utility Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px;
+      background: rgba(15, 19, 26, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 600px) {
+      .nav-bar {
+        padding: 8px 12px;
+      }
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .horsch-logo-btn {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.12s, box-shadow 0.2s;
+      box-shadow: 0 0 14px var(--red-glow);
+    }
+
+    .horsch-logo-btn:active {
+      transform: scale(0.93);
+    }
+
+    .ops-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--graphite-400);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .ops-tag {
+        font-size: 9.5px;
+      }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(34, 197, 94, 0.09);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 4px 10px;
+      border-radius: 99px;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 480px) {
+      .status-badge {
+        padding: 3px 7px;
+        font-size: 9px;
+      }
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    /* ========================================================
+       DIE PHYSISCHE BOARDKARTE (RESPONSIVE GRID)
+       Desktop: 2-Spalten-Ticket (Hauptteil + Abriss-Stub)
+       Mobil: Vertikal gestapelt mit horizontaler Perforation
+       ======================================================== */
+    .boarding-pass-card {
+      background: var(--graphite-900);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.75), 0 0 1px rgba(255,255,255,0.15);
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .boarding-pass-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+      }
+    }
+
+    /* ==================== HAUPTTEIL (LINKS) ==================== */
+    .pass-main {
+      padding: 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.4) 0%, rgba(15, 19, 26, 0.95) 100%);
+    }
+
+    @media (max-width: 600px) {
+      .pass-main {
+        padding: 18px 14px;
+        gap: 16px;
+      }
+    }
+
+    /* Ticket Header Banner */
+    .pass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    .flight-class-title {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .flight-class-title {
+        font-size: 17px;
+      }
+    }
+
+    .flight-class-pill {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--red);
+      background: var(--red-subtle);
+      border: 1px solid rgba(218, 41, 28, 0.35);
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+
+    .ticket-meta-right {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--graphite-400);
+      line-height: 1.45;
+    }
+
+    .ticket-meta-right strong {
+      color: var(--white);
+    }
+
+    /* Hero Route & Flight Display (Aviation Typo) */
+    .route-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, var(--graphite-850) 0%, rgba(15, 19, 26, 0.8) 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 600px) {
+      .route-hero {
+        padding: 14px 14px;
+      }
+    }
+
+    .airport-node {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .airport-code {
+      font-family: var(--display);
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .airport-name {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--graphite-400);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .flight-path-middle {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    .flight-no {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+    }
+
+    .flight-line {
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 4px,
+        rgba(255,255,255,0.2) 4px,
+        rgba(255,255,255,0.2) 10px
+      );
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plane-icon {
+      background: var(--graphite-850);
+      padding: 0 6px;
+      color: var(--red);
+      font-size: 15px;
+      transform: rotate(90deg);
+    }
+
+    .flight-status-note {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--cyan);
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Embedded Cockpit Audio Console */
+    .cockpit-avionics-unit {
+      background: #090c11;
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      box-shadow: inset 0 0 24px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 600px) {
+      .cockpit-avionics-unit {
+        padding: 14px;
+        gap: 12px;
+      }
+    }
+
+    /* CRT Display Bezel */
+    .crt-screen {
+      background: #040609;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crt-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+      background-size: 100% 4px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .crt-hud-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .frequency-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cyan);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .transmitter-status {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    /* Waveform Canvas */
+    .waveform-box {
+      height: 54px;
+      width: 100%;
+      position: relative;
+      z-index: 3;
+    }
+
+    canvas#audioVisualizer {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Time & Progress Scrubber */
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      z-index: 3;
+      touch-action: manipulation;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--red) 0%, #ff4d3d 100%);
+      box-shadow: 0 0 10px var(--red-glow);
+      transition: width 0.08s linear;
+    }
+
+    .crt-hud-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--graphite-400);
+      z-index: 3;
+    }
+
+    .crt-hud-bottom strong {
+      color: var(--white);
+    }
+
+    /* Tactile Main Launch Button (Single Clear Button) */
+    .ptt-launch-btn {
+      width: 100%;
+      background: linear-gradient(180deg, var(--graphite-800) 0%, var(--graphite-850) 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+      transition: all 0.16s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .ptt-launch-btn:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: linear-gradient(180deg, #222b3b 0%, var(--graphite-800) 100%);
+    }
+
+    .ptt-launch-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .ptt-launch-btn.is-transmitting {
+      background: linear-gradient(180deg, #991b1b 0%, #7f1d1d 100%);
+      border-color: var(--red);
+      box-shadow: 0 0 28px var(--red-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .ptt-icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px var(--red-glow);
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+
+    .ptt-launch-btn:hover .ptt-icon-circle {
+      transform: scale(1.05);
+    }
+
+    .ptt-icon-circle svg {
+      width: 19px;
+      height: 19px;
+      fill: #fff;
+    }
+
+    .ptt-meta-text {
+      text-align: left;
+      flex: 1;
+    }
+
+    .ptt-title {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .ptt-subtitle {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--graphite-400);
+      margin-top: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    .ptt-launch-btn.is-transmitting .ptt-subtitle {
+      color: #fca5a5;
+    }
+
+    /* Teletype Transcript Briefing Box */
+    .transcript-briefing {
+      background: #04060a;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--graphite-300);
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .transcript-briefing {
+        padding: 12px 14px;
+        font-size: 12px;
+      }
+    }
+
+    .briefing-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .briefing-body strong {
+      color: var(--white);
+    }
+
+    /* ==================== ABRISS-KANTE (PERFORIERTE TRENNUNG) ==================== */
+    /* Desktop Perforation: Vertikaler Strich & Notches */
+    .perforation-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 340px;
+      width: 1px;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 6px,
+        rgba(255,255,255,0.22) 6px,
+        rgba(255,255,255,0.22) 12px
+      );
+      z-index: 10;
+    }
+
+    .notch-top, .notch-bottom {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: var(--ink);
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      z-index: 12;
+      right: 328px;
+    }
+
+    .notch-top {
+      top: -12px;
+    }
+
+    .notch-bottom {
+      bottom: -12px;
+    }
+
+    @media (max-width: 900px) {
+      .perforation-divider, .notch-top, .notch-bottom {
+        display: none;
+      }
+    }
+
+    /* Mobile Perforation: Horizontaler Strich & Seitliche Notches */
+    .mobile-perforation-wrapper {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 20px;
+      margin: -10px 0;
+      z-index: 15;
+    }
+
+    .mobile-perforation-line {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      right: 12px;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 6px,
+        rgba(255,255,255,0.25) 6px,
+        rgba(255,255,255,0.25) 12px
+      );
+    }
+
+    .mobile-notch-left, .mobile-notch-right {
+      position: absolute;
+      top: -2px;
+      width: 24px;
+      height: 24px;
+      background-color: var(--ink);
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      z-index: 16;
+    }
+
+    .mobile-notch-left {
+      left: -13px;
+    }
+
+    .mobile-notch-right {
+      right: -13px;
+    }
+
+    @media (max-width: 900px) {
+      .mobile-perforation-wrapper {
+        display: block;
+      }
+    }
+
+    /* ==================== ABRISS-STUB (RECHTS / MOBIL UNTEN) ==================== */
+    .pass-stub {
+      background: var(--graphite-850);
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      border-left: 1px solid var(--border);
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .pass-stub {
+        border-left: none;
+        padding: 24px 18px;
+        background: linear-gradient(180deg, var(--graphite-850) 0%, rgba(15, 19, 26, 0.98) 100%);
+      }
+    }
+
+    .stub-top-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .stub-title {
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: 0.1em;
+    }
+
+    .stub-flight {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--graphite-400);
+    }
+
+    /* Passenger & Seat Specs */
+    .stub-data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-family: var(--mono);
+    }
+
+    .stub-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stub-label {
+      font-size: 8.5px;
+      color: var(--graphite-400);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stub-val {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .stub-val.accent {
+      color: var(--red);
+    }
+
+    /* Authentic SVG QR-Code Box */
+    .qr-container {
+      background: #000;
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .qr-svg-wrapper {
+      width: 144px;
+      height: 144px;
+      background: #fff;
+      padding: 6px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.2s;
+    }
+
+    .qr-svg-wrapper:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 16px rgba(255,255,255,0.25);
+    }
+
+    .qr-svg-wrapper svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .qr-caption {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      color: var(--graphite-400);
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+    }
+
+    .qr-caption strong {
+      color: var(--white);
+    }
+
+    .qr-caption a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .qr-caption a:hover {
+      text-decoration: underline;
+    }
+
+    /* Barcode Graphic */
+    .barcode-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.8;
+    }
+
+    .barcode-svg {
+      width: 100%;
+      max-width: 240px;
+      height: 32px;
+    }
+
+    .barcode-code {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      color: var(--graphite-400);
+      letter-spacing: 0.16em;
+    }
+
+    /* Verified Stamp */
+    .verification-stamp {
+      border: 1.5px dashed var(--red);
+      background: var(--red-subtle);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: #fca5a5;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--graphite-400);
+      padding: 4px 0;
+      user-select: none;
+      letter-spacing: 0.04em;
+    }
+
+    footer:hover {
+      color: var(--graphite-300);
+    }
+
+    /* ========================================================
+       EASTER EGG MODAL
+       ======================================================== */
+    .easter-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 9, 13, 0.94);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: var(--graphite-850);
+      border: 2px solid var(--red);
+      border-radius: 16px;
+      padding: 26px 22px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 60px var(--red-glow);
+      text-align: center;
+      animation: modalPop 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-tag {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--red);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 13.5px;
+      color: var(--graphite-300);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .stamp-box {
+      background: var(--red-subtle);
+      border: 1px dashed var(--red);
+      border-radius: 8px;
+      padding: 12px 10px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: #fca5a5;
+      margin-bottom: 18px;
+    }
+
+    .close-btn {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 11px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+
+    .close-btn:hover {
+      background: var(--red-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- Top Utility & Brand Bar -->
+    <header class="nav-bar">
+      <div class="brand-meta">
+        <span class="horsch-logo-btn" id="secret-trigger" title="3x tippen für Insider Feature">HORSCH</span>
+        <span class="ops-tag">TALENTSCHMIEDE LAUF 2 // FLIGHT OPS</span>
+      </div>
+      <div class="status-badge">
+        <span class="live-dot"></span>
+        <span>COM-1 ONLINE</span>
+      </div>
+    </header>
+
+    <!-- Physische Boardkarte (Desktop Split-Layout / Mobil Stack) -->
+    <main class="boarding-pass-card">
+      
+      <!-- Perforations-Elemente für Desktop -->
+      <div class="perforation-divider"></div>
+      <div class="notch-top"></div>
+      <div class="notch-bottom"></div>
+
+      <!-- ==================== HAUPTTEIL (LINKS) ==================== -->
+      <section class="pass-main">
+        
+        <!-- Header: Klasse & Ticket-Typ -->
+        <div class="pass-header">
+          <div>
+            <div class="flight-class-title">
+              BOARDING PASS
+              <span class="flight-class-pill">TALENT CLASS</span>
+            </div>
+            <div style="font-family: var(--mono); font-size: 10px; color: var(--graphite-400); margin-top: 2px;">
+              PASSENGER: SAMUEL HAAS · INDUSTRIEKAUFMANN (2. LJ)
+            </div>
+          </div>
+          <div class="ticket-meta-right">
+            GATE: <strong>TS-02</strong><br>
+            SEAT: <strong>01A</strong>
+          </div>
+        </div>
+
+        <!-- Hero Route: USA ➔ SCHWANDORF -->
+        <div class="route-hero">
+          <div class="airport-node">
+            <span class="airport-code">USA</span>
+            <span class="airport-name">EXPEDITION 2027</span>
+          </div>
+
+          <div class="flight-path-middle">
+            <span class="flight-no">FLIGHT TS-2027</span>
+            <div class="flight-line">
+              <span class="plane-icon">✈</span>
+            </div>
+            <span class="flight-status-note">NON-STOP MISSION</span>
+          </div>
+
+          <div class="airport-node" style="text-align: right;">
+            <span class="airport-code">SAD</span>
+            <span class="airport-name">SCHWANDORF (GF)</span>
+          </div>
+        </div>
+
+        <!-- Integrierte Cockpit Audio-Konsole -->
+        <div class="cockpit-avionics-unit">
+          
+          <!-- CRT Screen mit Scanlines & Frequenz -->
+          <div class="crt-screen">
+            <div class="crt-hud-top">
+              <span class="frequency-label">VHF COMM: 121.50 MHz</span>
+              <span class="transmitter-status" id="commStatus">STANDBY</span>
+            </div>
+
+            <div class="waveform-box">
+              <canvas id="audioVisualizer"></canvas>
+            </div>
+
+            <!-- Scrubber Progress Bar -->
+            <div class="progress-track" id="progressBar" onclick="seekAudio(event)">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+
+            <div class="crt-hud-bottom">
+              <span id="currentTime">00:00</span>
+              <span style="color: var(--amber);" id="voiceIndicator">HORSCH STIMME // FLIGHT TS-02</span>
+              <strong id="totalDuration">00:39</strong>
+            </div>
+          </div>
+
+          <!-- Großer Taktiler Button: Boarddurchsage abspielen -->
+          <button class="ptt-launch-btn" id="pttButton" onclick="togglePlayback()">
+            <div class="ptt-icon-circle" id="pttIcon">
+              <svg id="playIconSvg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="ptt-meta-text">
+              <div class="ptt-title" id="pttTitle">Boarddurchsage abspielen</div>
+              <div class="ptt-subtitle" id="pttSubtitle">HORSCH FLIGHT TS-02 // DURCHSAGE FLUGLEITUNG</div>
+            </div>
+          </button>
+
+          <!-- Teletype Transkript Briefing (Fassung 2 permanent) -->
+          <div class="transcript-briefing">
+            <div class="briefing-head">
+              <span id="transcriptTag">OFFIZIELLE BOARDDURCHSAGE // FLIGHT TS-02</span>
+              <span>STANDORT: SCHWANDORF</span>
+            </div>
+            <div class="briefing-body" id="transcriptContent">
+              „Guten Tag, liebe Fluggäste, hier spricht die Flugleitung von Flight TS-02.<br><br>
+              Nach dem Einsatz in Curitiba sind wir wieder sicher in Schwandorf aufgesetzt. Nächstes Jahr geht es für unseren Azubi Samuel Haas weiter in die USA. Man könnte also sagen: Es läuft alles nach Flugplan.<br><br>
+              Aber genau deshalb beantragt Samuel hiermit den Eintritt in die <strong>Talentschmiede Lauf 2</strong>.<br><br>
+              Er will kein Komfort-Programm für den Lebenslauf, sondern ein Trainingslager: Ein Jahr lang im Team diskutieren, lernen, wie man Gegenwind aushält, und ein Projekt entwickeln, das vor der Geschäftsführung bestehen muss.<br><br>
+              Der Boarding Pass liegt auf Ihrer Tastatur. <strong>Die Entscheidung liegt bei Ihnen.</strong>“
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Perforation auf Mobile Geräten mit echten Notches -->
+      <div class="mobile-perforation-wrapper">
+        <div class="mobile-notch-left"></div>
+        <div class="mobile-perforation-line"></div>
+        <div class="mobile-notch-right"></div>
+      </div>
+
+      <!-- ==================== ABRISS-STUB (RECHTS / MOBIL UNTEN) ==================== -->
+      <aside class="pass-stub">
+        
+        <div class="stub-top-badge">
+          <span class="stub-title">BOARDING PASS</span>
+          <span class="stub-flight">PASSENGER COUPON</span>
+        </div>
+
+        <!-- Fluggast & Flugdaten -->
+        <div class="stub-data-grid">
+          <div class="stub-item">
+            <span class="stub-label">PASSENGER</span>
+            <span class="stub-val">HAAS / SAMUEL</span>
+          </div>
+          <div class="stub-item">
+            <span class="stub-label">FLIGHT</span>
+            <span class="stub-val accent">TS-2027</span>
+          </div>
+          <div class="stub-item">
+            <span class="stub-label">ROUTE</span>
+            <span class="stub-val">USA ➔ SAD</span>
+          </div>
+          <div class="stub-item">
+            <span class="stub-label">SEAT</span>
+            <span class="stub-val">01A</span>
+          </div>
+          <div class="stub-item">
+            <span class="stub-label">GATE</span>
+            <span class="stub-val">TS-02</span>
+          </div>
+          <div class="stub-item">
+            <span class="stub-label">BOARDING</span>
+            <span class="stub-val">OKT 2026</span>
+          </div>
+        </div>
+
+        <!-- Echter Scanfähiger QR-Code Block mit Link -->
+        <div class="qr-container">
+          <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer" class="qr-svg-wrapper" title="Direkt zur Web-App (https://sh-aikido.github.io/talentschmiede-2027/)">
+            <!-- Präziser SVG QR Code (codiert Ziel-URL https://sh-aikido.github.io/talentschmiede-2027/) -->
+            <svg viewBox="0 0 660 660" width="100%" height="100%" shape-rendering="crispEdges">
+              <rect width="660" height="660" fill="#ffffff" />
+              <path fill="#000000" d="M 40,40 l 20,0 0,20 -20,0 z M 60,40 l 20,0 0,20 -20,0 z M 80,40 l 20,0 0,20 -20,0 z M 100,40 l 20,0 0,20 -20,0 z M 120,40 l 20,0 0,20 -20,0 z M 140,40 l 20,0 0,20 -20,0 z M 160,40 l 20,0 0,20 -20,0 z M 240,40 l 20,0 0,20 -20,0 z M 280,40 l 20,0 0,20 -20,0 z M 300,40 l 20,0 0,20 -20,0 z M 360,40 l 20,0 0,20 -20,0 z M 420,40 l 20,0 0,20 -20,0 z M 440,40 l 20,0 0,20 -20,0 z M 480,40 l 20,0 0,20 -20,0 z M 500,40 l 20,0 0,20 -20,0 z M 520,40 l 20,0 0,20 -20,0 z M 540,40 l 20,0 0,20 -20,0 z M 560,40 l 20,0 0,20 -20,0 z M 580,40 l 20,0 0,20 -20,0 z M 600,40 l 20,0 0,20 -20,0 z M 40,60 l 20,0 0,20 -20,0 z M 160,60 l 20,0 0,20 -20,0 z M 200,60 l 20,0 0,20 -20,0 z M 240,60 l 20,0 0,20 -20,0 z M 340,60 l 20,0 0,20 -20,0 z M 360,60 l 20,0 0,20 -20,0 z M 480,60 l 20,0 0,20 -20,0 z M 600,60 l 20,0 0,20 -20,0 z M 40,80 l 20,0 0,20 -20,0 z M 80,80 l 20,0 0,20 -20,0 z M 100,80 l 20,0 0,20 -20,0 z M 120,80 l 20,0 0,20 -20,0 z M 160,80 l 20,0 0,20 -20,0 z M 280,80 l 20,0 0,20 -20,0 z M 480,80 l 20,0 0,20 -20,0 z M 520,80 l 20,0 0,20 -20,0 z M 540,80 l 20,0 0,20 -20,0 z M 560,80 l 20,0 0,20 -20,0 z M 600,80 l 20,0 0,20 -20,0 z M 40,100 l 20,0 0,20 -20,0 z M 80,100 l 20,0 0,20 -20,0 z M 100,100 l 20,0 0,20 -20,0 z M 120,100 l 20,0 0,20 -20,0 z M 160,100 l 20,0 0,20 -20,0 z M 200,100 l 20,0 0,20 -20,0 z M 220,100 l 20,0 0,20 -20,0 z M 240,100 l 20,0 0,20 -20,0 z M 280,100 l 20,0 0,20 -20,0 z M 300,100 l 20,0 0,20 -20,0 z M 320,100 l 20,0 0,20 -20,0 z M 340,100 l 20,0 0,20 -20,0 z M 380,100 l 20,0 0,20 -20,0 z M 420,100 l 20,0 0,20 -20,0 z M 480,100 l 20,0 0,20 -20,0 z M 520,100 l 20,0 0,20 -20,0 z M 540,100 l 20,0 0,20 -20,0 z M 560,100 l 20,0 0,20 -20,0 z M 600,100 l 20,0 0,20 -20,0 z M 40,120 l 20,0 0,20 -20,0 z M 80,120 l 20,0 0,20 -20,0 z M 100,120 l 20,0 0,20 -20,0 z M 120,120 l 20,0 0,20 -20,0 z M 160,120 l 20,0 0,20 -20,0 z M 220,120 l 20,0 0,20 -20,0 z M 300,120 l 20,0 0,20 -20,0 z M 360,120 l 20,0 0,20 -20,0 z M 400,120 l 20,0 0,20 -20,0 z M 420,120 l 20,0 0,20 -20,0 z M 440,120 l 20,0 0,20 -20,0 z M 480,120 l 20,0 0,20 -20,0 z M 520,120 l 20,0 0,20 -20,0 z M 540,120 l 20,0 0,20 -20,0 z M 560,120 l 20,0 0,20 -20,0 z M 600,120 l 20,0 0,20 -20,0 z M 40,140 l 20,0 0,20 -20,0 z M 160,140 l 20,0 0,20 -20,0 z M 200,140 l 20,0 0,20 -20,0 z M 220,140 l 20,0 0,20 -20,0 z M 260,140 l 20,0 0,20 -20,0 z M 280,140 l 20,0 0,20 -20,0 z M 320,140 l 20,0 0,20 -20,0 z M 340,140 l 20,0 0,20 -20,0 z M 360,140 l 20,0 0,20 -20,0 z M 380,140 l 20,0 0,20 -20,0 z M 400,140 l 20,0 0,20 -20,0 z M 480,140 l 20,0 0,20 -20,0 z M 600,140 l 20,0 0,20 -20,0 z M 40,160 l 20,0 0,20 -20,0 z M 60,160 l 20,0 0,20 -20,0 z M 80,160 l 20,0 0,20 -20,0 z M 100,160 l 20,0 0,20 -20,0 z M 120,160 l 20,0 0,20 -20,0 z M 140,160 l 20,0 0,20 -20,0 z M 160,160 l 20,0 0,20 -20,0 z M 200,160 l 20,0 0,20 -20,0 z M 240,160 l 20,0 0,20 -20,0 z M 280,160 l 20,0 0,20 -20,0 z M 320,160 l 20,0 0,20 -20,0 z M 360,160 l 20,0 0,20 -20,0 z M 400,160 l 20,0 0,20 -20,0 z M 440,160 l 20,0 0,20 -20,0 z M 480,160 l 20,0 0,20 -20,0 z M 500,160 l 20,0 0,20 -20,0 z M 520,160 l 20,0 0,20 -20,0 z M 540,160 l 20,0 0,20 -20,0 z M 560,160 l 20,0 0,20 -20,0 z M 580,160 l 20,0 0,20 -20,0 z M 600,160 l 20,0 0,20 -20,0 z M 220,180 l 20,0 0,20 -20,0 z M 240,180 l 20,0 0,20 -20,0 z M 260,180 l 20,0 0,20 -20,0 z M 320,180 l 20,0 0,20 -20,0 z M 400,180 l 20,0 0,20 -20,0 z M 440,180 l 20,0 0,20 -20,0 z M 40,200 l 20,0 0,20 -20,0 z M 60,200 l 20,0 0,20 -20,0 z M 80,200 l 20,0 0,20 -20,0 z M 100,200 l 20,0 0,20 -20,0 z M 120,200 l 20,0 0,20 -20,0 z M 160,200 l 20,0 0,20 -20,0 z M 180,200 l 20,0 0,20 -20,0 z M 200,200 l 20,0 0,20 -20,0 z M 220,200 l 20,0 0,20 -20,0 z M 260,200 l 20,0 0,20 -20,0 z M 280,200 l 20,0 0,20 -20,0 z M 300,200 l 20,0 0,20 -20,0 z M 320,200 l 20,0 0,20 -20,0 z M 340,200 l 20,0 0,20 -20,0 z M 360,200 l 20,0 0,20 -20,0 z M 380,200 l 20,0 0,20 -20,0 z M 400,200 l 20,0 0,20 -20,0 z M 440,200 l 20,0 0,20 -20,0 z M 460,200 l 20,0 0,20 -20,0 z M 500,200 l 20,0 0,20 -20,0 z M 540,200 l 20,0 0,20 -20,0 z M 580,200 l 20,0 0,20 -20,0 z M 60,220 l 20,0 0,20 -20,0 z M 120,220 l 20,0 0,20 -20,0 z M 140,220 l 20,0 0,20 -20,0 z M 180,220 l 20,0 0,20 -20,0 z M 200,220 l 20,0 0,20 -20,0 z M 240,220 l 20,0 0,20 -20,0 z M 280,220 l 20,0 0,20 -20,0 z M 300,220 l 20,0 0,20 -20,0 z M 360,220 l 20,0 0,20 -20,0 z M 380,220 l 20,0 0,20 -20,0 z M 400,220 l 20,0 0,20 -20,0 z M 420,220 l 20,0 0,20 -20,0 z M 440,220 l 20,0 0,20 -20,0 z M 460,220 l 20,0 0,20 -20,0 z M 480,220 l 20,0 0,20 -20,0 z M 500,220 l 20,0 0,20 -20,0 z M 520,220 l 20,0 0,20 -20,0 z M 600,220 l 20,0 0,20 -20,0 z M 40,240 l 20,0 0,20 -20,0 z M 60,240 l 20,0 0,20 -20,0 z M 100,240 l 20,0 0,20 -20,0 z M 120,240 l 20,0 0,20 -20,0 z M 160,240 l 20,0 0,20 -20,0 z M 200,240 l 20,0 0,20 -20,0 z M 240,240 l 20,0 0,20 -20,0 z M 280,240 l 20,0 0,20 -20,0 z M 340,240 l 20,0 0,20 -20,0 z M 380,240 l 20,0 0,20 -20,0 z M 440,240 l 20,0 0,20 -20,0 z M 460,240 l 20,0 0,20 -20,0 z M 480,240 l 20,0 0,20 -20,0 z M 500,240 l 20,0 0,20 -20,0 z M 520,240 l 20,0 0,20 -20,0 z M 40,260 l 20,0 0,20 -20,0 z M 60,260 l 20,0 0,20 -20,0 z M 80,260 l 20,0 0,20 -20,0 z M 100,260 l 20,0 0,20 -20,0 z M 120,260 l 20,0 0,20 -20,0 z M 140,260 l 20,0 0,20 -20,0 z M 180,260 l 20,0 0,20 -20,0 z M 280,260 l 20,0 0,20 -20,0 z M 320,260 l 20,0 0,20 -20,0 z M 340,260 l 20,0 0,20 -20,0 z M 360,260 l 20,0 0,20 -20,0 z M 400,260 l 20,0 0,20 -20,0 z M 520,260 l 20,0 0,20 -20,0 z M 540,260 l 20,0 0,20 -20,0 z M 580,260 l 20,0 0,20 -20,0 z M 40,280 l 20,0 0,20 -20,0 z M 60,280 l 20,0 0,20 -20,0 z M 100,280 l 20,0 0,20 -20,0 z M 120,280 l 20,0 0,20 -20,0 z M 140,280 l 20,0 0,20 -20,0 z M 160,280 l 20,0 0,20 -20,0 z M 180,280 l 20,0 0,20 -20,0 z M 200,280 l 20,0 0,20 -20,0 z M 220,280 l 20,0 0,20 -20,0 z M 240,280 l 20,0 0,20 -20,0 z M 260,280 l 20,0 0,20 -20,0 z M 300,280 l 20,0 0,20 -20,0 z M 320,280 l 20,0 0,20 -20,0 z M 340,280 l 20,0 0,20 -20,0 z M 360,280 l 20,0 0,20 -20,0 z M 380,280 l 20,0 0,20 -20,0 z M 420,280 l 20,0 0,20 -20,0 z M 540,280 l 20,0 0,20 -20,0 z M 560,280 l 20,0 0,20 -20,0 z M 60,300 l 20,0 0,20 -20,0 z M 140,300 l 20,0 0,20 -20,0 z M 200,300 l 20,0 0,20 -20,0 z M 220,300 l 20,0 0,20 -20,0 z M 280,300 l 20,0 0,20 -20,0 z M 360,300 l 20,0 0,20 -20,0 z M 380,300 l 20,0 0,20 -20,0 z M 400,300 l 20,0 0,20 -20,0 z M 420,300 l 20,0 0,20 -20,0 z M 440,300 l 20,0 0,20 -20,0 z M 460,300 l 20,0 0,20 -20,0 z M 480,300 l 20,0 0,20 -20,0 z M 500,300 l 20,0 0,20 -20,0 z M 520,300 l 20,0 0,20 -20,0 z M 600,300 l 20,0 0,20 -20,0 z M 60,320 l 20,0 0,20 -20,0 z M 120,320 l 20,0 0,20 -20,0 z M 140,320 l 20,0 0,20 -20,0 z M 160,320 l 20,0 0,20 -20,0 z M 200,320 l 20,0 0,20 -20,0 z M 220,320 l 20,0 0,20 -20,0 z M 240,320 l 20,0 0,20 -20,0 z M 260,320 l 20,0 0,20 -20,0 z M 320,320 l 20,0 0,20 -20,0 z M 340,320 l 20,0 0,20 -20,0 z M 400,320 l 20,0 0,20 -20,0 z M 440,320 l 20,0 0,20 -20,0 z M 460,320 l 20,0 0,20 -20,0 z M 480,320 l 20,0 0,20 -20,0 z M 500,320 l 20,0 0,20 -20,0 z M 520,320 l 20,0 0,20 -20,0 z M 540,320 l 20,0 0,20 -20,0 z M 560,320 l 20,0 0,20 -20,0 z M 40,340 l 20,0 0,20 -20,0 z M 60,340 l 20,0 0,20 -20,0 z M 80,340 l 20,0 0,20 -20,0 z M 100,340 l 20,0 0,20 -20,0 z M 120,340 l 20,0 0,20 -20,0 z M 140,340 l 20,0 0,20 -20,0 z M 220,340 l 20,0 0,20 -20,0 z M 320,340 l 20,0 0,20 -20,0 z M 360,340 l 20,0 0,20 -20,0 z M 420,340 l 20,0 0,20 -20,0 z M 440,340 l 20,0 0,20 -20,0 z M 480,340 l 20,0 0,20 -20,0 z M 500,340 l 20,0 0,20 -20,0 z M 580,340 l 20,0 0,20 -20,0 z M 120,360 l 20,0 0,20 -20,0 z M 160,360 l 20,0 0,20 -20,0 z M 180,360 l 20,0 0,20 -20,0 z M 280,360 l 20,0 0,20 -20,0 z M 300,360 l 20,0 0,20 -20,0 z M 320,360 l 20,0 0,20 -20,0 z M 380,360 l 20,0 0,20 -20,0 z M 540,360 l 20,0 0,20 -20,0 z M 560,360 l 20,0 0,20 -20,0 z M 40,380 l 20,0 0,20 -20,0 z M 60,380 l 20,0 0,20 -20,0 z M 100,380 l 20,0 0,20 -20,0 z M 360,380 l 20,0 0,20 -20,0 z M 380,380 l 20,0 0,20 -20,0 z M 400,380 l 20,0 0,20 -20,0 z M 420,380 l 20,0 0,20 -20,0 z M 440,380 l 20,0 0,20 -20,0 z M 460,380 l 20,0 0,20 -20,0 z M 480,380 l 20,0 0,20 -20,0 z M 520,380 l 20,0 0,20 -20,0 z M 560,380 l 20,0 0,20 -20,0 z M 600,380 l 20,0 0,20 -20,0 z M 40,400 l 20,0 0,20 -20,0 z M 140,400 l 20,0 0,20 -20,0 z M 160,400 l 20,0 0,20 -20,0 z M 180,400 l 20,0 0,20 -20,0 z M 200,400 l 20,0 0,20 -20,0 z M 240,400 l 20,0 0,20 -20,0 z M 280,400 l 20,0 0,20 -20,0 z M 320,400 l 20,0 0,20 -20,0 z M 340,400 l 20,0 0,20 -20,0 z M 360,400 l 20,0 0,20 -20,0 z M 380,400 l 20,0 0,20 -20,0 z M 460,400 l 20,0 0,20 -20,0 z M 480,400 l 20,0 0,20 -20,0 z M 520,400 l 20,0 0,20 -20,0 z M 560,400 l 20,0 0,20 -20,0 z M 40,420 l 20,0 0,20 -20,0 z M 100,420 l 20,0 0,20 -20,0 z M 140,420 l 20,0 0,20 -20,0 z M 180,420 l 20,0 0,20 -20,0 z M 240,420 l 20,0 0,20 -20,0 z M 280,420 l 20,0 0,20 -20,0 z M 340,420 l 20,0 0,20 -20,0 z M 360,420 l 20,0 0,20 -20,0 z M 420,420 l 20,0 0,20 -20,0 z M 440,420 l 20,0 0,20 -20,0 z M 580,420 l 20,0 0,20 -20,0 z M 40,440 l 20,0 0,20 -20,0 z M 80,440 l 20,0 0,20 -20,0 z M 100,440 l 20,0 0,20 -20,0 z M 140,440 l 20,0 0,20 -20,0 z M 160,440 l 20,0 0,20 -20,0 z M 180,440 l 20,0 0,20 -20,0 z M 240,440 l 20,0 0,20 -20,0 z M 280,440 l 20,0 0,20 -20,0 z M 300,440 l 20,0 0,20 -20,0 z M 320,440 l 20,0 0,20 -20,0 z M 340,440 l 20,0 0,20 -20,0 z M 380,440 l 20,0 0,20 -20,0 z M 400,440 l 20,0 0,20 -20,0 z M 420,440 l 20,0 0,20 -20,0 z M 440,440 l 20,0 0,20 -20,0 z M 460,440 l 20,0 0,20 -20,0 z M 480,440 l 20,0 0,20 -20,0 z M 500,440 l 20,0 0,20 -20,0 z M 520,440 l 20,0 0,20 -20,0 z M 560,440 l 20,0 0,20 -20,0 z M 580,440 l 20,0 0,20 -20,0 z M 600,440 l 20,0 0,20 -20,0 z M 200,460 l 20,0 0,20 -20,0 z M 220,460 l 20,0 0,20 -20,0 z M 240,460 l 20,0 0,20 -20,0 z M 280,460 l 20,0 0,20 -20,0 z M 360,460 l 20,0 0,20 -20,0 z M 380,460 l 20,0 0,20 -20,0 z M 400,460 l 20,0 0,20 -20,0 z M 440,460 l 20,0 0,20 -20,0 z M 520,460 l 20,0 0,20 -20,0 z M 540,460 l 20,0 0,20 -20,0 z M 560,460 l 20,0 0,20 -20,0 z M 580,460 l 20,0 0,20 -20,0 z M 600,460 l 20,0 0,20 -20,0 z M 40,480 l 20,0 0,20 -20,0 z M 60,480 l 20,0 0,20 -20,0 z M 80,480 l 20,0 0,20 -20,0 z M 100,480 l 20,0 0,20 -20,0 z M 120,480 l 20,0 0,20 -20,0 z M 140,480 l 20,0 0,20 -20,0 z M 160,480 l 20,0 0,20 -20,0 z M 200,480 l 20,0 0,20 -20,0 z M 220,480 l 20,0 0,20 -20,0 z M 240,480 l 20,0 0,20 -20,0 z M 320,480 l 20,0 0,20 -20,0 z M 340,480 l 20,0 0,20 -20,0 z M 380,480 l 20,0 0,20 -20,0 z M 420,480 l 20,0 0,20 -20,0 z M 440,480 l 20,0 0,20 -20,0 z M 480,480 l 20,0 0,20 -20,0 z M 520,480 l 20,0 0,20 -20,0 z M 540,480 l 20,0 0,20 -20,0 z M 560,480 l 20,0 0,20 -20,0 z M 40,500 l 20,0 0,20 -20,0 z M 160,500 l 20,0 0,20 -20,0 z M 220,500 l 20,0 0,20 -20,0 z M 260,500 l 20,0 0,20 -20,0 z M 320,500 l 20,0 0,20 -20,0 z M 340,500 l 20,0 0,20 -20,0 z M 360,500 l 20,0 0,20 -20,0 z M 440,500 l 20,0 0,20 -20,0 z M 520,500 l 20,0 0,20 -20,0 z M 580,500 l 20,0 0,20 -20,0 z M 600,500 l 20,0 0,20 -20,0 z M 40,520 l 20,0 0,20 -20,0 z M 80,520 l 20,0 0,20 -20,0 z M 100,520 l 20,0 0,20 -20,0 z M 120,520 l 20,0 0,20 -20,0 z M 160,520 l 20,0 0,20 -20,0 z M 200,520 l 20,0 0,20 -20,0 z M 220,520 l 20,0 0,20 -20,0 z M 240,520 l 20,0 0,20 -20,0 z M 300,520 l 20,0 0,20 -20,0 z M 380,520 l 20,0 0,20 -20,0 z M 440,520 l 20,0 0,20 -20,0 z M 460,520 l 20,0 0,20 -20,0 z M 480,520 l 20,0 0,20 -20,0 z M 500,520 l 20,0 0,20 -20,0 z M 520,520 l 20,0 0,20 -20,0 z M 560,520 l 20,0 0,20 -20,0 z M 580,520 l 20,0 0,20 -20,0 z M 600,520 l 20,0 0,20 -20,0 z M 40,540 l 20,0 0,20 -20,0 z M 80,540 l 20,0 0,20 -20,0 z M 100,540 l 20,0 0,20 -20,0 z M 120,540 l 20,0 0,20 -20,0 z M 160,540 l 20,0 0,20 -20,0 z M 200,540 l 20,0 0,20 -20,0 z M 260,540 l 20,0 0,20 -20,0 z M 280,540 l 20,0 0,20 -20,0 z M 360,540 l 20,0 0,20 -20,0 z M 420,540 l 20,0 0,20 -20,0 z M 440,540 l 20,0 0,20 -20,0 z M 540,540 l 20,0 0,20 -20,0 z M 560,540 l 20,0 0,20 -20,0 z M 580,540 l 20,0 0,20 -20,0 z M 600,540 l 20,0 0,20 -20,0 z M 40,560 l 20,0 0,20 -20,0 z M 80,560 l 20,0 0,20 -20,0 z M 100,560 l 20,0 0,20 -20,0 z M 120,560 l 20,0 0,20 -20,0 z M 160,560 l 20,0 0,20 -20,0 z M 200,560 l 20,0 0,20 -20,0 z M 220,560 l 20,0 0,20 -20,0 z M 240,560 l 20,0 0,20 -20,0 z M 340,560 l 20,0 0,20 -20,0 z M 360,560 l 20,0 0,20 -20,0 z M 420,560 l 20,0 0,20 -20,0 z M 440,560 l 20,0 0,20 -20,0 z M 460,560 l 20,0 0,20 -20,0 z M 480,560 l 20,0 0,20 -20,0 z M 500,560 l 20,0 0,20 -20,0 z M 520,560 l 20,0 0,20 -20,0 z M 540,560 l 20,0 0,20 -20,0 z M 560,560 l 20,0 0,20 -20,0 z M 580,560 l 20,0 0,20 -20,0 z M 40,580 l 20,0 0,20 -20,0 z M 160,580 l 20,0 0,20 -20,0 z M 200,580 l 20,0 0,20 -20,0 z M 220,580 l 20,0 0,20 -20,0 z M 260,580 l 20,0 0,20 -20,0 z M 340,580 l 20,0 0,20 -20,0 z M 400,580 l 20,0 0,20 -20,0 z M 440,580 l 20,0 0,20 -20,0 z M 500,580 l 20,0 0,20 -20,0 z M 540,580 l 20,0 0,20 -20,0 z M 580,580 l 20,0 0,20 -20,0 z M 40,600 l 20,0 0,20 -20,0 z M 60,600 l 20,0 0,20 -20,0 z M 80,600 l 20,0 0,20 -20,0 z M 100,600 l 20,0 0,20 -20,0 z M 120,600 l 20,0 0,20 -20,0 z M 140,600 l 20,0 0,20 -20,0 z M 160,600 l 20,0 0,20 -20,0 z M 200,600 l 20,0 0,20 -20,0 z M 220,600 l 20,0 0,20 -20,0 z M 300,600 l 20,0 0,20 -20,0 z M 340,600 l 20,0 0,20 -20,0 z M 380,600 l 20,0 0,20 -20,0 z M 420,600 l 20,0 0,20 -20,0 z M 460,600 l 20,0 0,20 -20,0 z M 520,600 l 20,0 0,20 -20,0 z M 540,600 l 20,0 0,20 -20,0 z M 560,600 l 20,0 0,20 -20,0 z " />
+            </svg>
+          </a>
+          <div class="qr-caption">
+            <strong>SCAN FOR MOBILE AUDIO</strong><br>
+            <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer">sh-aikido.github.io/talentschmiede-2027</a>
+          </div>
+        </div>
+
+        <!-- Flugticket Barcode -->
+        <div class="barcode-wrapper">
+          <svg class="barcode-svg" viewBox="0 0 200 30" preserveAspectRatio="none">
+            <rect x="0" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="5" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="9" y="0" width="5" height="30" fill="#fff"/>
+            <rect x="16" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="20" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="26" y="0" width="1" height="30" fill="#fff"/>
+            <rect x="29" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="36" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="41" y="0" width="6" height="30" fill="#fff"/>
+            <rect x="50" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="56" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="60" y="0" width="5" height="30" fill="#fff"/>
+            <rect x="68" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="72" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="78" y="0" width="7" height="30" fill="#fff"/>
+            <rect x="88" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="92" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="98" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="103" y="0" width="5" height="30" fill="#fff"/>
+            <rect x="110" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="115" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="122" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="128" y="0" width="6" height="30" fill="#fff"/>
+            <rect x="136" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="140" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="147" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="151" y="0" width="5" height="30" fill="#fff"/>
+            <rect x="158" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="162" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="168" y="0" width="7" height="30" fill="#fff"/>
+            <rect x="178" y="0" width="2" height="30" fill="#fff"/>
+            <rect x="183" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="190" y="0" width="3" height="30" fill="#fff"/>
+            <rect x="196" y="0" width="4" height="30" fill="#fff"/>
+          </svg>
+          <span class="barcode-code">TS 2026 10 30 HAAS SAD</span>
+        </div>
+
+        <div class="verification-stamp">
+          ✓ BOARDING GRANTED // VERIFIED
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- Footer & Hints -->
+    <footer id="footer-trigger">
+      HORSCH MASCHINEN GMBH · TALENTSCHMIEDE LAUF 2 · [TIPP: 3X HORSCH KLICKEN ODER SCHÜTTELN FÜR EASTER EGG]
+    </footer>
+
+  </div>
+
+  <!-- Native Audio Tag -->
+  <audio id="nativeAudio" preload="auto" playsinline>
+    <source id="audioSource" src="audio_fass2_horsch.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Easter Egg Modal -->
+  <div class="easter-modal" id="easter-modal">
+    <div class="modal-box">
+      <div class="modal-tag">SECRET UNLOCKED // LAUF 1 INSIDER</div>
+      <div class="modal-title">Eintrittskarte aktiviert</div>
+      <div class="modal-desc">
+        Du hast das geheime Cockpit-Feature gefunden. Samuel Haas beantragt hiermit offiziell:
+      </div>
+      <div class="stamp-box">
+        👉 <strong>„AUFNAHME IN DIE TALENTSEKTE 2026/2027“</strong><br>
+        <span style="font-size: 10px; opacity: 0.85;">Status: Bereit für volle Verantwortung & Team-Reibung</span>
+      </div>
+      <button class="close-btn" onclick="closeSecret()">ZURÜCK ZUM BOARDING PASS</button>
+    </div>
+  </div>
+
+  <script>
+    let isPlaying = false;
+    const nativeAudio = document.getElementById('nativeAudio');
+
+    // Web Audio API Context
+    let audioCtx = null;
+    let canvas = document.getElementById('audioVisualizer');
+    let ctx = canvas.getContext('2d');
+    let animationFrame = null;
+    let waveOffset = 0;
+
+    function resizeCanvas() {
+      if (!canvas || !canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth * (window.devicePixelRatio || 1);
+      canvas.height = canvas.parentElement.clientHeight * (window.devicePixelRatio || 1);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) audioCtx = new AudioCtx();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playRadioSound(type) {
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+
+        if (type === 'start') {
+          // Double Avionics Chime
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(659.25, now); // E5
+          osc.frequency.setValueAtTime(523.25, now + 0.14); // C5
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.45);
+        } else {
+          // Radio squelch click
+          const bufferSize = Math.floor(audioCtx.sampleRate * 0.05);
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const output = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
+          const whiteNoise = audioCtx.createBufferSource();
+          whiteNoise.buffer = buffer;
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          whiteNoise.connect(gain);
+          gain.connect(audioCtx.destination);
+          whiteNoise.start();
+        }
+      } catch (e) {
+        console.log('Avionics chime skipped:', e);
+      }
+    }
+
+    function togglePlayback() {
+      if (isPlaying) {
+        stopPlayback();
+      } else {
+        startPlayback();
+      }
+    }
+
+    function startPlayback() {
+      initAudioContext();
+      playRadioSound('start');
+
+      const playPromise = nativeAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isPlaying = true;
+          setPlayingUI(true);
+          renderVisualizer();
+        }).catch(err => {
+          console.log('Playback error/permission:', err);
+          // UI trotzdem auf Start schalten falls Autoplay oder Audio greift
+          isPlaying = true;
+          setPlayingUI(true);
+          renderVisualizer();
+        });
+      } else {
+        isPlaying = true;
+        setPlayingUI(true);
+        renderVisualizer();
+      }
+    }
+
+    function stopPlayback() {
+      isPlaying = false;
+      playRadioSound('end');
+      nativeAudio.pause();
+      setPlayingUI(false);
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      drawIdleWave();
+    }
+
+    function setPlayingUI(playing) {
+      const ptt = document.getElementById('pttButton');
+      const comm = document.getElementById('commStatus');
+      const pttTitle = document.getElementById('pttTitle');
+      const pttSub = document.getElementById('pttSubtitle');
+      const iconSvg = document.getElementById('playIconSvg');
+
+      if (playing) {
+        ptt.classList.add('is-transmitting');
+        comm.innerText = 'TRANSMITTING...';
+        comm.style.color = 'var(--cyan)';
+        pttTitle.innerText = 'Boarddurchsage pausieren';
+        pttSub.innerText = 'HORSCH FLIGHT TS-02 // DURCHSAGE LÄUFT';
+        iconSvg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+      } else {
+        ptt.classList.remove('is-transmitting');
+        comm.innerText = 'STANDBY';
+        comm.style.color = 'var(--amber)';
+        pttTitle.innerText = 'Boarddurchsage abspielen';
+        pttSub.innerText = 'HORSCH FLIGHT TS-02 // DURCHSAGE FLUGLEITUNG';
+        iconSvg.innerHTML = '<path d="M8 5v14l11-7z"/>';
+      }
+    }
+
+    // Audio Event Handlers
+    nativeAudio.addEventListener('timeupdate', () => {
+      const cur = nativeAudio.currentTime;
+      const dur = nativeAudio.duration || 39.5;
+      document.getElementById('currentTime').innerText = formatTime(cur);
+      const percent = Math.min((cur / dur) * 100, 100);
+      document.getElementById('progressFill').style.width = percent + '%';
+    });
+
+    nativeAudio.addEventListener('loadedmetadata', updateDurationDisplay);
+
+    nativeAudio.addEventListener('ended', () => {
+      stopPlayback();
+      nativeAudio.currentTime = 0;
+      document.getElementById('currentTime').innerText = '00:00';
+      document.getElementById('progressFill').style.width = '0%';
+    });
+
+    function updateDurationDisplay() {
+      const dur = nativeAudio.duration;
+      if (!isNaN(dur) && isFinite(dur)) {
+        document.getElementById('totalDuration').innerText = formatTime(dur);
+      }
+    }
+
+    function seekAudio(e) {
+      const bar = document.getElementById('progressBar');
+      const rect = bar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+      const dur = nativeAudio.duration || 39.5;
+      nativeAudio.currentTime = ratio * dur;
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    // Spectrum Visualizer
+    function renderVisualizer() {
+      if (!isPlaying) return;
+
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const numBars = 44;
+      const barWidth = (w / numBars) - 2.5;
+      waveOffset += 0.18;
+
+      for (let i = 0; i < numBars; i++) {
+        const noise = Math.sin(i * 0.38 + waveOffset) * Math.cos(i * 0.24 - waveOffset * 0.8);
+        const dynamicHeight = Math.max(0.12, Math.abs(noise)) * (h * 0.82);
+
+        const x = i * (barWidth + 2.5);
+        const y = (h - dynamicHeight) / 2;
+
+        const grad = ctx.createLinearGradient(0, y, 0, y + dynamicHeight);
+        if (i % 3 === 0) {
+          grad.addColorStop(0, '#da291c');
+          grad.addColorStop(1, '#991b1b');
+        } else {
+          grad.addColorStop(0, '#38bdf8');
+          grad.addColorStop(1, '#0369a1');
+        }
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y, barWidth, dynamicHeight);
+
+        // Peak needle dot
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(x, Math.max(0, y - 3), barWidth, 2);
+      }
+
+      animationFrame = requestAnimationFrame(renderVisualizer);
+    }
+
+    function drawIdleWave() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const numBars = 44;
+      const barWidth = (w / numBars) - 2.5;
+
+      for (let i = 0; i < numBars; i++) {
+        const x = i * (barWidth + 2.5);
+        const y = h / 2 - 1.5;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.fillRect(x, y, barWidth, 3);
+      }
+    }
+    drawIdleWave();
+
+    // Easter Egg: 3-Click auf HORSCH-Logo
+    let clickCount = 0;
+    const trigger = document.getElementById('secret-trigger');
+    const footerTrigger = document.getElementById('footer-trigger');
+
+    function checkTripleClick() {
+      clickCount++;
+      if (clickCount >= 3) {
+        openSecret();
+        clickCount = 0;
+      }
+      setTimeout(() => { clickCount = 0; }, 1500);
+    }
+
+    trigger.addEventListener('click', checkTripleClick);
+    footerTrigger.addEventListener('click', checkTripleClick);
+
+    function openSecret() {
+      const modal = document.getElementById('easter-modal');
+      modal.style.display = 'flex';
+      if (navigator.vibrate) { navigator.vibrate([100, 50, 100]); }
+    }
+
+    function closeSecret() {
+      document.getElementById('easter-modal').style.display = 'none';
+    }
+
+    // Shake to reveal
+    let lastX, lastY, lastZ;
+    let lastTime = 0;
+    window.addEventListener('devicemotion', function(e) {
+      const current = e.accelerationIncludingGravity;
+      if (!current) return;
+      const now = Date.now();
+      if ((now - lastTime) > 120) {
+        const diffTime = now - lastTime;
+        lastTime = now;
+        const speed = Math.abs((current.x||0) + (current.y||0) + (current.z||0) - (lastX || 0) - (lastY || 0) - (lastZ || 0)) / diffTime * 10000;
+        if (speed > 800) openSecret();
+        lastX = current.x; lastY = current.y; lastZ = current.z;
+      }
+    });
+  </script>
+
+</body>
+</html>
