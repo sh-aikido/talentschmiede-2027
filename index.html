@@ -1055,7 +1055,7 @@
             <div class="crt-hud-bottom">
               <span id="currentTime">00:00</span>
               <span style="color: var(--amber);" id="voiceIndicator">HORSCH STIMME // FLIGHT TS-02</span>
-              <strong id="totalDuration">00:39</strong>
+              <strong id="totalDuration">00:25</strong>
             </div>
           </div>
 
@@ -1066,22 +1066,21 @@
             </div>
             <div class="ptt-meta-text">
               <div class="ptt-title" id="pttTitle">Boarddurchsage abspielen</div>
-              <div class="ptt-subtitle" id="pttSubtitle">HORSCH FLIGHT TS-02 // DURCHSAGE FLUGLEITUNG</div>
+              <div class="ptt-subtitle" id="pttSubtitle">HORSCH FLIGHT TS-02 // TOWER-FUNK</div>
             </div>
           </button>
 
-          <!-- Teletype Transkript Briefing (Fassung 2 permanent) -->
+          <!-- Teletype Transkript Briefing (Option C permanent) -->
           <div class="transcript-briefing">
             <div class="briefing-head">
-              <span id="transcriptTag">OFFIZIELLE BOARDDURCHSAGE // FLIGHT TS-02</span>
+              <span id="transcriptTag">OFFIZIELLER BORDFUNK // FLIGHT TS-02</span>
               <span>STANDORT: SCHWANDORF</span>
             </div>
             <div class="briefing-body" id="transcriptContent">
-              „Guten Tag, liebe Fluggäste, hier spricht die Flugleitung von Flight TS-02.<br><br>
-              Nach dem Einsatz in Curitiba sind wir wieder sicher in Schwandorf aufgesetzt. Nächstes Jahr geht es für unseren Azubi Samuel Haas weiter in die USA. Man könnte also sagen: Es läuft alles nach Flugplan.<br><br>
-              Aber genau deshalb beantragt Samuel hiermit den Eintritt in die <strong>Talentschmiede Lauf 2</strong>.<br><br>
-              Er will kein Komfort-Programm für den Lebenslauf, sondern ein Trainingslager: Ein Jahr lang im Team diskutieren, lernen, wie man Gegenwind aushält, und ein Projekt entwickeln, das vor der Geschäftsführung bestehen muss.<br><br>
-              Der Boarding Pass liegt auf Ihrer Tastatur. <strong>Die Entscheidung liegt bei Ihnen.</strong>“
+              „Tower Schwandorf, hier Flight TS-02. Samuel Haas meldet sich nach Curitiba zurück.<br><br>
+              Nächster planmäßiger Halt: USA 2027. Sonderroute beantragt: <strong>Talentschmiede Lauf 2</strong>.<br><br>
+              Ein Jahr lang Reibung aushalten, bereichsübergreifend arbeiten und vor der Geschäftsführung abliefern.<br><br>
+              Der Boarding Pass liegt vor Ihnen. <strong>Ich erbitte Startfreigabe.</strong>“
             </div>
           </div>
 
@@ -1205,7 +1204,7 @@
 
   <!-- Native Audio Tag -->
   <audio id="nativeAudio" preload="auto" playsinline>
-    <source id="audioSource" src="audio_fass2_horsch.mp3" type="audio/mpeg">
+    <source id="audioSource" src="audio_ts02_option_c.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Easter Egg Modal -->
@@ -1352,7 +1351,7 @@
         comm.innerText = 'STANDBY';
         comm.style.color = 'var(--amber)';
         pttTitle.innerText = 'Boarddurchsage abspielen';
-        pttSub.innerText = 'HORSCH FLIGHT TS-02 // DURCHSAGE FLUGLEITUNG';
+        pttSub.innerText = 'HORSCH FLIGHT TS-02 // TOWER-FUNK';
         iconSvg.innerHTML = '<path d="M8 5v14l11-7z"/>';
       }
     }
@@ -1360,7 +1359,7 @@
     // Audio Event Handlers
     nativeAudio.addEventListener('timeupdate', () => {
       const cur = nativeAudio.currentTime;
-      const dur = nativeAudio.duration || 39.5;
+      const dur = nativeAudio.duration || 25;
       document.getElementById('currentTime').innerText = formatTime(cur);
       const percent = Math.min((cur / dur) * 100, 100);
       document.getElementById('progressFill').style.width = percent + '%';
@@ -1387,7 +1386,7 @@
       const rect = bar.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const ratio = Math.max(0, Math.min(1, clickX / rect.width));
-      const dur = nativeAudio.duration || 39.5;
+      const dur = nativeAudio.duration || 25;
       nativeAudio.currentTime = ratio * dur;
     }
 
