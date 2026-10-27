@@ -63,7 +63,8 @@
     .fill { display:block; width:0%; height:100%; position:relative; background:var(--yellow); border-radius:2px; }
     .fill::after { content:''; width:10px; height:10px; border-radius:50%; background:var(--yellow); position:absolute; right:-5px; top:-3px; }
     .time { display:flex; justify-content:space-between; color:var(--muted); font:400 10px/1 var(--mono); margin-top:-5px; }
-    .route { padding-top:19px; margin-top:18px; border-top:1px solid #41494b; }
+    .route { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-top:19px; margin-top:18px; border-top:1px solid #41494b; }
+    .route .route-jahr { color:var(--yellow); }
     .route dd { margin-top:5px; font:500 19px/1.4 var(--mono); }
     .route small { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:400; color:var(--muted); }
     .route-arrow { color:var(--yellow); }
@@ -162,7 +163,7 @@
             <div id="progressBar" class="progress" role="slider" tabindex="0" aria-label="Wiedergabeposition" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="00:00, Dauer unbekannt" aria-disabled="true" onclick="seekAudio(event)"><span class="track"><span class="fill" id="progressFill"></span></span></div>
             <div class="time"><span id="currentTime">00:00</span><span id="totalDuration">--:--</span></div>
           </section>
-          <dl class="route"><dt>Route</dt><dd>USA <span class="route-arrow">→</span> SAD <small>(Schwandorf)</small></dd></dl>
+          <dl class="route"><div><dt>Abflug</dt><dd>SAD <small>(Schwandorf)</small></dd></div><div><dt>Geplanter Einsatz</dt><dd>USA <small class="route-jahr">2027</small></dd></div></dl>
           <dl class="travel-data"><div><dt>Seat</dt><dd>01A</dd></div><div><dt>Class</dt><dd>TALENT</dd></div><div><dt>Boarding</dt><dd>OKT 2026</dd></div></dl>
         </section>
         <section class="transcript" aria-labelledby="transcript-heading">
