@@ -11,6 +11,7 @@ Interaktive Web-App & 3D-gedrucktes Artefakt zur Bewerbung von Samuel Haas (Indu
 - **Gate-Durchsage:** Eine Ansagerin ruft Passagier Haas am Gate auf und reicht in dritter Person weiter, was er ausrichten lässt (`audio_durchsage.mp3`, Edge-Neural-Stimme mit Flughafen-Gong, ~35 Sek.).
 - **Seite:** Gate-Anzeige mit Fallblatt-Ziffern, Player, Mitschrift und Abriss-Coupon. „Boarding bestätigen“ setzt einen BOARDED-Stempel und schickt eine Push-Meldung über ntfy.sh (Header nur ASCII, sonst blockt der Browser die Anfrage).
 - **Design:** Entwurf B aus der Runde vom 27.10.2026 (Codex), Handy zuerst, ab 760 px quer wie die gedruckte Karte.
+- **Reisepass** (`reisepass/`, verlinkt über Knopf und QR im Coupon): Lebenslauf bei HORSCH als Pass zum Blättern. Personalien, Besondere Kennzeichen (Wingfinder als Stärke mit Kehrseite), Stationen als Stempel, Einreise Brasil mit Fotos, Handgepäck (was ich mit KI baue), Woran ich arbeite, Visum Talentschmiede. Wer auf der Bordkarte bestätigt hat, findet auf dem Visum den BOARDED-Stempel (`sessionStorage`, gleicher Tab). UV-Knopf zeigt verborgene Merkmale. Sprungmarken wie `reisepass/#visa`. Fotos nur ohne erkennbare Dritte.
 
 ---
 

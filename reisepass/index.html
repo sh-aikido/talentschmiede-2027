@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Reisepass · Samuel Haas · Talentschmiede Lauf 2</title>
+  <meta name="description" content="Der Reisepass zur Bordkarte TS-2027: wo ich bei HORSCH schon war, was mich ausmacht und woran ich gerade arbeite.">
+  <meta property="og:title" content="Reisepass · Talentschmiede Lauf 2">
+  <meta property="og:description" content="Wo ich bei HORSCH schon war, was mich ausmacht, woran ich arbeite.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sh-aikido.github.io/talentschmiede-2027/reisepass/">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* Tokens wie in der Vorstellung (Bento, Apple-nah), dazu Papier und Stempeltinte für den Pass */
+    :root {
+      --bg: #f2f2f7;
+      --tile: #ffffff;
+      --ink: #1d1d1f;
+      --ink-2: #55555a;
+      --ink-3: #636368;
+      --hair: rgba(0, 0, 0, 0.07);
+      --fill: rgba(118, 118, 128, 0.12);
+      --shadow: 0 1px 1px rgba(0, 0, 0, 0.03), 0 6px 20px -6px rgba(0, 0, 0, 0.08);
+      --shadow-hi: 0 2px 4px rgba(0, 0, 0, 0.04), 0 18px 40px -12px rgba(0, 0, 0, 0.18);
+      --accent: #0062c4;
+      --accent-soft: rgba(0, 98, 196, 0.14);
+      --indigo: #5250d6;
+      --green: #1a7431;
+      --green-dot: #34c759;
+      --amber: #a34a00;
+      --red: #c20013;
+      --serie-mat: linear-gradient(150deg, #2d1e8f 0%, #6a35d9 52%, #b02f74 100%);
+      --warn-mat: linear-gradient(160deg, #fff7ea 0%, #ffefd6 100%);
+      --warn-hair: rgba(255, 149, 0, 0.28);
+
+      --papier: #fbfaf6;
+      --papier-ink: #1d1d1f;
+      --papier-ink-2: #55555a;
+      --papier-linie: rgba(29, 29, 31, 0.14);
+      --guilloche: none;
+      --tinte-blau: #2443b8;
+      --tinte-rot: #c3172a;
+      --tinte-gruen: #17733a;
+      --tinte-violett: #5b2bb5;
+      --tinte-amber: #a34a00;
+      --tinte-grau: #6b6b70;
+      --tinte-mix: multiply;
+      --uv: #b6ff3b;
+
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+      --hand: "Caveat", "Segoe Script", cursive;
+      --spring: cubic-bezier(0.2, 1.08, 0.3, 1);
+
+      --seite-b: min(420px, calc(100vw - 32px));
+      --spalten: 1;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000; --tile: #1c1c1e; --ink: #f5f5f7; --ink-2: #a8a8ad; --ink-3: #9d9da2;
+        --hair: rgba(255, 255, 255, 0.08); --fill: rgba(118, 118, 128, 0.24);
+        --shadow: 0 0 0 1px rgba(255, 255, 255, 0.05); --shadow-hi: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 24px 60px -12px rgba(0, 0, 0, 0.8);
+        --accent: #2997ff; --accent-soft: rgba(41, 151, 255, 0.2); --indigo: #9a98ff;
+        --serie-mat: linear-gradient(150deg, #24186f 0%, #5a2bbe 52%, #b53379 100%);
+        --warn-mat: linear-gradient(160deg, #2a1f0d 0%, #33240b 100%);
+        --papier: #1c1c1e; --papier-ink: #f5f5f7; --papier-ink-2: #b0b0b6; --papier-linie: rgba(255, 255, 255, 0.16);
+        --tinte-blau: #7d9bff; --tinte-rot: #ff6b6b; --tinte-gruen: #4cd37e; --tinte-violett: #b394ff; --tinte-amber: #ffb340; --tinte-grau: #a1a1a6;
+        --tinte-mix: screen;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: clip; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg); color: var(--ink); font-family: var(--font);
+      line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100dvh;
+    }
+    button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    /* ---------- Rahmen: Route links (breit), Bühne rechts ---------- */
+    .app { min-height: 100dvh; display: grid; grid-template-columns: 1fr; }
+    .route { display: none; }
+    .buehne { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: max(16px, env(safe-area-inset-top)) 16px 120px; }
+
+    .kopf { width: var(--seite-b); display: flex; flex-direction: column; gap: 4px; }
+    .etikett { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    .etikett::after { content: ""; width: 40px; height: 1px; background: currentColor; opacity: 0.6; }
+    .kopf h1 { font-size: clamp(26px, 7vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+    .kopf p { color: var(--ink-2); font-size: 15px; }
+
+    /* ---------- Das Buch ---------- */
+    .buch {
+      position: relative; perspective: 2400px;
+      display: grid; grid-template-columns: repeat(var(--spalten), var(--seite-b));
+      align-items: stretch; transition: transform 0.7s var(--spring);
+      touch-action: pan-y;
+    }
+    .slot { position: relative; display: grid; }
+    .slot > .seite { grid-area: 1 / 1; }
+
+    .seite {
+      position: relative; overflow: hidden;
+      min-height: calc(var(--seite-b) * 1.42);
+      background-color: var(--papier); background-image: var(--guilloche);
+      background-size: 360px 360px; color: var(--papier-ink);
+      border-radius: 6px 18px 18px 6px;
+      box-shadow: var(--shadow-hi), inset 10px 0 18px -14px rgba(0, 0, 0, 0.35);
+      padding: 22px 20px 36px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .slot.links .seite { border-radius: 18px 6px 6px 18px; box-shadow: var(--shadow-hi), inset -10px 0 18px -14px rgba(0, 0, 0, 0.35); padding: 22px 24px 30px 20px; }
+
+    .seite-kopf {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+      font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--papier-ink-2); border-bottom: 1px solid var(--papier-linie); padding-bottom: 8px; text-transform: uppercase;
+    }
+    .seite h2 { font-size: clamp(24px, 6.4vw, 30px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+    .seite-nr { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-family: var(--mono); font-size: 10px; color: var(--papier-ink-2); letter-spacing: 0.2em; }
+    .klein { font-size: 13px; color: var(--papier-ink-2); }
+
+    /* UV-Merkmale: unsichtbar, bis das UV-Licht an ist */
+    .uv-text {
+      position: absolute; pointer-events: none; font-family: var(--mono); font-weight: 800;
+      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--uv);
+      opacity: 0; transition: opacity 0.4s; text-shadow: 0 0 8px var(--uv), 0 0 22px rgba(182, 255, 59, 0.6);
+      transform: rotate(-90deg); transform-origin: left top; left: 8px; bottom: -4px; white-space: nowrap;
+    }
+    /* UV-Licht: Papier wird dunkelviolett, Sicherheitsdruck und verborgene Schrift leuchten */
+    html.uv {
+      --bg: #07031a; --hair: rgba(190, 170, 255, 0.18); --fill: rgba(190, 170, 255, 0.16); --accent: #b6a4ff;
+      --papier: #150c35; --papier-ink: #ece6ff; --papier-ink-2: #b3a8e6; --papier-linie: rgba(190, 170, 255, 0.3);
+      --tile: #231653; --ink: #f1ecff; --ink-2: #bdb3ea; --warn-mat: linear-gradient(160deg, #2b1a55, #351c5c);
+      --tinte-mix: screen; --tinte-blau: #8fb0ff; --tinte-rot: #ff8a8a; --tinte-gruen: #7dffa8; --tinte-violett: #c9b2ff; --tinte-amber: #ffc66b; --tinte-grau: #b9b4cc;
+    }
+    html.uv .seite:not(.deckel) { background-image: var(--guilloche-uv); }
+    html.uv .uv-text { opacity: 1; }
+    html.uv .buehne { background: radial-gradient(ellipse at 50% 30%, rgba(110, 60, 255, 0.28), transparent 62%); }
+    html.uv .pola { filter: saturate(0.6) brightness(0.8); }
+    .emblem .rosette { transform-origin: 100px 100px; animation: drehen 90s linear infinite; }
+    @keyframes drehen { to { transform: rotate(360deg); } }
+
+    /* ---------- Deckel ---------- */
+    .deckel {
+      background: var(--serie-mat); color: #fff; border-radius: 6px 18px 18px 6px;
+      align-items: center; justify-content: space-between; text-align: center; padding: 34px 24px 30px; cursor: pointer;
+      box-shadow: 0 30px 60px -20px rgba(45, 30, 143, 0.55), inset 10px 0 18px -12px rgba(0, 0, 0, 0.5);
+    }
+    .deckel::before {
+      content: ""; position: absolute; inset: 0; opacity: 0.22; mix-blend-mode: overlay; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .folie {
+      background: linear-gradient(110deg, #f6e7b8 0%, #fff8dc 18%, #c9a54a 34%, #fff1c2 50%, #b8892f 66%, #f6e7b8 100%);
+      background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: folie 6s linear infinite;
+    }
+    @keyframes folie { to { background-position: -260% 0; } }
+    .deckel .marke { font-weight: 900; font-size: clamp(30px, 9vw, 40px); letter-spacing: 0.22em; padding-left: 0.22em; }
+    .deckel .pass-wort { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.32em; }
+    .emblem { width: 62%; aspect-ratio: 1; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25)); }
+    .emblem svg { width: 100%; height: 100%; display: block; }
+    .deckel .programm { font-weight: 900; font-size: clamp(22px, 6.4vw, 30px); letter-spacing: 0.04em; line-height: 1.1; }
+    .deckel .lauf { font-family: var(--mono); font-size: 12px; letter-spacing: 0.3em; opacity: 0.9; margin-top: 6px; }
+    .chip { width: 40px; height: 26px; border: 2px solid #e9cf86; border-radius: 4px; position: relative; margin: 0 auto; }
+    .chip::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; border: 2px solid #e9cf86; border-radius: 50%; transform: translate(-50%, -50%); }
+    .tipp-oeffnen { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; opacity: 0.85; margin-top: 10px; animation: atmen 2.4s ease-in-out infinite; }
+    @keyframes atmen { 50% { opacity: 0.4; } }
+
+    /* ---------- Innenseiten der Deckel ---------- */
+    .innen { justify-content: center; gap: 18px; }
+    .innen .notiz { font-size: 15px; line-height: 1.55; color: var(--papier-ink-2); }
+    .innen .notiz strong { color: var(--papier-ink); }
+    .linien { flex: 1; background: repeating-linear-gradient(to bottom, transparent 0 31px, var(--papier-linie) 31px 32px); min-height: 160px; }
+
+    /* ---------- Personalien ---------- */
+    .personalien-raster { display: grid; grid-template-columns: 112px 1fr; gap: 14px 14px; }
+    .foto {
+      position: relative; aspect-ratio: 35 / 45; border-radius: 6px; overflow: hidden;
+      background: var(--serie-mat); display: grid; place-items: center; color: #fff;
+      font-weight: 900; font-size: 64px; letter-spacing: -0.04em;
+    }
+    .foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .holo {
+      position: absolute; inset: 0; pointer-events: none; mix-blend-mode: color-dodge; opacity: 0.55;
+      background: linear-gradient(115deg, transparent 20%, rgba(0, 255, 230, 0.55) 35%, rgba(255, 230, 0, 0.45) 45%, rgba(255, 0, 200, 0.5) 55%, transparent 70%);
+      background-size: 300% 300%; animation: holo 5s ease-in-out infinite alternate;
+    }
+    .holo::after {
+      content: "H"; position: absolute; right: 8px; bottom: 6px; font-weight: 900; font-size: 26px;
+      color: rgba(255, 255, 255, 0.55); border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 50%;
+      width: 38px; height: 38px; display: grid; place-items: center;
+    }
+    @keyframes holo { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+    .felder { display: grid; gap: 9px; align-content: start; }
+    .feld dt { font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--papier-ink-2); text-transform: uppercase; }
+    .feld dd { font-weight: 700; font-size: 15px; line-height: 1.25; }
+    .feld dd.gross { font-weight: 900; font-size: 20px; letter-spacing: 0.02em; }
+    .felder-breit { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 14px; }
+    .unterschrift { grid-column: 1 / -1; border-top: 1px solid var(--papier-linie); padding-top: 6px; }
+    .unterschrift .hand { font-family: var(--hand); font-size: 28px; line-height: 1.1; color: var(--tinte-blau); }
+    .mrz {
+      margin-top: auto; font-family: var(--mono); font-weight: 500; font-size: clamp(9px, 2.75vw, 12.5px);
+      letter-spacing: 0.02em; line-height: 1.6; background: rgba(127, 127, 127, 0.07); padding: 8px 6px; border-radius: 4px; overflow: hidden;
+    }
+    .mrz span { display: block; white-space: pre; overflow: hidden; width: 44ch; max-width: 100%; }
+    .sichtbar .mrz span { animation: tippen 1.4s steps(44) both; }
+    .sichtbar .mrz span + span { animation-delay: 1.2s; }
+    @keyframes tippen { from { width: 0; } }
+
+    /* ---------- Besondere Kennzeichen ---------- */
+    .stolperer {
+      background: var(--warn-mat); border: 1px solid var(--warn-hair); border-radius: 16px; padding: 12px 14px;
+      color: var(--ink);
+    }
+    .stolperer .mini { font-family: var(--mono); font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; color: var(--amber); text-transform: uppercase; }
+    .stolperer b { display: block; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 4px 0; }
+    .stolperer q { display: block; font-size: 12.5px; color: var(--ink-2); font-style: italic; }
+    .paare { display: grid; gap: 8px; }
+    .paar { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--papier-linie); border-radius: 12px; overflow: hidden; }
+    .paar > div { padding: 8px 10px; }
+    .paar .plus { background: rgba(52, 199, 89, 0.08); }
+    .paar .minus { background: rgba(255, 149, 0, 0.08); border-left: 1px dashed var(--papier-linie); }
+    .paar .art { font-family: var(--mono); font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--papier-ink-2); }
+    .paar .name { font-weight: 800; font-size: 14.5px; line-height: 1.2; }
+    .paar .satz { font-size: 12.5px; line-height: 1.35; color: var(--papier-ink-2); margin-top: 2px; }
+    .sichtbar .paar { animation: rein 0.5s var(--spring) both; animation-delay: calc(var(--i) * 0.08s + 0.1s); }
+    @keyframes rein { from { opacity: 0; transform: translateY(10px); } }
+
+    /* ---------- Stempel ---------- */
+    .stempel-feld { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 8px; align-items: center; justify-items: center; }
+    .stempel {
+      --farbe: var(--tinte-blau);
+      position: relative; color: var(--farbe); border: 3px solid var(--farbe); border-radius: 8px;
+      padding: 8px 9px; text-align: center; font-family: var(--mono); text-transform: uppercase;
+      transform: rotate(var(--dreh, -6deg)); mix-blend-mode: var(--tinte-mix); filter: url(#tinte); width: 100%; max-width: 180px;
+    }
+    .stempel::before { content: ""; position: absolute; inset: 3px; border: 1px solid var(--farbe); border-radius: inherit; opacity: 0.7; }
+    .stempel .ort { display: block; font-weight: 800; font-size: 12.5px; letter-spacing: 0.04em; line-height: 1.2; }
+    .stempel .zeit { display: block; font-weight: 800; font-size: 15px; margin: 3px 0 2px; }
+    .stempel .was { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.04em; line-height: 1.3; }
+    .stempel .marke-s { display: inline-block; margin-top: 4px; padding: 1px 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; background: var(--farbe); color: var(--papier); border-radius: 3px; }
+    .stempel.rund { border-radius: 50%; aspect-ratio: 1; display: grid; place-content: center; max-width: 140px; padding: 14px; }
+    .stempel.oval { border-radius: 50% / 42%; padding: 14px 12px; }
+    .stempel.geplant { border-style: dashed; filter: none; }
+    .stempel.geplant::before { display: none; }
+    .sichtbar .stempel { animation: knall 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; animation-delay: calc(var(--i) * 0.18s + 0.15s); }
+    @keyframes knall {
+      0% { opacity: 0; transform: rotate(var(--dreh, -6deg)) scale(1.9); }
+      60% { opacity: 1; transform: rotate(var(--dreh, -6deg)) scale(0.94); }
+      100% { transform: rotate(var(--dreh, -6deg)) scale(1); }
+    }
+    .schule { font-size: 12.5px; line-height: 1.4; color: var(--papier-ink-2); border-top: 1px dashed var(--papier-linie); padding-top: 8px; }
+    .schule b { color: var(--papier-ink); }
+
+    /* ---------- Einreise Brasil ---------- */
+    .einreise-stempel { display: flex; justify-content: space-between; gap: 8px; }
+    .einreise-stempel .stempel { max-width: 48%; }
+    .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .zahl { background: var(--tile); border-radius: 14px; padding: 8px 6px; text-align: center; box-shadow: var(--shadow); color: var(--ink); }
+    .zahl b { display: block; font-size: 30px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .zahl span { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
+    .absatz { font-size: 13.5px; line-height: 1.45; }
+    .absatz b { font-weight: 800; }
+
+    /* ---------- Fotos ---------- */
+    .polas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 10px; }
+    .pola {
+      background: #fdfdfb; padding: 6px 6px 26px; border-radius: 3px; box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.35);
+      transform: rotate(var(--dreh, 0deg)); border: 0; text-align: left; position: relative; color: #1d1d1f;
+    }
+    .pola img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #e6e6ea; border-radius: 1px; }
+    .pola span { position: absolute; left: 8px; right: 6px; bottom: 3px; font-family: var(--hand); font-size: 17px; line-height: 1.1; color: #1d1d1f; }
+    .sichtbar .pola { animation: fallen 0.6s var(--spring) both; animation-delay: calc(var(--i) * 0.12s + 0.1s); }
+    @keyframes fallen { from { opacity: 0; transform: rotate(calc(var(--dreh, 0deg) * -2)) translateY(-26px) scale(1.06); } }
+    .zitat { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; line-height: 1.25; border-left: 3px solid var(--tinte-violett); padding-left: 10px; }
+
+    /* ---------- Handgepäck ---------- */
+    .anhaenger { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 10px; }
+    .tag {
+      position: relative; background: var(--tile); color: var(--ink); border-radius: 12px; padding: 22px 10px 10px;
+      box-shadow: var(--shadow-hi); transform-origin: 50% -14px; transform: rotate(var(--dreh, 0deg));
+      clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%, 0 14px);
+    }
+    .tag::before { content: ""; position: absolute; top: 7px; left: 50%; width: 9px; height: 9px; border-radius: 50%; transform: translateX(-50%); background: var(--bg); box-shadow: inset 0 0 0 2px var(--ink-3); }
+    .tag .code { font-weight: 900; font-size: 26px; letter-spacing: 0.02em; line-height: 1; color: var(--tinte-violett); }
+    .tag .titel { font-weight: 800; font-size: 13.5px; margin-top: 4px; line-height: 1.2; }
+    .tag .satz { font-size: 12px; line-height: 1.35; color: var(--ink-2); margin-top: 3px; }
+    .tag .strich { margin-top: 8px; height: 14px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 13px); opacity: 0.8; }
+    .sichtbar .tag { animation: schwingen 2.4s ease-in-out both; animation-delay: calc(var(--i) * 0.15s); }
+    @keyframes schwingen {
+      0% { transform: rotate(calc(var(--dreh, 0deg) + 9deg)); opacity: 0; }
+      15% { opacity: 1; }
+      35% { transform: rotate(calc(var(--dreh, 0deg) - 5deg)); }
+      60% { transform: rotate(calc(var(--dreh, 0deg) + 2deg)); }
+      100% { transform: rotate(var(--dreh, 0deg)); }
+    }
+    .setup { font-size: 12.5px; line-height: 1.4; color: var(--papier-ink-2); border-top: 1px dashed var(--papier-linie); padding-top: 8px; }
+
+    /* ---------- Woran ich arbeite ---------- */
+    .vorsaetze { display: grid; gap: 10px; }
+    .vorsatz { background: var(--tile); color: var(--ink); border-radius: 18px; padding: 12px 14px; box-shadow: var(--shadow); display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+    .vorsatz .nr { font-family: var(--mono); font-weight: 800; font-size: 13px; color: var(--accent); background: var(--accent-soft); border-radius: 10px; height: 34px; display: grid; place-items: center; }
+    .vorsatz b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+    .vorsatz span { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+    .vorsatz.kamae { background: var(--serie-mat); color: #fff; }
+    .vorsatz.kamae span { color: rgba(255, 255, 255, 0.85); }
+    .vorsatz.kamae .nr { background: rgba(255, 255, 255, 0.18); color: #fff; }
+    .sichtbar .vorsatz { animation: rein 0.5s var(--spring) both; animation-delay: calc(var(--i) * 0.12s + 0.1s); }
+    .tandem { font-size: 13px; line-height: 1.45; color: var(--papier-ink-2); }
+    .tandem b { color: var(--papier-ink); }
+
+    /* ---------- Visum Talentschmiede ---------- */
+    .visum {
+      position: relative; border-radius: 14px; padding: 14px; overflow: hidden;
+      background: linear-gradient(135deg, rgba(195, 23, 42, 0.10), rgba(106, 53, 217, 0.10)), var(--guilloche-rot);
+      border: 1px solid rgba(195, 23, 42, 0.35); display: grid; gap: 10px;
+    }
+    .visum-kopf { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-weight: 800; font-size: 11px; letter-spacing: 0.12em; color: var(--tinte-rot); }
+    .visum h3 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; }
+    .visum dl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+    .stempel-platz {
+      position: relative; min-height: 118px; border: 2px dashed var(--papier-linie); border-radius: 12px;
+      display: grid; place-items: center; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--papier-ink-2); padding: 10px;
+    }
+    .stempel-platz .stempel { position: absolute; max-width: 210px; --farbe: var(--tinte-rot); --dreh: -10deg; display: none; }
+    .stempel-platz.gestempelt .stempel { display: block; }
+    .stempel-platz.gestempelt .leer { visibility: hidden; }
+    .stempel-platz .stempel .zeit { font-size: 26px; letter-spacing: 0.08em; font-family: var(--font); font-weight: 900; }
+    .zur-bordkarte {
+      display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; border-radius: 99px;
+      background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 15px;
+      box-shadow: 0 10px 24px -10px var(--accent);
+    }
+
+    /* ---------- Steuerung ---------- */
+    .steuerung {
+      position: fixed; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+      display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 99px; z-index: 20;
+      background: color-mix(in srgb, var(--tile) 82%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-hi); border: 1px solid var(--hair);
+    }
+    .steuerung button { white-space: nowrap; min-width: 44px; height: 44px; border-radius: 99px; border: 0; background: var(--fill); font-weight: 700; font-size: 14px; padding: 0 14px; display: inline-flex; align-items: center; gap: 6px; }
+    .steuerung button:disabled { opacity: 0.35; cursor: default; }
+    .steuerung .stand { font-family: var(--mono); font-size: 12px; font-weight: 700; min-width: 54px; text-align: center; color: var(--ink-2); }
+    .steuerung .uv-knopf[aria-pressed="true"] { background: #2b1470; color: var(--uv); box-shadow: 0 0 16px rgba(182, 255, 59, 0.5); }
+
+    /* Blatt beim Umblättern */
+    .blatt { position: absolute; top: 0; z-index: 10; transform-style: preserve-3d; pointer-events: none; }
+    .blatt > .seite { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .blatt > .seite.hinten { transform: rotateY(180deg); }
+    .blatt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 40%); opacity: 0; animation: schatten 0.8s ease both; pointer-events: none; }
+    @keyframes schatten { 50% { opacity: 1; } }
+
+    /* Großansicht für Fotos */
+    .gross-ansicht { position: fixed; inset: 0; z-index: 40; background: rgba(0, 0, 0, 0.82); display: none; place-items: center; padding: 20px; }
+    .gross-ansicht.offen { display: grid; }
+    .gross-ansicht img { max-width: 100%; max-height: 82dvh; border-radius: 6px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6); }
+    .gross-ansicht p { color: #fff; font-family: var(--hand); font-size: 24px; margin-top: 10px; text-align: center; }
+    .gross-ansicht button { position: absolute; top: max(14px, env(safe-area-inset-top)); right: 14px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, 0.16); color: #fff; font-size: 22px; }
+
+    /* Ohne JavaScript: alle Seiten untereinander */
+    .vorrat { display: grid; gap: 18px; justify-items: center; }
+    html.js .vorrat { display: none; }
+    html:not(.js) .steuerung, html:not(.js) .buch { display: none; }
+
+    /* ---------- Breit: Route links, Buch als Doppelseite ---------- */
+    @media (min-width: 1100px) {
+      :root { --seite-b: min(430px, calc((100vw - 260px - 96px) / 2)); --spalten: 2; }
+      .app { grid-template-columns: 240px 1fr; }
+      .route {
+        display: flex; flex-direction: column; gap: 4px; position: sticky; top: 0; height: 100dvh;
+        border-right: 1px solid var(--hair); padding: 40px 18px 24px 24px;
+      }
+      .route .etikett { margin-bottom: 4px; }
+      .route .wer { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+      .route .wer-unter { font-size: 13px; color: var(--ink-2); margin-bottom: 22px; }
+      .route button {
+        display: flex; align-items: center; gap: 12px; border: 0; background: none; text-align: left;
+        padding: 8px 6px; border-radius: 10px; font-size: 14.5px; font-weight: 600; color: var(--ink-2);
+      }
+      .route button::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--ink-3); flex-shrink: 0; }
+      .route button[aria-current="true"] { color: var(--ink); background: var(--fill); }
+      .route button[aria-current="true"]::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+      .route .stand-unten { margin-top: auto; font-size: 12px; color: var(--ink-3); }
+      .buehne { padding: 36px 40px 120px; }
+      .kopf { width: calc(var(--seite-b) * 2); }
+      .buch.zu { transform: translateX(calc(var(--seite-b) * -0.5)); }
+      .steuerung { left: calc(50% + 120px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position: absolute;" aria-hidden="true" focusable="false">
+    <filter id="tinte" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="1.6" result="rough"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="9" result="korn"/>
+      <feColorMatrix in="korn" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.6 0 0 0 2.1" result="loecher"/>
+      <feComposite in="rough" in2="loecher" operator="in"/>
+    </filter>
+  </svg>
+
+  <div class="app">
+
+    <nav class="route" aria-label="Seiten des Passes">
+      <span class="etikett">REISEPASS</span>
+      <span class="wer">Samuel</span>
+      <span class="wer-unter">Industriekaufmann · SAD</span>
+      <div id="routeListe"></div>
+      <span class="stand-unten">Stand 27.10.2026</span>
+    </nav>
+
+    <main class="buehne">
+      <header class="kopf">
+        <span class="etikett" id="kopfEtikett">Zur Bordkarte TS-2027</span>
+        <h1 id="kopfTitel">Mein Reisepass bei HORSCH</h1>
+        <p id="kopfText">Wo ich schon war, was mich ausmacht, woran ich gerade arbeite.</p>
+      </header>
+
+      <div class="buch zu" id="buch" aria-live="polite"></div>
+
+      <div class="vorrat" id="vorrat">
+        <!-- Deckel -->
+        <section class="seite deckel" data-seite="deckel" data-titel="Deckel" role="button" tabindex="0" aria-label="Pass öffnen">
+          <div class="pass-wort folie">REISEPASS · PASSPORT</div>
+          <div class="emblem" id="emblem" aria-hidden="true"></div>
+          <div>
+            <div class="programm folie">TALENTSCHMIEDE</div>
+            <div class="lauf folie">LAUF 2 · TS-2027</div>
+          </div>
+          <div>
+            <div class="marke folie">HORSCH</div>
+            <div class="chip" aria-hidden="true" style="margin-top: 12px;"></div>
+            <div class="tipp-oeffnen">ANTIPPEN ZUM ÖFFNEN</div>
+          </div>
+        </section>
+
+        <!-- Innenseite vorne (nur Doppelseite) -->
+        <section class="seite innen" data-seite="innen" data-titel="Hinweis">
+          <div class="seite-kopf"><span>Hinweis</span><span>TS-2027</span></div>
+          <h2>Dieser Pass gehört zur Bordkarte.</h2>
+          <p class="notiz">Er zeigt, wo ich bei <strong>HORSCH</strong> schon war, was mich ausmacht und woran ich gerade arbeite.</p>
+          <p class="notiz">Tipp: Mit <strong>UV</strong> unten in der Leiste kommt zum Vorschein, was man sonst nicht sieht.</p>
+          <span class="uv-text">HORSCH · Talentschmiede · Lauf 2</span>
+        </section>
+
+        <!-- 1 Personalien -->
+        <section class="seite" data-seite="personalien" data-titel="Personalien">
+          <div class="seite-kopf"><span>Personalien · Personal data</span><span>Seite 1</span></div>
+          <div class="personalien-raster">
+            <div class="foto" role="img" aria-label="Passfoto als Monogramm S">S<span class="holo"></span></div>
+            <dl class="felder">
+              <div class="feld"><dt>Name · Surname</dt><dd class="gross">HAAS</dd></div>
+              <div class="feld"><dt>Vorname · Given name</dt><dd class="gross">SAMUEL</dd></div>
+              <div class="feld"><dt>Pass-Nr.</dt><dd>TS-2027-02</dd></div>
+            </dl>
+            <dl class="felder-breit">
+              <div class="feld"><dt>Beruf · Profession</dt><dd>Industriekaufmann, 2. Lehrjahr</dd></div>
+              <div class="feld"><dt>Heimatwerk</dt><dd>SAD · Schwandorf</dd></div>
+              <div class="feld"><dt>Ausbildung seit</dt><dd>09/2025</dd></div>
+              <div class="feld"><dt>Gültig für</dt><dd>Talentschmiede Lauf 2</dd></div>
+            </dl>
+            <dl class="unterschrift feld">
+              <dt>Unterschrift · Signature</dt>
+              <dd class="hand">Ich verstell mich nicht.</dd>
+            </dl>
+          </div>
+          <div class="mrz" aria-label="Maschinenlesbare Zone"><span>P&lt;HRSHAAS&lt;&lt;SAMUEL&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span>TS2027002&lt;1HRS&lt;&lt;IKFM2LJ&lt;SAD&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;02</span></div>
+          <span class="uv-text">HORSCH · TS-2027 · echt</span>
+          <span class="seite-nr">1</span>
+        </section>
+
+        <!-- 2 Besondere Kennzeichen -->
+        <section class="seite" data-seite="kennzeichen" data-titel="Besondere Kennzeichen">
+          <div class="seite-kopf"><span>Besondere Kennzeichen</span><span>Seite 2</span></div>
+          <div class="stolperer">
+            <span class="mini">Erst mein Stolperer</span>
+            <b>Ich habe zu viele gute Ideen.</b>
+            <q>It’s possible to have too many good ideas. Try to focus on just a few of the best ones.</q>
+          </div>
+          <div class="paare">
+            <div class="paar" style="--i: 0;"><div class="plus"><div class="art">Stärke</div><div class="name">Unterstützend</div><div class="satz">Wenn jemand hängt, bin ich schnell da.</div></div><div class="minus"><div class="art">Kehrseite</div><div class="satz">Ich stelle die Bedürfnisse anderer gern über meine eigenen.</div></div></div>
+            <div class="paar" style="--i: 1;"><div class="plus"><div class="art">Stärke</div><div class="name">Gesellig</div><div class="satz">Ich gehe gern auf Leute zu.</div></div><div class="minus"><div class="art">Kehrseite</div><div class="satz">Allein arbeiten fällt mir schwerer.</div></div></div>
+            <div class="paar" style="--i: 2;"><div class="plus"><div class="art">Stärke</div><div class="name">Innovativ</div><div class="satz">Mir fällt ständig was Neues ein.</div></div><div class="minus"><div class="art">Kehrseite</div><div class="satz">Zu viel Routine engt mich ein.</div></div></div>
+            <div class="paar" style="--i: 3;"><div class="plus"><div class="art">Stärke</div><div class="name">Selbstsicher</div><div class="satz">Ich traue mir viel zu.</div></div><div class="minus"><div class="art">Kehrseite</div><div class="satz">Meine Erwartungen an mich sind sehr hoch.</div></div></div>
+          </div>
+          <p class="klein">Denkstil: Balanced Learner, leicht intuitiv. Quelle: Red Bull Wingfinder, 25.08.2026.</p>
+          <span class="uv-text">Schwächen werden geteilt, bevor Stärken gefeiert werden</span>
+          <span class="seite-nr">2</span>
+        </section>
+
+        <!-- 3 Visa: Stationen -->
+        <section class="seite" data-seite="visa" data-titel="Visa: Stationen">
+          <div class="seite-kopf"><span>Visa · Stationen bei HORSCH</span><span>Seite 3</span></div>
+          <div class="stempel-feld">
+            <div class="stempel" style="--i: 0; --dreh: -7deg; --farbe: var(--tinte-blau);"><span class="ort">Produktion SAD</span><span class="zeit">bis 07/2026</span><span class="was">Logistik · QS · Arbeitsvorbereitung</span></div>
+            <div class="stempel rund" style="--i: 1; --dreh: 8deg; --farbe: var(--tinte-gruen);"><span class="ort">Lernen &amp; Ausbildung</span><span class="zeit">08/2026</span><span class="was">montags weiter dort</span></div>
+            <div class="stempel oval" style="--i: 2; --dreh: 5deg; --farbe: var(--tinte-rot);"><span class="ort">Global Exchange Curitiba</span><span class="zeit">17.08. bis 29.09.</span><span class="was">Brasil · 2026</span></div>
+            <div class="stempel" style="--i: 3; --dreh: -4deg; --farbe: var(--tinte-violett);"><span class="ort">Marketing SAD</span><span class="zeit">seit 06.10.2026</span><span class="marke-s">Aktuell</span></div>
+            <div class="stempel geplant" style="--i: 4; --dreh: 3deg; --farbe: var(--tinte-grau);"><span class="ort">Vertriebsinnendienst &amp; Zoll</span><span class="zeit">ab 12/2026</span><span class="marke-s">Geplant</span></div>
+            <div class="stempel rund" style="--i: 5; --dreh: -9deg; --farbe: var(--tinte-amber);"><span class="ort">Global Exchange USA</span><span class="zeit">ca. 07/2027</span><span class="marke-s">Zusage</span></div>
+          </div>
+          <p class="schule"><b>Berufsschule:</b> donnerstags und jeden zweiten Freitag. Letztes Teamprojekt: ein QM-Handbuch auf Englisch als Website.</p>
+          <span class="uv-text">Niemand baut allein</span>
+          <span class="seite-nr">3</span>
+        </section>
+
+        <!-- 4 Einreise Brasil -->
+        <section class="seite" data-seite="einreise" data-titel="Einreise Brasil">
+          <div class="seite-kopf"><span>Einreise · Brasil</span><span>Seite 4</span></div>
+          <h2>Sechs Wochen HORSCH do Brasil.</h2>
+          <div class="einreise-stempel">
+            <div class="stempel oval" style="--i: 0; --dreh: -8deg; --farbe: var(--tinte-gruen);"><span class="ort">Entrada · Curitiba</span><span class="zeit">17 AGO 2026</span><span class="was">Brasil · PR</span></div>
+            <div class="stempel" style="--i: 1; --dreh: 6deg; --farbe: var(--tinte-rot);"><span class="ort">Saída · Brasil</span><span class="zeit">29 SET 2026</span><span class="was">Global Exchange</span></div>
+          </div>
+          <div class="zahlen">
+            <div class="zahl"><b data-ziel="44">44</b><span>Tage</span></div>
+            <div class="zahl"><b data-ziel="9">9</b><span>Spiele</span></div>
+            <div class="zahl"><b data-ziel="2">2</b><span>Sprachen</span></div>
+          </div>
+          <p class="absatz"><b>Der Auftrag:</b> kaufmännisch-digitaler Einsatz. Dazu gehörte, Vibe Coding zu lernen und es den Azubis dort zu zeigen.</p>
+          <p class="absatz"><b>Check-in für die neuen Azubis:</b> 150 Minuten, nur Karteikarten und Stifte, auf Portugiesisch und Deutsch. Geplant war eine Präsentation. Nach dem Feedback aus der Ausbildung habe ich Spiele daraus gemacht.</p>
+          <p class="absatz"><b>Eine Woche Marketing:</b> echter Auftrag ab Tag eins, ein Bestandssystem fürs Marketing-Lager.</p>
+          <p class="absatz"><b>Inside:</b> mein Artikel „Six Weeks in Brazil“, auf Portugiesisch veröffentlicht.</p>
+          <span class="uv-text">Übung vor Theorie</span>
+          <span class="seite-nr">4</span>
+        </section>
+
+        <!-- 5 Fotos -->
+        <section class="seite" data-seite="fotos" data-titel="Brasil in Bildern">
+          <div class="seite-kopf"><span>Brasil · Fotos</span><span>Seite 5</span></div>
+          <div class="polas">
+            <button type="button" class="pola" style="--i: 0; --dreh: -3deg;" data-text="Rio de Janeiro, am Cristo"><img src="medien/rio-cristo.webp" alt="Cristo Redentor in Rio de Janeiro" loading="lazy"><span>Rio, am Cristo</span></button>
+            <button type="button" class="pola" style="--i: 1; --dreh: 2.5deg;" data-text="Mein Arbeitsplatz, mit Mate"><img src="medien/arbeitsplatz.webp" alt="Schreibtisch mit Bildschirmen und einer HORSCH-Mate-Tasse" loading="lazy"><span>Arbeitsplatz, mit Mate</span></button>
+            <button type="button" class="pola" style="--i: 2; --dreh: 2deg;" data-text="Ilha do Mel"><img src="medien/ilha-deck.webp" alt="Holzdeck am Meer auf der Ilha do Mel" loading="lazy"><span>Ilha do Mel</span></button>
+            <button type="button" class="pola" style="--i: 3; --dreh: -2deg;" data-text="Rio de Janeiro"><img src="medien/rio-ipanema.webp" alt="Straße in Rio de Janeiro mit Palmen" loading="lazy"><span>Rio de Janeiro</span></button>
+          </div>
+          <p class="zitat">„Rio war richtig cool. Da muss ich auf jeden Fall nochmal hin.“</p>
+          <p class="klein">Nach Feierabend: Fußball, Volleyball und Tennis.</p>
+          <span class="uv-text">Obrigado, Curitiba</span>
+          <span class="seite-nr">5</span>
+        </section>
+
+        <!-- 6 Handgepäck: KI -->
+        <section class="seite" data-seite="handgepaeck" data-titel="Handgepäck: KI">
+          <div class="seite-kopf"><span>Handgepäck</span><span>Seite 6</span></div>
+          <h2>Was ich mit KI baue.</h2>
+          <div class="anhaenger">
+            <div class="tag" style="--i: 0; --dreh: -2deg;"><div class="code">AIK</div><div class="titel">AIKIDO</div><div class="satz">Werkzeuge für unsere KI-Initiative im Team Lernen &amp; Ausbildung. Bei den KI-Terminen bin ich Support.</div><div class="strich" aria-hidden="true"></div></div>
+            <div class="tag" style="--i: 1; --dreh: 2deg;"><div class="code">WRK</div><div class="titel">WERKBANK</div><div class="satz">Unser Team-Board. Ich baue Funktionen dazu.</div><div class="strich" aria-hidden="true"></div></div>
+            <div class="tag" style="--i: 2; --dreh: 1.5deg;"><div class="code">WRT</div><div class="titel">Werksrundgang-Trainer</div><div class="satz">Lern- und Spickzettelseite für Werksführungen, mit Quiz.</div><div class="strich" aria-hidden="true"></div></div>
+            <div class="tag" style="--i: 3; --dreh: -1.5deg;"><div class="code">LST</div><div class="titel">Leitstand</div><div class="satz">Meine Steuerseite. Schreibt aus dem Arbeitstag Berichtsheft-Stichpunkte.</div><div class="strich" aria-hidden="true"></div></div>
+          </div>
+          <p class="setup"><b>Mein Setup:</b> ein Wissensordner, in dem Claude nachliest, und ein Steckbrief pro Projekt, immer mit Datum.</p>
+          <span class="uv-text">Die Person bleibt Trägerin der Verantwortung</span>
+          <span class="seite-nr">6</span>
+        </section>
+
+        <!-- 7 Woran ich arbeite -->
+        <section class="seite" data-seite="arbeit" data-titel="Woran ich arbeite">
+          <div class="seite-kopf"><span>Woran ich arbeite</span><span>Seite 7</span></div>
+          <h2>Woran ich gerade an mir arbeite.</h2>
+          <div class="vorsaetze">
+            <div class="vorsatz kamae" style="--i: 0;"><span class="nr">01</span><div><b>Ein Codewort: Kamae.</b><span>Sagt es jemand, gehen wir zurück zum eigentlichen Ziel. Das gilt auch für meine KI.</span></div></div>
+            <div class="vorsatz" style="--i: 1;"><span class="nr">02</span><div><b>Abschließen schlägt Anfangen.</b><span>Erst das Halbfertige fertig machen, dann das Neue.</span></div></div>
+            <div class="vorsatz" style="--i: 2;"><span class="nr">03</span><div><b>Kleine Etappen.</b><span>Zu große Ziele schwächen mich, kleine sichtbare Siege tragen mich.</span></div></div>
+          </div>
+          <p class="tandem">Der Wingfinder rät mir zu Leuten, die <b>pragmatisch und genau</b> sind. Wenn du so tickst: Lass uns ein Tandem machen.</p>
+          <span class="uv-text">Ein Stolperer ist Eintrittskarte</span>
+          <span class="seite-nr">7</span>
+        </section>
+
+        <!-- 8 Visum Talentschmiede -->
+        <section class="seite" data-seite="visum" data-titel="Visum Talentschmiede">
+          <div class="seite-kopf"><span>Nächstes Visum</span><span>Seite 8</span></div>
+          <div class="visum">
+            <div class="visum-kopf"><span>VISUM · VISA</span><span>TS-2027</span></div>
+            <h3>Talentschmiede Lauf 2</h3>
+            <dl>
+              <div class="feld"><dt>Dauer</dt><dd>1 Jahr</dd></div>
+              <div class="feld"><dt>Antrag</dt><dd>10/2026</dd></div>
+              <div class="feld"><dt>Abflug</dt><dd>SAD · Gate TS-02</dd></div>
+              <div class="feld"><dt>Zweck</dt><dd>An mir arbeiten, nicht an Maschinen</dd></div>
+            </dl>
+            <div class="stempel-platz" id="stempelPlatz">
+              <span class="leer">STEMPEL FOLGT<br>auf der Bordkarte bestätigen</span>
+              <div class="stempel" aria-hidden="true"><span class="ort">HORSCH · Talentschmiede</span><span class="zeit">BOARDED</span><span class="was" id="visumDatum">TS-2027 · Gate TS-02</span></div>
+            </div>
+          </div>
+          <p class="zitat">„Endlich was machen können. Und es gibt noch so viel mehr zu tun.“</p>
+          <a class="zur-bordkarte" href="../">← Zurück zur Bordkarte</a>
+          <span class="uv-text">Erst tun, dann erklären</span>
+          <span class="seite-nr">8</span>
+        </section>
+
+        <!-- Innenseite hinten (nur Doppelseite) -->
+        <section class="seite innen" data-seite="hinten" data-titel="Notizen">
+          <div class="seite-kopf"><span>Notizen</span><span>TS-2027</span></div>
+          <p class="notiz">Platz für die nächsten Stempel.</p>
+          <div class="linien" aria-hidden="true"></div>
+          <p class="klein">Stand 27.10.2026 · HORSCH Talentschmiede Lauf 2</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="steuerung" role="toolbar" aria-label="Blättern">
+    <button type="button" id="zurueck" aria-label="Zurückblättern">←</button>
+    <span class="stand" id="stand">Deckel</span>
+    <button type="button" id="weiter" aria-label="Weiterblättern">Öffnen →</button>
+    <button type="button" class="uv-knopf" id="uvKnopf" aria-pressed="false" title="UV-Licht: zeigt verborgene Merkmale">UV</button>
+  </div>
+
+  <div class="gross-ansicht" id="grossAnsicht" role="dialog" aria-modal="true" aria-label="Foto groß">
+    <button type="button" id="grossZu" aria-label="Schließen">×</button>
+    <figure><img id="grossBild" alt=""><p id="grossText"></p></figure>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      const root = document.documentElement;
+      const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const dunkel = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const breit = window.matchMedia('(min-width: 1100px)');
+      const buch = document.getElementById('buch');
+      const seiten = {};
+      document.querySelectorAll('#vorrat .seite').forEach(s => { seiten[s.dataset.seite] = s; });
+      const reihe = ['personalien', 'kennzeichen', 'visa', 'einreise', 'fotos', 'handgepaeck', 'arbeit', 'visum'];
+
+      // ==========================================
+      // SICHERHEITSDRUCK: Guilloche-Wellen und Rosette, einmal erzeugt
+      // ==========================================
+      function wellen(rgb, alpha, staerke) {
+        let pfade = '';
+        for (let i = 0; i < 30; i++) {
+          const y0 = i * 12 + 6, phase = i * Math.PI * 2 / 30 * 3;
+          for (const f of [0, Math.PI]) {
+            let d = '';
+            for (let x = 0; x <= 360; x += 6) {
+              const y = y0 + 4.2 * Math.sin(2 * Math.PI * x / 90 + phase + f);
+              d += (x ? 'L' : 'M') + x + ',' + y.toFixed(1);
+            }
+            pfade += '<path d="' + d + '"/>';
+          }
+        }
+        const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360"><g fill="none" stroke="rgba(' + rgb + ',' + alpha + ')" stroke-width="' + staerke + '">' + pfade + '</g></svg>';
+        return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+      }
+      root.style.setProperty('--guilloche', dunkel ? wellen('154,152,255', 0.13, 0.6) : wellen('82,80,214', 0.15, 0.6));
+      root.style.setProperty('--guilloche-uv', wellen('182,255,59', 0.5, 0.8));
+      root.style.setProperty('--guilloche-rot', wellen('195,23,42', 0.18, 0.6));
+
+      function rosette() {
+        let p = '';
+        for (let k = 0; k < 18; k++) {
+          let d = '';
+          for (let s = 0; s <= 120; s++) {
+            const t = s / 120 * Math.PI * 2;
+            const r = 58 + 16 * Math.sin(7 * t + k * Math.PI / 9);
+            d += (s ? 'L' : 'M') + (100 + r * Math.cos(t)).toFixed(1) + ',' + (100 + r * Math.sin(t)).toFixed(1);
+          }
+          p += '<path d="' + d + 'Z"/>';
+        }
+        return '<svg viewBox="0 0 200 200"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e7b8"/><stop offset=".45" stop-color="#c9a54a"/><stop offset=".7" stop-color="#fff1c2"/><stop offset="1" stop-color="#b8892f"/></linearGradient></defs>'
+          + '<circle cx="100" cy="100" r="96" fill="none" stroke="url(#gold)" stroke-width="2"/>'
+          + '<circle cx="100" cy="100" r="90" fill="none" stroke="url(#gold)" stroke-width=".8"/>'
+          + '<g class="rosette" fill="none" stroke="url(#gold)" stroke-width=".7">' + p + '</g>'
+          + '<circle cx="100" cy="100" r="34" fill="rgba(0,0,0,.2)" stroke="url(#gold)" stroke-width="1.6"/>'
+          + '<text x="100" y="112" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="34" fill="url(#gold)">TS</text></svg>';
+      }
+      document.getElementById('emblem').innerHTML = rosette();
+
+      // ==========================================
+      // ANSICHTEN: am Handy eine Seite, am Rechner eine Doppelseite
+      // ==========================================
+      let doppel = breit.matches, ansichten = [], index = 0, busy = false;
+
+      function bauen() {
+        ansichten = doppel
+          ? [[null, 'deckel'], ['innen', 'personalien'], ['kennzeichen', 'visa'], ['einreise', 'fotos'], ['handgepaeck', 'arbeit'], ['visum', 'hinten']]
+          : [['deckel']].concat(reihe.map(k => [k]));
+      }
+
+      function ansichtVon(k) {
+        const i = ansichten.findIndex(v => v.includes(k));
+        return i < 0 ? 0 : i;
+      }
+
+      function setzeSlot(n, k) {
+        const slot = buch.children[n];
+        if (!slot) return;
+        slot.replaceChildren();
+        if (k) slot.appendChild(seiten[k]);
+      }
+
+      function render(i) {
+        index = i;
+        const v = ansichten[i];
+        buch.replaceChildren();
+        v.forEach((k, n) => {
+          const slot = document.createElement('div');
+          slot.className = 'slot' + (doppel ? (n === 0 ? ' links' : ' rechts') : '');
+          if (k) slot.appendChild(seiten[k]);
+          buch.appendChild(slot);
+        });
+        buch.classList.toggle('zu', i === 0);
+        Object.values(seiten).forEach(s => s.classList.remove('sichtbar'));
+        requestAnimationFrame(() => {
+          v.forEach(k => { if (k) seiten[k].classList.add('sichtbar'); });
+          beiSichtbar(v);
+        });
+        status();
+      }
+
+      function klon(k) {
+        const c = k ? seiten[k].cloneNode(true) : document.createElement('div');
+        c.classList.add('seite', 'klon');
+        c.classList.remove('sichtbar');
+        c.querySelectorAll('[id]').forEach(e => e.removeAttribute('id'));
+        c.removeAttribute('role'); c.removeAttribute('tabindex');
+        return c;
+      }
+
+      function blaettern(ziel) {
+        if (busy || ziel < 0 || ziel >= ansichten.length || ziel === index) return;
+        if (still || Math.abs(ziel - index) > 1) { render(ziel); return; }
+        busy = true;
+        const vor = ziel > index, alt = ansichten[index], neu = ansichten[ziel];
+        const breiteSeite = buch.children[0].getBoundingClientRect().width;
+        let vorne, hinten, links = 0, ursprung = 'left center', start = 0, ende = -180;
+
+        if (doppel) {
+          if (vor) { vorne = klon(alt[1]); hinten = klon(neu[0]); links = breiteSeite; setzeSlot(1, neu[1]); }
+          else { vorne = klon(alt[0]); hinten = klon(neu[1]); ursprung = 'right center'; ende = 180; setzeSlot(0, neu[0]); }
+          buch.classList.toggle('zu', ziel === 0);
+        } else if (vor) {
+          vorne = klon(alt[0]); hinten = klon(null); setzeSlot(0, neu[0]);
+        } else {
+          vorne = klon(neu[0]); hinten = klon(null); start = -180; ende = 0;
+        }
+
+        const blatt = document.createElement('div');
+        blatt.className = 'blatt';
+        hinten.classList.add('hinten');
+        if (doppel) {
+          vorne.style.borderRadius = vor ? '6px 18px 18px 6px' : '18px 6px 6px 18px';
+          hinten.style.borderRadius = vor ? '18px 6px 6px 18px' : '6px 18px 18px 6px';
+        }
+        blatt.append(vorne, hinten);
+        blatt.style.cssText = 'left:' + links + 'px;width:' + breiteSeite + 'px;height:' + buch.offsetHeight + 'px;transform-origin:' + ursprung + ';transform:rotateY(' + start + 'deg)';
+        buch.appendChild(blatt);
+        void blatt.offsetWidth;
+        blatt.style.transition = 'transform 0.78s cubic-bezier(0.3, 0.6, 0.2, 1)';
+        blatt.style.transform = 'rotateY(' + ende + 'deg)';
+        let fertig = false;
+        const ab = () => { if (fertig) return; fertig = true; busy = false; render(ziel); };
+        blatt.addEventListener('transitionend', ab, { once: true });
+        setTimeout(ab, 950);
+      }
+
+      // ==========================================
+      // KOPF, LEISTE UND ROUTE MITFÜHREN
+      // ==========================================
+      const zurueck = document.getElementById('zurueck');
+      const weiter = document.getElementById('weiter');
+      const stand = document.getElementById('stand');
+      const routeListe = document.getElementById('routeListe');
+      const nr = k => reihe.indexOf(k) + 1;
+
+      function status() {
+        const v = ansichten[index].filter(k => k && reihe.includes(k));
+        zurueck.disabled = index === 0;
+        weiter.disabled = index === ansichten.length - 1;
+        weiter.textContent = index === 0 ? 'Öffnen →' : '→';
+        weiter.setAttribute('aria-label', index === 0 ? 'Pass öffnen' : 'Weiterblättern');
+        stand.textContent = index === 0 ? 'Deckel' : v.map(nr).join(' · ') + ' / 8';
+        const erste = v[0];
+        document.getElementById('kopfEtikett').textContent = index === 0
+          ? 'Zur Bordkarte TS-2027'
+          : 'Seite ' + String(nr(erste)).padStart(2, '0') + ' · ' + seiten[erste].dataset.titel;
+        routeListe.querySelectorAll('button').forEach(b => {
+          b.setAttribute('aria-current', String(ansichten[index].includes(b.dataset.ziel)));
+        });
+      }
+
+      ['deckel'].concat(reihe).forEach(k => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.dataset.ziel = k;
+        b.textContent = seiten[k].dataset.titel;
+        b.addEventListener('click', () => blaettern(ansichtVon(k)));
+        routeListe.appendChild(b);
+      });
+
+      zurueck.addEventListener('click', () => blaettern(index - 1));
+      weiter.addEventListener('click', () => blaettern(index + 1));
+      seiten.deckel.addEventListener('click', () => { if (index === 0) blaettern(1); });
+      seiten.deckel.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && index === 0) { e.preventDefault(); blaettern(1); } });
+
+      document.addEventListener('keydown', e => {
+        if (grossAnsicht.classList.contains('offen')) { if (e.key === 'Escape') zuGross(); return; }
+        if (e.key === 'ArrowRight') blaettern(index + 1);
+        if (e.key === 'ArrowLeft') blaettern(index - 1);
+      });
+
+      // Wischen am Handy (waagrecht blättert, senkrecht scrollt)
+      let start = null;
+      buch.addEventListener('pointerdown', e => { start = { x: e.clientX, y: e.clientY }; });
+      buch.addEventListener('pointerup', e => {
+        if (!start) return;
+        const dx = e.clientX - start.x, dy = e.clientY - start.y;
+        start = null;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) blaettern(index + (dx < 0 ? 1 : -1));
+      });
+      buch.addEventListener('pointercancel', () => { start = null; });
+
+      // ==========================================
+      // WAS BEIM AUFSCHLAGEN PASSIERT
+      // ==========================================
+      function beiSichtbar(v) {
+        if (v.includes('einreise')) zaehlen();
+        if (v.includes('visum')) stempelPruefen();
+      }
+
+      function zaehlen() {
+        seiten.einreise.querySelectorAll('[data-ziel]').forEach(el => {
+          const ziel = +el.dataset.ziel;
+          if (still) { el.textContent = ziel; return; }
+          const t0 = performance.now(), dauer = 900;
+          const schritt = t => {
+            const p = Math.min(1, (t - t0) / dauer);
+            el.textContent = Math.round(ziel * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(schritt);
+          };
+          requestAnimationFrame(schritt);
+        });
+      }
+
+      // Der Stempel kommt nur, wenn auf der Bordkarte in diesem Tab schon „Boarding bestätigen“ gedrückt wurde
+      const MONATE = ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
+      function boardedZeit() {
+        if (/[?&]boarded\b/.test(location.search)) return Date.now();
+        try { const t = Number(sessionStorage.getItem('ts2027-boarded-session')); return t > 0 ? t : 0; } catch (e) { return 0; }
+      }
+      function stempelPruefen() {
+        const t = boardedZeit();
+        if (!t) return;
+        const d = new Date(t), p = n => String(n).padStart(2, '0');
+        document.getElementById('visumDatum').textContent = p(d.getDate()) + ' ' + MONATE[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + p(d.getHours()) + ':' + p(d.getMinutes());
+        document.getElementById('stempelPlatz').classList.add('gestempelt');
+      }
+
+      // ==========================================
+      // UV-LICHT UND FOTOS GROSS
+      // ==========================================
+      const uvKnopf = document.getElementById('uvKnopf');
+      uvKnopf.addEventListener('click', () => {
+        const an = root.classList.toggle('uv');
+        uvKnopf.setAttribute('aria-pressed', String(an));
+      });
+
+      const grossAnsicht = document.getElementById('grossAnsicht');
+      const grossBild = document.getElementById('grossBild');
+      function zuGross() { grossAnsicht.classList.remove('offen'); }
+      document.querySelectorAll('.pola').forEach(p => {
+        const img = p.querySelector('img');
+        img.addEventListener('error', () => { img.style.visibility = 'hidden'; });
+        p.addEventListener('click', () => {
+          if (img.style.visibility === 'hidden') return;
+          grossBild.src = img.src;
+          grossBild.alt = img.alt;
+          document.getElementById('grossText').textContent = p.dataset.text;
+          grossAnsicht.classList.add('offen');
+          document.getElementById('grossZu').focus();
+        });
+      });
+      document.getElementById('grossZu').addEventListener('click', zuGross);
+      grossAnsicht.addEventListener('click', e => { if (e.target === grossAnsicht) zuGross(); });
+
+      // ==========================================
+      // START, auch mit Sprungmarke (#visa) und beim Drehen des Bildschirms
+      // ==========================================
+      bauen();
+      const marke = location.hash.slice(1);
+      render(seiten[marke] ? ansichtVon(marke) : 0);
+      window.addEventListener('hashchange', () => {
+        const k = location.hash.slice(1);
+        if (seiten[k]) blaettern(ansichtVon(k));
+      });
+      breit.addEventListener('change', () => {
+        const k = ansichten[index].find(x => x && x !== 'innen') || 'deckel';
+        doppel = breit.matches;
+        bauen();
+        render(ansichtVon(k));
+      });
+    })();
+  </script>
+</body>
+</html>
