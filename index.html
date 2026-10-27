@@ -1,2179 +1,369 @@
-<!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<!doctype html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>HORSCH // BOARDING PASS — Talentschmiede Lauf 2 · Samuel Haas</title>
-  
-  <!-- Open Graph & Meta -->
-  <meta name="description" content="Offizieller Boarding Pass für Samuel Haas zur HORSCH Talentschmiede Lauf 2. Route SAD ➔ Curitiba ➔ SAD ➔ USA. In-Flight-Boarddurchsage abspielen.">
-  <meta property="og:title" content="HORSCH // BOARDING PASS — Talentschmiede Lauf 2">
-  <meta property="og:description" content="Bewerbung Samuel Haas · Flight TS-2027 · Boarddurchsage & Flugplan">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e7e9e6">
+  <title>HORSCH · Bordkarte TS-2027 · Talentschmiede Lauf 2</title>
+  <meta name="description" content="Bordkarte zur Bewerbung von Samuel Haas für die HORSCH Talentschmiede Lauf 2. Gate-Durchsage abspielen, Boarding bestätigen.">
+  <meta property="og:title" content="HORSCH · Bordkarte TS-2027">
+  <meta property="og:description" content="Talentschmiede Lauf 2 · Gate TS-02 · Durchsage abspielen">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sh-aikido.github.io/talentschmiede-2027/">
-  <meta property="og:image" content="https://sh-aikido.github.io/talentschmiede-2027/qr_code_boarding_pass.png">
-  <meta name="theme-color" content="#0a0d14">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ========================================================
-       DESIGN TOKENS (Adaptives Bento-System inspiriert von 
-       Samuels Jour-Fixe Selbstpräsentation & NextGen Design)
-       ======================================================== */
-    :root {
-      /* Basis Palette (Dark Mode by Default) */
-      --bg: #07090e;
-      --bg-gradient: radial-gradient(circle at 50% 0%, rgba(218, 41, 28, 0.14) 0%, transparent 60%),
-                     radial-gradient(circle at 90% 80%, rgba(82, 80, 214, 0.08) 0%, transparent 50%),
-                     linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-                     linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      --bg-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
-      
-      --tile: #0f141d;
-      --tile-2: #161c28;
-      --tile-elevated: #1a2232;
-      
-      --ink: #f5f5f7;
-      --ink-2: #9ba6b8;
-      --ink-3: #637084;
-      --hair: rgba(255, 255, 255, 0.08);
-      --hair-strong: rgba(255, 255, 255, 0.16);
-      --fill: rgba(255, 255, 255, 0.05);
-      --fill-2: rgba(255, 255, 255, 0.1);
-
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 1px rgba(255,255,255,0.08);
-      --shadow-hi: 0 20px 50px -10px rgba(0, 0, 0, 0.75), 0 0 1px rgba(255,255,255,0.18);
-      
-      /* HORSCH Signature & Signal Colors */
-      --accent: #da291c; /* HORSCH Rot */
-      --accent-hover: #b82015;
-      --accent-soft: rgba(218, 41, 28, 0.14);
-      --accent-glow: rgba(218, 41, 28, 0.45);
-      
-      --indigo: #7d7aff;
-      --indigo-soft: rgba(125, 122, 255, 0.15);
-      --cyan: #38bdf8;
-      --cyan-soft: rgba(56, 189, 248, 0.15);
-      --green: #30d158;
-      --green-soft: rgba(48, 209, 88, 0.15);
-      --amber: #ff9f0a;
-      --amber-soft: rgba(255, 159, 10, 0.15);
-      
-      /* Bento Farbflächen / Mats wie in der Jour-Fixe Präsi */
-      --serie-mat: linear-gradient(145deg, #181135 0%, #311c6d 50%, #da291c 100%);
-      --tok-mat: linear-gradient(160deg, #111624 0%, #171d33 100%);
-      --abo-mat: linear-gradient(160deg, #0e1724 0%, #102433 100%);
-      --warn-mat: linear-gradient(160deg, #23180c 0%, #2f1e0d 100%);
-      --warn-hair: rgba(255, 159, 10, 0.3);
-      --ruhe-mat: linear-gradient(160deg, #0d1a15 0%, #12241d 100%);
-      --hl-mat: linear-gradient(160deg, #161a24 0%, #221c1a 100%);
-
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, monospace;
-      --display: 'Space Grotesk', -apple-system, sans-serif;
-
-      --spring: cubic-bezier(0.2, 1.05, 0.3, 1);
-      --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-      color-scheme: dark;
+    :root { color-scheme: light; --red:#C31727; --page:#e7e9e6; --ink:#171c1e; --screen:#1e2527; --yellow:#f4d46b; --muted:#b8c1c1; --paper:#fff; --quiet:#555f61; --line:#d2d7d5; --mono:'IBM Plex Mono',monospace; }
+    * { box-sizing:border-box; }
+    html { overflow-x:clip; }
+    body { margin:0; background:var(--page); color:var(--ink); font-family:'DM Sans',sans-serif; -webkit-font-smoothing:antialiased; }
+    button, input { font:inherit; }
+    button, a, [role="slider"] { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+    button { cursor:pointer; }
+    button:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline:3px solid var(--red); outline-offset:5px; }
+    .display button:focus-visible, .display [tabindex]:focus-visible { outline-color:var(--yellow); }
+    button:disabled { cursor:wait; }
+    h1,h2,p,dl,dd { margin:0; }
+    .shell { width:min(1060px,calc(100% - 32px)); margin-inline:auto; }
+    .masthead { display:flex; align-items:center; gap:16px; padding:17px 0; }
+    .brand { flex:none; border:0; padding:0; min-height:44px; color:var(--red); background:none; font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:800; letter-spacing:.015em; }
+    .program { border-left:1px solid #afb6b3; padding-left:16px; max-width:180px; font-size:12px; line-height:1.5; font-weight:600; }
+    .ticket { display:grid; grid-template-columns:minmax(0,1fr); border-radius:7px; box-shadow:0 16px 44px #171c1e12; }
+    .ticket-main { min-width:0; }
+    .display { padding:20px; border-radius:7px 7px 0 0; background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+    .display::before { content:''; position:absolute; inset:0; pointer-events:none; opacity:.14; background-image:radial-gradient(#9ca7a7 .65px,transparent .65px); background-size:5px 5px; }
+    .display > * { position:relative; }
+    .eyebrow, dt { font:500 10px/1.5 var(--mono); letter-spacing:.11em; text-transform:uppercase; }
+    .display .eyebrow, .display dt { color:var(--muted); }
+    .ticket-top { display:flex; justify-content:space-between; gap:12px; padding-bottom:13px; border-bottom:1px solid #41494b; }
+    .flight { font:500 12px/1.4 var(--mono); }
+    .gate-head { display:flex; justify-content:space-between; align-items:center; gap:8px; margin:17px 0 16px; }
+    .gate { display:flex; gap:3px; margin-top:5px; color:var(--yellow); font-family:'Barlow Condensed',sans-serif; font-size:clamp(60px,18vw,80px); line-height:1; font-weight:600; letter-spacing:-.025em; }
+    .gate span { position:relative; display:inline-flex; justify-content:center; min-width:.56em; padding:0 .035em .06em; border-radius:3px; background:linear-gradient(#2b3233 49%,#14191b 49%,#14191b 51%,#252d2e 51%); box-shadow:0 2px 0 #090c0d; }
+    .direction { width:40px; height:40px; flex:none; color:var(--yellow); }
+    .passenger { margin-bottom:19px; }
+    .passenger-name { margin-top:3px; font-family:'Barlow Condensed',sans-serif; font-size:29px; line-height:1.15; font-weight:600; letter-spacing:.015em; }
+    .profession { margin-top:5px; font-size:12px; color:var(--muted); }
+    .player { border-top:1px solid #41494b; padding-top:13px; }
+    .player-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:11px; }
+    .player-heading h2 { font:500 11px/1.5 var(--mono); text-transform:uppercase; letter-spacing:.1em; }
+    .status { display:flex; align-items:center; gap:7px; color:var(--muted); font:400 10px/1.5 var(--mono); text-align:right; }
+    .status::before { content:''; width:6px; height:6px; flex:none; border-radius:50%; background:var(--yellow); }
+    .play { display:flex; align-items:center; width:100%; gap:15px; min-height:66px; padding:12px 17px; border:0; border-radius:3px; color:var(--ink); background:var(--yellow); text-align:left; transition:background .15s; }
+    .play:hover { background:#ffe59b; }
+    .play svg { width:25px; height:25px; flex:none; fill:currentColor; }
+    .play-label { font-size:18px; font-weight:700; }
+    .play .audio-mark { margin-left:auto; display:flex; align-items:center; gap:3px; height:25px; }
+    .audio-mark i { width:3px; height:7px; background:currentColor; }
+    .audio-mark i:nth-child(2), .audio-mark i:nth-child(4) { height:16px; }
+    .audio-mark i:nth-child(3) { height:25px; }
+    .progress { height:44px; display:flex; align-items:center; cursor:pointer; }
+    .track { display:block; width:100%; height:4px; background:#657173; border-radius:2px; }
+    .fill { display:block; width:0%; height:100%; position:relative; background:var(--yellow); border-radius:2px; }
+    .fill::after { content:''; width:10px; height:10px; border-radius:50%; background:var(--yellow); position:absolute; right:-5px; top:-3px; }
+    .time { display:flex; justify-content:space-between; color:var(--muted); font:400 10px/1 var(--mono); margin-top:-5px; }
+    .route { padding-top:19px; margin-top:18px; border-top:1px solid #41494b; }
+    .route dd { margin-top:5px; font:500 19px/1.4 var(--mono); }
+    .route small { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:400; color:var(--muted); }
+    .route-arrow { color:var(--yellow); }
+    .travel-data { display:grid; grid-template-columns:.8fr 1fr 1.35fr; gap:10px; margin-top:17px; }
+    .travel-data dd { margin-top:5px; font:500 14px/1.4 var(--mono); }
+    .transcript { background:#f7f8f5; padding:24px 20px 27px; }
+    .section-heading { display:flex; align-items:center; gap:10px; margin-bottom:15px; font:500 11px/1.5 var(--mono); text-transform:uppercase; letter-spacing:.1em; }
+    .section-heading::before { content:''; width:18px; height:2px; background:var(--red); }
+    .transcript p { font-size:14px; line-height:1.85; color:#424b4d; }
+    .transcript .quote { display:block; margin:14px 0; padding-left:14px; border-left:2px solid var(--red); color:var(--ink); font-weight:500; }
+    .pass-stub { position:relative; min-width:0; background:var(--paper); border-top:2px dashed #a5aeaa; border-radius:0 0 7px 7px; padding:26px 20px 24px; text-align:center; }
+    .pass-stub::before,.pass-stub::after { content:''; position:absolute; width:20px; height:20px; border-radius:50%; background:var(--page); top:-11px; }
+    .pass-stub::before { left:-10px; }
+    .pass-stub::after { right:-10px; }
+    .stub-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:23px; }
+    .stub-top h2 { font:500 11px/1.5 var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+    .stub-top span { font:600 12px/1.5 var(--mono); color:var(--red); }
+    .stub-passenger { font:500 13px/1.5 var(--mono); margin-bottom:20px; }
+    .qr-frame { width:166px; height:166px; margin:auto; padding:8px; border:1px solid var(--line); background:#fff; }
+    #qr-slot { width:148px; height:148px; display:block; background:#fff; }
+    .qr-link { display:flex; min-height:44px; align-items:center; justify-content:center; margin-top:5px; color:var(--quiet); font:400 10px/1.6 var(--mono); text-underline-offset:4px; overflow-wrap:anywhere; }
+    .barcode { height:39px; max-width:226px; margin:16px auto 8px; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 9px,var(--ink) 9px 13px,transparent 13px 15px,var(--ink) 15px 16px,transparent 16px 19px,var(--ink) 19px 22px,transparent 22px 26px,var(--ink) 26px 27px,transparent 27px 30px); }
+    .barcode-caption { font:400 10px/1.5 var(--mono); color:var(--quiet); letter-spacing:.2em; }
+    .boarding-action { display:grid; align-items:center; min-height:139px; margin-top:15px; padding-top:20px; border-top:1px solid var(--line); }
+    .board-button { min-height:56px; width:100%; padding:13px 12px; background:var(--red); color:#fff; border:0; border-radius:3px; font-size:14px; font-weight:700; }
+    .board-button:hover { background:#a41321; }
+    .stamp { display:none; color:var(--red); border:3px solid currentColor; outline:1px solid currentColor; outline-offset:-7px; padding:14px 8px; width:100%; max-width:290px; margin:0 auto; transform:rotate(-6deg); }
+    .stamp strong { display:block; font:700 43px/1 'Barlow Condensed',sans-serif; letter-spacing:.07em; }
+    .stamp time { display:block; margin-top:9px; font:500 9px/1.5 var(--mono); }
+    .is-boarded .board-button { display:none; }
+    .is-boarded .stamp { display:block; }
+    .stamp.slam { animation:stamp-in .4s cubic-bezier(.2,.65,.2,1) both; }
+    @keyframes stamp-in { 0% { opacity:0; transform:scale(1.7) rotate(-17deg); } 65% { opacity:1; transform:scale(.96) rotate(-5deg); } 100% { transform:scale(1) rotate(-6deg); } }
+    .footer { padding:24px 0 30px; color:var(--quiet); text-align:center; font:400 10px/1.7 var(--mono); }
+    dialog { width:min(440px,calc(100% - 40px)); max-height:calc(100dvh - 40px); overflow:auto; padding:28px; border:0; border-top:5px solid var(--red); border-radius:4px; color:var(--ink); background:#fff; box-shadow:0 20px 80px #0004; }
+    dialog::backdrop { background:#0c1115bf; }
+    dialog h2 { font:600 30px/1.1 'Barlow Condensed',sans-serif; }
+    dialog p { margin:20px 0; font-size:16px; line-height:1.7; }
+    .close-modal { min-height:44px; padding:10px 20px; border:0; background:var(--ink); color:#fff; font-weight:600; }
+    @media (min-width:760px) {
+      .shell { width:min(1060px,calc(100% - 80px)); }
+      .masthead { padding:35px 0 25px; }
+      .brand { font-size:40px; }
+      .program { max-width:none; font-size:13px; }
+      .ticket { grid-template-columns:minmax(0,1fr) 290px; }
+      .display { padding:27px 34px 29px; border-radius:7px 0 0 0; }
+      .gate-head { margin:23px 0; }
+      .gate { font-size:clamp(60px,7.8vw,100px); gap:5px; }
+      .direction { width:56px; height:56px; }
+      .passenger-name { font-size:36px; }
+      .profession { font-size:14px; }
+      .player { margin-top:24px; padding-top:18px; }
+      .route dd { font-size:24px; }
+      .route small { font-size:14px; }
+      .travel-data { margin-top:20px; }
+      .travel-data dd { font-size:16px; }
+      .transcript { padding:27px 34px 30px; border-radius:0 0 0 7px; }
+      .pass-stub { display:flex; flex-direction:column; padding:29px 24px; border-top:0; border-left:2px dashed #a5aeaa; border-radius:0 7px 7px 0; }
+      .pass-stub::before { top:-10px; left:-11px; }
+      .pass-stub::after { top:auto; bottom:-10px; left:-11px; right:auto; }
+      .stub-top { margin-bottom:39px; }
+      .stub-passenger { margin-bottom:28px; }
+      .qr-frame { margin:0 auto; }
+      .barcode { width:100%; margin-top:30px; }
+      .boarding-action { margin-top:auto; }
+      .footer { padding-top:25px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
     }
-
-    /* Tageslicht-Theme (Umschaltbar für maximale Eleganz) */
-    html[data-theme="light"] {
-      --bg: #f2f2f7;
-      --bg-gradient: radial-gradient(circle at 50% 0%, rgba(218, 41, 28, 0.08) 0%, transparent 60%),
-                     linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-                     linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
-      --bg-size: 100% 100%, 32px 32px, 32px 32px;
-      
-      --tile: #ffffff;
-      --tile-2: #f8f8fa;
-      --tile-elevated: #ffffff;
-      
-      --ink: #1d1d1f;
-      --ink-2: #55555c;
-      --ink-3: #7e7e86;
-      --hair: rgba(0, 0, 0, 0.08);
-      --hair-strong: rgba(0, 0, 0, 0.16);
-      --fill: rgba(0, 0, 0, 0.04);
-      --fill-2: rgba(0, 0, 0, 0.08);
-
-      --shadow: 0 2px 10px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.08);
-      --shadow-hi: 0 16px 40px -8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.12);
-      
-      --indigo: #5250d6;
-      --indigo-soft: rgba(82, 80, 214, 0.1);
-      --cyan: #0077aa;
-      --cyan-soft: rgba(0, 119, 170, 0.1);
-      --green: #1a7431;
-      --green-soft: rgba(26, 116, 49, 0.1);
-      --amber: #a34a00;
-      --amber-soft: rgba(163, 74, 0, 0.1);
-
-      --serie-mat: linear-gradient(145deg, #24144e 0%, #462699 50%, #da291c 100%);
-      --tok-mat: linear-gradient(160deg, #ffffff 0%, #f4f3ff 100%);
-      --abo-mat: linear-gradient(160deg, #ffffff 0%, #eef8fc 100%);
-      --warn-mat: linear-gradient(160deg, #fff9f0 0%, #fff2de 100%);
-      --warn-hair: rgba(255, 149, 0, 0.28);
-      --ruhe-mat: linear-gradient(160deg, #ffffff 0%, #f0faf3 100%);
-      --hl-mat: linear-gradient(160deg, #ffffff 0%, #fff6f4 100%);
-
-      color-scheme: light;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--bg);
-      background-image: var(--bg-gradient);
-      background-size: var(--bg-size);
-      color: var(--ink);
-      font-family: var(--font);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 24px 16px 64px 16px;
-      overflow-x: hidden;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 12px 10px 48px 10px; }
-    }
-
-    .app-wrapper {
-      width: 100%;
-      max-width: 1100px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* ========================================================
-       TOP UTILITY BAR & THEME SWITCH
-       ======================================================== */
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 18px;
-      background: var(--tile);
-      border: 1px solid var(--hair);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    @media (max-width: 600px) {
-      .nav-bar { padding: 8px 12px; }
-    }
-
-    .brand-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .horsch-logo-btn {
-      background: var(--accent);
-      color: #fff;
-      font-family: var(--mono);
-      font-weight: 800;
-      font-size: 11px;
-      padding: 5px 11px;
-      border-radius: 6px;
-      letter-spacing: 0.12em;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.12s, box-shadow 0.2s;
-      box-shadow: 0 0 16px var(--accent-glow);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .horsch-logo-btn:active { transform: scale(0.93); }
-
-    .ops-tag {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--ink-2);
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    @media (max-width: 640px) {
-      .ops-tag { display: none; }
-    }
-
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .theme-toggle-btn {
-      background: var(--fill);
-      color: var(--ink);
-      border: 1px solid var(--hair);
-      border-radius: 99px;
-      padding: 5px 12px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s var(--ease);
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--fill-2);
-      border-color: var(--hair-strong);
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--green);
-      background: var(--green-soft);
-      border: 1px solid rgba(48, 209, 88, 0.3);
-      padding: 4px 10px;
-      border-radius: 99px;
-      letter-spacing: 0.06em;
-    }
-
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--green);
-      animation: pulseDot 2s infinite;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.8); }
-    }
-
-    /* ========================================================
-       INTRO HERO BANNER (NextGen & Bento Style)
-       ======================================================== */
-    .hero-kicker-banner {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 10px 6px;
-      flex-wrap: wrap;
-    }
-
-    .hero-kicker-left {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .kicker-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(218, 41, 28, 0.3);
-      padding: 4px 12px;
-      border-radius: 99px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      align-self: flex-start;
-    }
-
-    .hero-title {
-      font-family: var(--display);
-      font-size: clamp(26px, 4.2vw, 40px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(14px, 1.8vw, 16px);
-      color: var(--ink-2);
-      max-width: 62ch;
-    }
-
-    /* ========================================================
-       DIE PHYSISCHE BOARDKARTE (DAS HERZSTÜCK)
-       Split-Layout (Desktop) / Vertikal Perforiert (Mobil)
-       ======================================================== */
-    .boarding-pass-card {
-      background: var(--tile);
-      border: 1px solid var(--hair-strong);
-      border-radius: 24px;
-      box-shadow: var(--shadow-hi);
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    @media (max-width: 960px) {
-      .boarding-pass-card {
-        display: flex;
-        flex-direction: column;
-        border-radius: 20px;
-      }
-    }
-
-    /* ==================== HAUPTTEIL (LINKS) ==================== */
-    .pass-main {
-      padding: 30px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      position: relative;
-      background: linear-gradient(135deg, var(--fill) 0%, transparent 100%);
-    }
-
-    @media (max-width: 600px) {
-      .pass-main {
-        padding: 20px 16px;
-        gap: 16px;
-      }
-    }
-
-    /* Ticket Header Banner */
-    .pass-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-bottom: 1px solid var(--hair);
-      padding-bottom: 16px;
-    }
-
-    .flight-class-title {
-      font-family: var(--display);
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .flight-class-title { font-size: 17px; }
-    }
-
-    .flight-class-pill {
-      font-family: var(--mono);
-      font-size: 9.5px;
-      font-weight: 800;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(218, 41, 28, 0.35);
-      padding: 3px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.08em;
-    }
-
-    .ticket-meta-right {
-      text-align: right;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--ink-2);
-      line-height: 1.45;
-    }
-
-    .ticket-meta-right strong {
-      color: var(--ink);
-    }
-
-    /* Hero Route & Flight Display */
-    .route-hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--tile-2);
-      border: 1px solid var(--hair);
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    @media (max-width: 600px) {
-      .route-hero { padding: 14px; }
-    }
-
-    .airport-node {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .airport-code {
-      font-family: var(--display);
-      font-size: clamp(30px, 4.6vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      color: var(--ink);
-    }
-
-    .airport-name {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--ink-2);
-      margin-top: 4px;
-      letter-spacing: 0.02em;
-      font-weight: 600;
-    }
-
-    .flight-path-middle {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 16px;
-      position: relative;
-    }
-
-    .flight-no {
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      margin-bottom: 6px;
-    }
-
-    .flight-line {
-      width: 100%;
-      height: 2px;
-      background: repeating-linear-gradient(
-        to right,
-        transparent,
-        transparent 4px,
-        var(--hair-strong) 4px,
-        var(--hair-strong) 10px
-      );
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .plane-icon {
-      background: var(--tile-2);
-      padding: 0 6px;
-      color: var(--accent);
-      font-size: 16px;
-      transform: rotate(90deg);
-    }
-
-    .flight-status-note {
-      font-family: var(--mono);
-      font-size: 9.5px;
-      color: var(--indigo);
-      margin-top: 6px;
-      letter-spacing: 0.06em;
-      font-weight: 700;
-    }
-
-    /* Embedded Cockpit Audio Console */
-    .cockpit-avionics-unit {
-      background: #090c12;
-      border: 1px solid var(--hair-strong);
-      border-radius: 18px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      position: relative;
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.3);
-      color: #fff;
-    }
-
-    @media (max-width: 600px) {
-      .cockpit-avionics-unit {
-        padding: 14px;
-        gap: 12px;
-      }
-    }
-
-    /* CRT Display Bezel */
-    .crt-screen {
-      background: #040609;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .crt-screen::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
-      background-size: 100% 4px;
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.6;
-    }
-
-    .crt-hud-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 3;
-    }
-
-    .frequency-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--cyan);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    .transmitter-status {
-      font-family: var(--mono);
-      font-size: 9.5px;
-      font-weight: 700;
-      color: var(--amber);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    /* Waveform Canvas */
-    .waveform-box {
-      height: 54px;
-      width: 100%;
-      position: relative;
-      z-index: 3;
-    }
-
-    canvas#audioVisualizer {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* Time & Progress Scrubber */
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 99px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      z-index: 3;
-      touch-action: manipulation;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent) 0%, #ff5247 100%);
-      box-shadow: 0 0 10px var(--accent-glow);
-      transition: width 0.08s linear;
-    }
-
-    .crt-hud-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 9.5px;
-      color: #8fa0ba;
-      z-index: 3;
-    }
-
-    .crt-hud-bottom strong { color: #fff; }
-
-    /* Tactile Main Launch Button */
-    .ptt-launch-btn {
-      width: 100%;
-      background: linear-gradient(180deg, #18202d 0%, #121822 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 14px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-      transition: all 0.16s ease;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      color: #fff;
-    }
-
-    .ptt-launch-btn:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      background: linear-gradient(180deg, #222b3b 0%, #171f2c 100%);
-    }
-
-    .ptt-launch-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    .ptt-launch-btn.is-transmitting {
-      background: linear-gradient(180deg, #991b1b 0%, #7f1d1d 100%);
-      border-color: var(--accent);
-      box-shadow: 0 0 28px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.2);
-    }
-
-    .ptt-icon-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 16px var(--accent-glow);
-      flex-shrink: 0;
-      transition: transform 0.15s;
-    }
-
-    .ptt-launch-btn:hover .ptt-icon-circle {
-      transform: scale(1.05);
-    }
-
-    .ptt-icon-circle svg {
-      width: 20px;
-      height: 20px;
-      fill: #fff;
-    }
-
-    .ptt-meta-text {
-      text-align: left;
-      flex: 1;
-    }
-
-    .ptt-title {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 0.04em;
-    }
-
-    .ptt-subtitle {
-      font-family: var(--mono);
-      font-size: 9.5px;
-      color: #8fa0ba;
-      margin-top: 2px;
-      letter-spacing: 0.03em;
-    }
-
-    .ptt-launch-btn.is-transmitting .ptt-subtitle {
-      color: #fca5a5;
-    }
-
-    /* Teletype Transcript Briefing Box */
-    .transcript-briefing {
-      background: #04060a;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 13px;
-      line-height: 1.55;
-      color: #c2cfdf;
-      position: relative;
-    }
-
-    @media (max-width: 600px) {
-      .transcript-briefing {
-        padding: 12px 14px;
-        font-size: 12px;
-      }
-    }
-
-    .briefing-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 9.5px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-
-    .briefing-body strong {
-      color: #fff;
-    }
-
-    /* ==================== PERFORATION DIVIDER ==================== */
-    /* Desktop Perforation: Vertikaler Strich & Notches */
-    .perforation-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 340px;
-      width: 1px;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent,
-        transparent 6px,
-        var(--hair-strong) 6px,
-        var(--hair-strong) 12px
-      );
-      z-index: 10;
-    }
-
-    .notch-top, .notch-bottom {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      background-color: var(--bg);
-      border-radius: 50%;
-      border: 1px solid var(--hair-strong);
-      z-index: 12;
-      right: 328px;
-    }
-
-    .notch-top { top: -12px; }
-    .notch-bottom { bottom: -12px; }
-
-    @media (max-width: 960px) {
-      .perforation-divider, .notch-top, .notch-bottom { display: none; }
-    }
-
-    /* Mobile Perforation: Horizontaler Strich & Seitliche Notches */
-    .mobile-perforation-wrapper {
-      display: none;
-      position: relative;
-      width: 100%;
-      height: 20px;
-      margin: -10px 0;
-      z-index: 15;
-    }
-
-    .mobile-perforation-line {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      right: 12px;
-      height: 1px;
-      background: repeating-linear-gradient(
-        to right,
-        transparent,
-        transparent 6px,
-        var(--hair-strong) 6px,
-        var(--hair-strong) 12px
-      );
-    }
-
-    .mobile-notch-left, .mobile-notch-right {
-      position: absolute;
-      top: -2px;
-      width: 24px;
-      height: 24px;
-      background-color: var(--bg);
-      border-radius: 50%;
-      border: 1px solid var(--hair-strong);
-      z-index: 16;
-    }
-
-    .mobile-notch-left { left: -13px; }
-    .mobile-notch-right { right: -13px; }
-
-    @media (max-width: 960px) {
-      .mobile-perforation-wrapper { display: block; }
-    }
-
-    /* ==================== ABRISS-STUB (RECHTS / MOBIL UNTEN) ==================== */
-    .pass-stub {
-      background: var(--tile-2);
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-      border-left: 1px solid var(--hair);
-      position: relative;
-    }
-
-    @media (max-width: 960px) {
-      .pass-stub {
-        border-left: none;
-        padding: 24px 18px;
-      }
-    }
-
-    .stub-top-badge {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--hair);
-      padding-bottom: 12px;
-    }
-
-    .stub-title {
-      font-family: var(--mono);
-      font-weight: 800;
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
-
-    .stub-flight {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--ink-2);
-      font-weight: 600;
-    }
-
-    /* Passenger & Seat Specs */
-    .stub-data-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      font-family: var(--mono);
-    }
-
-    .stub-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stub-label {
-      font-size: 8.5px;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 700;
-    }
-
-    .stub-val {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .stub-val.accent { color: var(--accent); }
-
-    /* Authentic SVG QR-Code Box */
-    .qr-container {
-      background: var(--tile);
-      border: 1px solid var(--hair-strong);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .qr-svg-wrapper {
-      width: 140px;
-      height: 140px;
-      background: #fff;
-      padding: 6px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.18s, box-shadow 0.2s;
-    }
-
-    .qr-svg-wrapper:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 16px rgba(0,0,0,0.25);
-    }
-
-    .qr-caption {
-      font-family: var(--mono);
-      font-size: 8.5px;
-      color: var(--ink-2);
-      letter-spacing: 0.04em;
-      line-height: 1.35;
-    }
-
-    .qr-caption strong { color: var(--ink); }
-    .qr-caption a { color: var(--cyan); text-decoration: none; }
-    .qr-caption a:hover { text-decoration: underline; }
-
-    /* Barcode Graphic */
-    .barcode-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      opacity: 0.85;
-    }
-
-    .barcode-svg {
-      width: 100%;
-      max-width: 240px;
-      height: 30px;
-    }
-
-    .barcode-svg rect { fill: var(--ink); }
-
-    .barcode-code {
-      font-family: var(--mono);
-      font-size: 8.5px;
-      color: var(--ink-2);
-      letter-spacing: 0.16em;
-      font-weight: 600;
-    }
-
-    /* Boarding bestätigen + Stempel */
-    .board-confirm {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .board-btn {
-      width: 100%;
-      border: 1.5px solid var(--accent);
-      background: var(--accent);
-      color: #fff;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      padding: 12px 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 18px var(--accent-glow);
-      transition: background 0.18s, transform 0.12s;
-    }
-
-    .board-btn:hover { background: var(--accent-hover); }
-    .board-btn:active { transform: scale(0.98); }
-
-    .board-hint {
-      font-family: var(--mono);
-      font-size: 8.5px;
-      color: var(--ink-3);
-      text-align: center;
-      letter-spacing: 0.05em;
-    }
-
-    .verification-stamp {
-      display: none;
-      border: 1.5px dashed var(--accent);
-      background: var(--accent-soft);
-      border-radius: 8px;
-      padding: 8px;
-      text-align: center;
-      font-family: var(--mono);
-      font-size: 9.5px;
-      color: var(--accent);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    .is-boarded .board-confirm { display: none; }
-    .is-boarded .verification-stamp { display: block; }
-
-    .boarding-stamp {
-      position: absolute;
-      left: 50%;
-      top: 24%;
-      width: 236px;
-      max-width: 84%;
-      transform: translate(-50%, -50%) rotate(-13deg);
-      pointer-events: none;
-      opacity: 0;
-      z-index: 6;
-      filter: drop-shadow(0 0 8px rgba(218, 41, 28, 0.35));
-    }
-
-    .boarding-stamp svg { display: block; width: 100%; height: auto; }
-    .is-boarded .boarding-stamp { opacity: 0.95; }
-    .boarding-stamp.slam { animation: stampSlam 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
-
-    @keyframes stampSlam {
-      0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-3deg) scale(2.6); }
-      62%  { opacity: 1; transform: translate(-50%, -50%) rotate(-14deg) scale(0.93); }
-      100% { opacity: 0.95; transform: translate(-50%, -50%) rotate(-13deg) scale(1); }
-    }
-
-    .pass-stub.thud { animation: stubThud 0.28s ease-out; }
-
-    @keyframes stubThud {
-      0%, 100% { transform: translateY(0); }
-      30% { transform: translateY(3px); }
-      60% { transform: translateY(-1px); }
-    }
-
-    /* ========================================================
-       BENTO-SEKTIONEN (INSPIRIERT VOM JOUR-FIXE LOOK)
-       Kacheln, Pillen, Zeitstrahl, Wingfinder & AIKIDO
-       ======================================================== */
-    .bento-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      margin-top: 8px;
-    }
-
-    .kachel {
-      position: relative;
-      background: var(--tile);
-      border: 1px solid var(--hair);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: transform 0.25s var(--spring), box-shadow 0.25s var(--ease), border-color 0.2s;
-    }
-
-    .kachel:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hi);
-      border-color: var(--hair-strong);
-    }
-
-    .col-12 { grid-column: span 12; }
-    .col-8  { grid-column: span 8; }
-    .col-7  { grid-column: span 7; }
-    .col-6  { grid-column: span 6; }
-    .col-5  { grid-column: span 5; }
-    .col-4  { grid-column: span 4; }
-
-    @media (max-width: 860px) {
-      .col-8, .col-7, .col-6, .col-5, .col-4 { grid-column: span 12; }
-      .kachel { padding: 18px 16px; border-radius: 20px; }
-    }
-
-    /* Kachel Header / Meta */
-    .k-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .k-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-    }
-
-    .k-tag .ping {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent-glow);
-    }
-
-    .k-pill {
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 99px;
-      letter-spacing: 0.06em;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .k-pill.red   { color: var(--accent); background: var(--accent-soft); }
-    .k-pill.green { color: var(--green);  background: var(--green-soft); }
-    .k-pill.indigo{ color: var(--indigo); background: var(--indigo-soft); }
-    .k-pill.amber { color: var(--amber);  background: var(--amber-soft); }
-    .k-pill.mute  { color: var(--ink-2);  background: var(--fill); }
-
-    .k-title {
-      font-family: var(--display);
-      font-size: clamp(20px, 2.8vw, 28px);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-
-    .k-lead {
-      font-size: 15px;
-      color: var(--ink-2);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    /* Bento Mat Spezialkacheln */
-    .kachel.mat-warn {
-      background: var(--warn-mat);
-      border-color: var(--warn-hair);
-    }
-
-    .kachel.mat-serie {
-      background: var(--serie-mat);
-      color: #fff;
-    }
-
-    .kachel.mat-serie .k-tag,
-    .kachel.mat-serie .k-lead {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .kachel.mat-serie .k-title {
-      color: #fff;
-    }
-
-    .kachel.mat-tok {
-      background: var(--tok-mat);
-    }
-
-    /* ========================================================
-       DER FLUGPLAN (INTERAKTIVER ZEITSTRAHL ROUTE)
-       SAD ➔ CURITIBA ➔ MARKETING ➔ TS-02 ➔ USA
-       ======================================================== */
-    .timeline-track {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-      position: relative;
-    }
-
-    @media (max-width: 760px) {
-      .timeline-track {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-    }
-
-    .timeline-node {
-      background: var(--tile-2);
-      border: 1px solid var(--hair);
-      border-radius: 16px;
-      padding: 14px 14px 16px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      transition: all 0.2s var(--ease);
-    }
-
-    .timeline-node:hover {
-      background: var(--tile-elevated);
-      border-color: var(--hair-strong);
-      transform: translateY(-2px);
-    }
-
-    .timeline-node.highlight {
-      border-color: var(--accent);
-      background: linear-gradient(180deg, var(--accent-soft) 0%, var(--tile-2) 100%);
-      box-shadow: 0 0 18px var(--accent-soft);
-    }
-
-    .node-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2px;
-    }
-
-    .node-station {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-    }
-
-    .node-badge {
-      font-family: var(--mono);
-      font-size: 8.5px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 99px;
-      background: var(--fill-2);
-      color: var(--ink-2);
-    }
-
-    .timeline-node.highlight .node-badge {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .node-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-    }
-
-    .node-desc {
-      font-size: 12.5px;
-      color: var(--ink-2);
-      line-height: 1.4;
-    }
-
-    /* ========================================================
-       WINGFINDER & STOLPERER (KLARTEXT AUS DER JOUR FIXE PRÄSI)
-       ======================================================== */
-    .wingfinder-dual {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 8px;
-    }
-
-    .regler-box {
-      background: var(--fill);
-      border-radius: 14px;
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .regler-header {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--ink-2);
-    }
-
-    .regler-bar {
-      height: 8px;
-      background: var(--fill-2);
-      border-radius: 99px;
-      position: relative;
-    }
-
-    .regler-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .regler-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--ink-3);
-      font-weight: 600;
-    }
-
-    .quote-box {
-      font-family: var(--display);
-      font-size: clamp(17px, 2.2vw, 22px);
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: -0.015em;
-      border-left: 3px solid var(--accent);
-      padding-left: 14px;
-      margin: 12px 0 6px 0;
-      color: var(--ink);
-    }
-
-    /* AIKIDO Prinzipien */
-    .principles-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .principle-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 12px;
-      background: var(--fill);
-      border: 1px solid var(--hair);
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .principle-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    /* ========================================================
-       FOOTER & EASTER EGG MODAL
-       ======================================================== */
-    footer {
-      text-align: center;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--ink-3);
-      padding: 16px 0 0 0;
-      user-select: none;
-      letter-spacing: 0.04em;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .footer-easter-link {
-      cursor: pointer;
-      color: var(--ink-2);
-      transition: color 0.15s;
-    }
-
-    .footer-easter-link:hover { color: var(--accent); }
-
-    .easter-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(7, 9, 14, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-box {
-      background: var(--tile);
-      border: 2px solid var(--accent);
-      border-radius: 24px;
-      padding: 30px 26px;
-      max-width: 440px;
-      width: 100%;
-      box-shadow: 0 0 60px var(--accent-glow);
-      text-align: center;
-      animation: modalPop 0.28s var(--spring);
-      position: relative;
-    }
-
-    @keyframes modalPop {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-    }
-
-    .modal-title {
-      font-family: var(--display);
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-
-    .modal-desc {
-      font-size: 14px;
-      color: var(--ink-2);
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .stamp-box {
-      background: var(--accent-soft);
-      border: 1px dashed var(--accent);
-      border-radius: 12px;
-      padding: 14px 12px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--accent);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .close-btn {
-      background: var(--accent);
-      color: #fff;
-      font-family: var(--mono);
-      font-weight: 800;
-      font-size: 11.5px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      letter-spacing: 0.08em;
-      transition: background 0.15s;
-    }
-
-    .close-btn:hover { background: var(--accent-hover); }
   </style>
 </head>
 <body>
-
-  <div class="app-wrapper">
-
-    <!-- Top Utility & Brand Bar -->
-    <header class="nav-bar">
-      <div class="brand-meta">
-        <span class="horsch-logo-btn" id="secret-trigger" title="3x tippen für Insider Feature">
-          HORSCH
-        </span>
-        <span class="ops-tag">TALENTSCHMIEDE LAUF 2 // FLIGHT OPS</span>
+  <header class="masthead shell">
+    <button class="brand" id="secret-trigger" type="button" aria-label="HORSCH">HORSCH</button>
+    <p class="program">Talentschmiede Lauf 2</p>
+  </header>
+  <main class="shell">
+    <article class="ticket" aria-label="Bordkarte für HAAS / SAMUEL">
+      <div class="ticket-main">
+        <section class="display" aria-label="Gate-Anzeige">
+          <div class="ticket-top"><span class="eyebrow">Bordkarte</span><span class="flight">Flug TS-2027</span></div>
+          <div class="gate-head">
+            <div><p class="eyebrow">Gate</p><h1 class="gate" aria-label="Gate TS-02"><span>T</span><span>S</span><span>-</span><span>0</span><span>2</span></h1></div>
+            <svg class="direction" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M10 38 38 10M10 10h28v28" stroke="currentColor" stroke-width="4"/></svg>
+          </div>
+          <div class="passenger"><p class="eyebrow">Passagier</p><p class="passenger-name">HAAS / SAMUEL</p><p class="profession">Industriekaufmann · 2. Lehrjahr</p></div>
+          <section class="player" aria-labelledby="player-heading">
+            <div class="player-heading"><h2 id="player-heading">Durchsage</h2><span class="status" id="commStatus" role="status">Bereit</span></div>
+            <audio id="nativeAudio" src="audio_durchsage.mp3" preload="metadata"></audio>
+            <button id="pttButton" class="play" type="button" aria-label="Durchsage abspielen" aria-pressed="false" onclick="togglePlayback()">
+              <svg id="playIconSvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+              <span class="play-label" id="pttTitle">Abspielen</span>
+              <span class="audio-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </button>
+            <div id="progressBar" class="progress" role="slider" tabindex="0" aria-label="Wiedergabeposition" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="00:00, Dauer unbekannt" aria-disabled="true" onclick="seekAudio(event)"><span class="track"><span class="fill" id="progressFill"></span></span></div>
+            <div class="time"><span id="currentTime">00:00</span><span id="totalDuration">--:--</span></div>
+          </section>
+          <dl class="route"><dt>Route</dt><dd>USA <span class="route-arrow">→</span> SAD <small>(Schwandorf)</small></dd></dl>
+          <dl class="travel-data"><div><dt>Seat</dt><dd>01A</dd></div><div><dt>Class</dt><dd>TALENT</dd></div><div><dt>Boarding</dt><dd>OKT 2026</dd></div></dl>
+        </section>
+        <section class="transcript" aria-labelledby="transcript-heading">
+          <h2 class="section-heading" id="transcript-heading">Mitschrift</h2>
+          <p id="transcriptContent">Achtung bitte. Passagier Haas, Samuel, gebucht auf Flug TS-2027, Talentschmiede Lauf 2. Der Passagier lässt ausrichten: <span class="quote">Was die Talentschmiede ist, muss er Ihnen nicht erklären. Sie haben sie erfunden. Er wartet nicht, bis man ihn bittet. Und er will ein Jahr lang nicht mitlaufen, sondern mit dem Team etwas bewegen.</span> Wörtlich: <span class="quote">„Ich hab richtig Bock drauf.“</span> Seine Bordkarte liegt auf Ihrem Tisch. Die Freigabe liegt bei Ihnen.</p>
+        </section>
       </div>
-
-      <div class="nav-controls">
-        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Zwischen Tageslicht & Cockpit umschalten">
-          <span id="themeToggleIcon">☀️</span>
-          <span id="themeToggleText">Tageslicht</span>
-        </button>
-
-        <div class="status-badge">
-          <span class="live-dot"></span>
-          <span>COM-1 ONLINE</span>
+      <section class="pass-stub" aria-label="Abriss-Coupon">
+        <div class="stub-top"><h2>Coupon</h2><span>TS-02</span></div>
+        <p class="stub-passenger">HAAS / SAMUEL</p>
+        <div class="qr-frame"><svg id="qr-slot" width="100%" height="100%" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M2 2.5h7m2 0h1m1 0h2m1 0h1m3 0h4m1 0h1m2 0h7M2 3.5h1m5 0h1m3 0h3m2 0h1m2 0h1m1 0h2m4 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h3m7 0h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h1m4 0h5m2 0h1m1 0h1m3 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h5M2 10.5h1m1 0h5m2 0h2m1 0h3m2 0h1m1 0h1m2 0h2m2 0h5M4 11.5h2m1 0h1m2 0h4m1 0h2m1 0h5m1 0h2m2 0h2m1 0h3M4 12.5h1m3 0h3m1 0h8m4 0h1m1 0h2m2 0h1m1 0h2M2 13.5h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h4m2 0h1m1 0h2m1 0h3M2 14.5h2m4 0h2m1 0h2m1 0h1m1 0h3m2 0h7m3 0h1m1 0h1M2 15.5h2m2 0h2m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m3 0h3M2 16.5h1m1 0h1m3 0h1m7 0h3m3 0h3m2 0h2m2 0h3M3 17.5h3m1 0h1m1 0h1m4 0h4m5 0h2m1 0h7M2 18.5h1m1 0h1m1 0h4m4 0h4m1 0h2m3 0h1m1 0h2m1 0h3m2 0h1M2 19.5h1m1 0h4m4 0h1m2 0h2m1 0h1m1 0h2m1 0h7m1 0h2m1 0h1M4 20.5h2m1 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m1 0h2m1 0h2M2 21.5h3m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h7M2 22.5h2m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m2 0h1m2 0h1m3 0h1m2 0h2m1 0h2M2 23.5h3m2 0h1m1 0h3m2 0h6m2 0h3m2 0h1m1 0h1m1 0h2m1 0h1M2 24.5h1m5 0h2m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h2m1 0h1M2 25.5h1m2 0h1m3 0h2m2 0h3m2 0h1m2 0h3m1 0h4m3 0h3M2 26.5h1m2 0h2m1 0h1m1 0h4m4 0h2m1 0h1m2 0h1m1 0h6m2 0h1M10 27.5h4m4 0h2m1 0h2m1 0h3m3 0h1m1 0h3M2 28.5h7m2 0h1m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m1 0h1M2 29.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m3 0h2m3 0h3m1 0h1M2 30.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m3 0h3m1 0h6m1 0h1M2 31.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1M2 32.5h1m1 0h3m1 0h1m1 0h4m2 0h4m2 0h8m2 0h1M2 33.5h1m5 0h1m3 0h1m2 0h1m1 0h1m5 0h2m3 0h1m1 0h3M2 34.5h7m1 0h3m2 0h3m1 0h1m4 0h3m2 0h1m1 0h1m1 0h1"/></svg></div>
+        <a class="qr-link" href="https://sh-aikido.github.io/talentschmiede-2027/">sh-aikido.github.io/talentschmiede-2027</a>
+        <div class="barcode" aria-hidden="true"></div>
+        <p class="barcode-caption">TS-2027 · 01A</p>
+        <div class="boarding-action" aria-live="polite">
+          <button id="boardBtn" class="board-button" type="button">Boarding bestätigen</button>
+          <div id="boardingStamp" class="stamp" tabindex="-1" aria-label="Boarding bestätigt"><strong>BOARDED</strong><time id="stampDate"></time></div>
         </div>
-      </div>
-    </header>
-
-    <!-- Intro Kicker Banner (NextGen Style) -->
-    <div class="hero-kicker-banner">
-      <div class="hero-kicker-left">
-        <span class="kicker-pill">Bewerbung · Talentschmiede Lauf 2</span>
-        <h1 class="hero-title">Nicht warten, bis man gebeten wird. <span>Anpacken.</span></h1>
-        <p class="hero-subtitle">
-          Samuel Haas · Industriekaufmann (2. Lehrjahr) · Standort SAD · Route USA ➔ SAD
-        </p>
-      </div>
-    </div>
-
-    <!-- Physische Boardkarte (Desktop Split-Layout / Mobil Stack) -->
-    <main class="boarding-pass-card">
-      
-      <!-- Perforations-Elemente für Desktop -->
-      <div class="perforation-divider"></div>
-      <div class="notch-top"></div>
-      <div class="notch-bottom"></div>
-
-      <!-- ==================== HAUPTTEIL (LINKS) ==================== -->
-      <section class="pass-main">
-        
-        <!-- Header: Klasse & Ticket-Typ -->
-        <div class="pass-header">
-          <div>
-            <div class="flight-class-title">
-              BOARDING PASS
-              <span class="flight-class-pill">TALENT CLASS</span>
-            </div>
-            <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-2); margin-top: 3px; font-weight: 600;">
-              PASSENGER: SAMUEL HAAS · INDUSTRIEKAUFMANN (2. LJ)
-            </div>
-          </div>
-          <div class="ticket-meta-right">
-            GATE: <strong>TS-02</strong><br>
-            SEAT: <strong>01A</strong>
-          </div>
-        </div>
-
-        <!-- Hero Route: USA ➔ SCHWANDORF -->
-        <div class="route-hero">
-          <div class="airport-node">
-            <span class="airport-code">USA</span>
-            <span class="airport-name">EXPEDITION 2027</span>
-          </div>
-
-          <div class="flight-path-middle">
-            <span class="flight-no">FLIGHT TS-2027</span>
-            <div class="flight-line">
-              <span class="plane-icon">✈</span>
-            </div>
-            <span class="flight-status-note">NON-STOP MISSION</span>
-          </div>
-
-          <div class="airport-node" style="text-align: right;">
-            <span class="airport-code">SAD</span>
-            <span class="airport-name">SCHWANDORF (HQ)</span>
-          </div>
-        </div>
-
-        <!-- Integrierte Cockpit Audio-Konsole -->
-        <div class="cockpit-avionics-unit">
-          
-          <!-- CRT Screen mit Scanlines & Frequenz -->
-          <div class="crt-screen">
-            <div class="crt-hud-top">
-              <span class="frequency-label">VHF COMM: 121.50 MHz</span>
-              <span class="transmitter-status" id="commStatus">STANDBY</span>
-            </div>
-
-            <div class="waveform-box">
-              <canvas id="audioVisualizer"></canvas>
-            </div>
-
-            <!-- Scrubber Progress Bar -->
-            <div class="progress-track" id="progressBar" onclick="seekAudio(event)" title="Spulen">
-              <div class="progress-bar-fill" id="progressFill"></div>
-            </div>
-
-            <div class="crt-hud-bottom">
-              <span id="currentTime">00:00</span>
-              <span style="color: var(--amber);" id="voiceIndicator">AUDIO MEMO // FLIGHT TS-02</span>
-              <strong id="totalDuration">00:29</strong>
-            </div>
-          </div>
-
-          <!-- Großer Taktiler Button: Boarddurchsage abspielen -->
-          <button class="ptt-launch-btn" id="pttButton" onclick="togglePlayback()" type="button">
-            <div class="ptt-icon-circle" id="pttIcon">
-              <svg id="playIconSvg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="ptt-meta-text">
-              <div class="ptt-title" id="pttTitle">Boarddurchsage abspielen</div>
-              <div class="ptt-subtitle" id="pttSubtitle">HORSCH // SPRACHMEMO SAMUEL HAAS</div>
-            </div>
-          </button>
-
-          <!-- Teletype Transkript Briefing -->
-          <div class="transcript-briefing">
-            <div class="briefing-head">
-              <span id="transcriptTag">SPRACHNACHRICHT // SAMUEL HAAS</span>
-              <span>STANDORT: SCHWANDORF</span>
-            </div>
-            <div class="briefing-body" id="transcriptContent">
-              „Servus! Hier ist Samuel Haas.<br><br>
-              Was die Talentschmiede ist, muss ich euch nicht erklären – ihr habt sie erfunden.<br><br>
-              Was ihr von mir bekommt: Jemand, der nicht wartet, bis man ihn bittet. Jemand, der anpackt, wenn es brennt, und der richtig Zug auf der Kette hat. Ich will nicht bloß mitlaufen, sondern gemeinsam mit dem Team spürbar was bewegen.<br><br>
-              Das Ticket liegt auf eurem Tisch – ich hab richtig Bock drauf. <strong>Holt mich an Bord!</strong>“
-            </div>
-          </div>
-
-        </div>
-
       </section>
-
-      <!-- Perforation auf mobilen Geräten -->
-      <div class="mobile-perforation-wrapper">
-        <div class="mobile-notch-left"></div>
-        <div class="mobile-perforation-line"></div>
-        <div class="mobile-notch-right"></div>
-      </div>
-
-      <!-- ==================== ABRISS-STUB (RECHTS / MOBIL UNTEN) ==================== -->
-      <aside class="pass-stub">
-        
-        <div class="stub-top-badge">
-          <span class="stub-title">BOARDING PASS</span>
-          <span class="stub-flight">PASSENGER COUPON</span>
-        </div>
-
-        <!-- Fluggast & Flugdaten -->
-        <div class="stub-data-grid">
-          <div class="stub-item">
-            <span class="stub-label">PASSENGER</span>
-            <span class="stub-val">HAAS / SAMUEL</span>
-          </div>
-          <div class="stub-item">
-            <span class="stub-label">FLIGHT</span>
-            <span class="stub-val accent">TS-2027</span>
-          </div>
-          <div class="stub-item">
-            <span class="stub-label">ROUTE</span>
-            <span class="stub-val">USA ➔ SAD</span>
-          </div>
-          <div class="stub-item">
-            <span class="stub-label">SEAT</span>
-            <span class="stub-val">01A</span>
-          </div>
-          <div class="stub-item">
-            <span class="stub-label">GATE</span>
-            <span class="stub-val">TS-02</span>
-          </div>
-          <div class="stub-item">
-            <span class="stub-label">BOARDING</span>
-            <span class="stub-val">OKT 2026</span>
-          </div>
-        </div>
-
-        <!-- Echter Scanfähiger QR-Code Block mit Link -->
-        <div class="qr-container">
-          <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer" class="qr-svg-wrapper" title="Direkt zur Web-App (https://sh-aikido.github.io/talentschmiede-2027/)">
-            <!-- QR SVG -->
-            <svg width="100%" height="100%" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M2 2.5h7m2 0h1m1 0h2m1 0h1m3 0h4m1 0h1m2 0h7M2 3.5h1m5 0h1m3 0h3m2 0h1m2 0h1m1 0h2m4 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h3m7 0h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h1m4 0h5m2 0h1m1 0h1m3 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h5M2 10.5h1m1 0h5m2 0h2m1 0h3m2 0h1m1 0h1m2 0h2m2 0h5M4 11.5h2m1 0h1m2 0h4m1 0h2m1 0h5m1 0h2m2 0h2m1 0h3M4 12.5h1m3 0h3m1 0h8m4 0h1m1 0h2m2 0h1m1 0h2M2 13.5h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h4m2 0h1m1 0h2m1 0h3M2 14.5h2m4 0h2m1 0h2m1 0h1m1 0h3m2 0h7m3 0h1m1 0h1M2 15.5h2m2 0h2m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m3 0h3M2 16.5h1m1 0h1m3 0h1m7 0h3m3 0h3m2 0h2m2 0h3M3 17.5h3m1 0h1m1 0h1m4 0h4m5 0h2m1 0h7M2 18.5h1m1 0h1m1 0h4m4 0h4m1 0h2m3 0h1m1 0h2m1 0h3m2 0h1M2 19.5h1m1 0h4m4 0h1m2 0h2m1 0h1m1 0h2m1 0h7m1 0h2m1 0h1M4 20.5h2m1 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m1 0h2m1 0h2M2 21.5h3m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h7M2 22.5h2m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m2 0h1m2 0h1m3 0h1m2 0h2m1 0h2M2 23.5h3m2 0h1m1 0h3m2 0h6m2 0h3m2 0h1m1 0h1m1 0h2m1 0h1M2 24.5h1m5 0h2m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h2m1 0h1M2 25.5h1m2 0h1m3 0h2m2 0h3m2 0h1m2 0h3m1 0h4m3 0h3M2 26.5h1m2 0h2m1 0h1m1 0h4m4 0h2m1 0h1m2 0h1m1 0h6m2 0h1M10 27.5h4m4 0h2m1 0h2m1 0h3m3 0h1m1 0h3M2 28.5h7m2 0h1m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m1 0h1M2 29.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m3 0h2m3 0h3m1 0h1M2 30.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m3 0h3m1 0h6m1 0h1M2 31.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1M2 32.5h1m1 0h3m1 0h1m1 0h4m2 0h4m2 0h8m2 0h1M2 33.5h1m5 0h1m3 0h1m2 0h1m1 0h1m5 0h2m3 0h1m1 0h3M2 34.5h7m1 0h3m2 0h3m1 0h1m4 0h3m2 0h1m1 0h1m1 0h1"/></svg>
-          </a>
-          <div class="qr-caption">
-            <strong>SCAN FÜR AUDIO & SMARTPHONE</strong><br>
-            <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer">sh-aikido.github.io/talentschmiede-2027</a>
-          </div>
-        </div>
-
-        <!-- Flugticket Barcode -->
-        <div class="barcode-wrapper">
-          <svg class="barcode-svg" viewBox="0 0 200 30" preserveAspectRatio="none">
-            <rect x="0" y="0" width="3" height="30"/>
-            <rect x="5" y="0" width="2" height="30"/>
-            <rect x="9" y="0" width="5" height="30"/>
-            <rect x="16" y="0" width="2" height="30"/>
-            <rect x="20" y="0" width="4" height="30"/>
-            <rect x="26" y="0" width="1" height="30"/>
-            <rect x="29" y="0" width="4" height="30"/>
-            <rect x="36" y="0" width="2" height="30"/>
-            <rect x="41" y="0" width="6" height="30"/>
-            <rect x="50" y="0" width="3" height="30"/>
-            <rect x="56" y="0" width="2" height="30"/>
-            <rect x="60" y="0" width="5" height="30"/>
-            <rect x="68" y="0" width="2" height="30"/>
-            <rect x="72" y="0" width="3" height="30"/>
-            <rect x="78" y="0" width="7" height="30"/>
-            <rect x="88" y="0" width="2" height="30"/>
-            <rect x="92" y="0" width="4" height="30"/>
-            <rect x="98" y="0" width="2" height="30"/>
-            <rect x="103" y="0" width="5" height="30"/>
-            <rect x="110" y="0" width="2" height="30"/>
-            <rect x="115" y="0" width="4" height="30"/>
-            <rect x="122" y="0" width="3" height="30"/>
-            <rect x="128" y="0" width="6" height="30"/>
-            <rect x="136" y="0" width="2" height="30"/>
-            <rect x="140" y="0" width="4" height="30"/>
-            <rect x="147" y="0" width="2" height="30"/>
-            <rect x="151" y="0" width="5" height="30"/>
-            <rect x="158" y="0" width="2" height="30"/>
-            <rect x="162" y="0" width="3" height="30"/>
-            <rect x="168" y="0" width="7" height="30"/>
-            <rect x="178" y="0" width="2" height="30"/>
-            <rect x="183" y="0" width="4" height="30"/>
-            <rect x="190" y="0" width="3" height="30"/>
-            <rect x="196" y="0" width="4" height="30"/>
-          </svg>
-          <span class="barcode-code">TS 2026 10 30 HAAS SAD</span>
-        </div>
-
-        <div class="board-confirm">
-          <button type="button" class="board-btn" id="boardBtn">✓ BOARDING BESTÄTIGEN</button>
-          <span class="board-hint">PASSAGIER HAAS / SAMUEL FÜR TS-2027 FREIGEBEN</span>
-        </div>
-
-        <div class="verification-stamp">
-          ✓ BOARDING GRANTED // OPS NOTIFIED
-        </div>
-
-        <!-- Stempel, erscheint nach Bestätigung -->
-        <div class="boarding-stamp" id="boardingStamp" aria-hidden="true">
-          <svg viewBox="0 0 240 150">
-            <defs>
-              <filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="warp"/>
-                <feDisplacementMap in="SourceGraphic" in2="warp" scale="1" result="rough"/>
-                <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="11" result="grain"/>
-                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3 0 0 0 2.35" result="holes"/>
-                <feComposite in="rough" in2="holes" operator="in"/>
-              </filter>
-            </defs>
-            <g filter="url(#stampInk)" fill="none" stroke="#e23a2e">
-              <rect x="5" y="5" width="230" height="140" rx="10" stroke-width="4.5"/>
-              <rect x="13" y="13" width="214" height="124" rx="6" stroke-width="1.6"/>
-              <line x1="24" y1="44" x2="216" y2="44" stroke-width="1.4"/>
-              <line x1="24" y1="104" x2="216" y2="104" stroke-width="1.4"/>
-              <g fill="#e23a2e" stroke="none" font-family="'JetBrains Mono', monospace" text-anchor="middle">
-                <text x="120" y="34" font-size="12" font-weight="700" letter-spacing="2.5">HORSCH · TALENTSCHMIEDE</text>
-                <text x="120" y="89" font-size="40" font-weight="800" letter-spacing="5" font-family="'Space Grotesk', sans-serif">BOARDED</text>
-                <text x="120" y="122" font-size="11" font-weight="700" letter-spacing="1.5" id="stampDate">TS-2027 · GATE TS-02</text>
-                <text x="120" y="135" font-size="7.5" font-weight="700" letter-spacing="2">CLEARED FOR DEPARTURE</text>
-              </g>
-            </g>
-          </svg>
-        </div>
-
-      </aside>
-
-    </main>
-
-    <!-- Footer & Hints -->
-    <footer id="footer-trigger">
-      <div>HORSCH MASCHINEN GMBH · TALENTSCHMIEDE LAUF 2 · BEWERBUNG SAMUEL HAAS</div>
-      <div class="footer-easter-link" onclick="openSecret()">
-        [TIPP: 3X HORSCH KLICKEN ODER HIER TIPPEN FÜR DAS GEHEIME FEATURE]
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- Native Audio Tag -->
-  <audio id="nativeAudio" preload="auto" playsinline>
-    <source id="audioSource" src="audio_ts02_option_c.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Easter Egg Modal -->
-  <div class="easter-modal" id="easter-modal">
-    <div class="modal-box">
-      <div class="modal-tag">SECRET UNLOCKED // LAUF 1 INSIDER</div>
-      <div class="modal-title">Eintrittskarte aktiviert</div>
-      <div class="modal-desc">
-        Du hast das geheime Cockpit-Feature gefunden. Samuel Haas beantragt hiermit offiziell:
-      </div>
-      <div class="stamp-box">
-        👉 <strong>„AUFNAHME IN DIE TALENTSEKTE 2026/2027“</strong><br>
-        <span style="font-size: 10.5px; opacity: 0.85;">Status: Bereit für volle Verantwortung &amp; Team-Reibung</span>
-      </div>
-      <button class="close-btn" onclick="closeSecret()" type="button">ZURÜCK ZUM BOARDING PASS</button>
-    </div>
-  </div>
-
+    </article>
+  </main>
+  <footer class="footer shell">HORSCH · Talentschmiede Lauf 2</footer>
+  <dialog id="easter-modal" aria-labelledby="secret-title" aria-describedby="secret-text">
+    <h2 id="secret-title">Eintrittskarte aktiviert</h2>
+    <p id="secret-text">Du hast das geheime Feature gefunden. Samuel Haas beantragt hiermit offiziell: <strong style="color:var(--red)">„Aufnahme in die Talentsekte 2026/2027“</strong>. Status: Bereit für volle Verantwortung &amp; Team-Reibung.</p>
+    <button class="close-modal" type="button" onclick="closeSecret()" autofocus>Schließen</button>
+  </dialog>
   <script>
-    // ==========================================
-    // THEME SWITCH (Tageslicht <-> Cockpit Dark)
-    // ==========================================
-    (function initTheme() {
-      const toggleBtn = document.getElementById('themeToggleBtn');
-      const toggleIcon = document.getElementById('themeToggleIcon');
-      const toggleText = document.getElementById('themeToggleText');
-      const THEME_KEY = 'ts2027-theme';
-
-      function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        if (theme === 'light') {
-          toggleIcon.textContent = '🌙';
-          toggleText.textContent = 'Cockpit';
-        } else {
-          toggleIcon.textContent = '☀️';
-          toggleText.textContent = 'Tageslicht';
-        }
-      }
-
-      // Read stored or system theme (default: dark cockpit)
-      let currentTheme = localStorage.getItem(THEME_KEY) || 'dark';
-      applyTheme(currentTheme);
-
-      toggleBtn.addEventListener('click', () => {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        localStorage.setItem(THEME_KEY, currentTheme);
-        applyTheme(currentTheme);
-        drawIdleWave();
-      });
-    })();
-
-    // ==========================================
-    // BOARDING BESTÄTIGEN & STEMPEL ANIMATION
-    // ==========================================
-    (function () {
-      const KEY = 'ts2027-boarded';
-      const btn = document.getElementById('boardBtn');
-      const stamp = document.getElementById('boardingStamp');
-      const stub = document.querySelector('.pass-stub');
-      const dateEl = document.getElementById('stampDate');
-      const MONTHS = ['JAN','FEB','MÄR','APR','MAI','JUN','JUL','AUG','SEP','OKT','NOV','DEZ'];
-
-      function fmt(ts) {
-        const d = new Date(ts);
-        const p = n => (n < 10 ? '0' : '') + n;
-        return p(d.getDate()) + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' · TS-02';
-      }
-
-      function store(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
-
-      function thudSound() {
-        try {
-          const Ctx = window.AudioContext || window.webkitAudioContext;
-          const ctx = new Ctx();
-          const len = Math.floor(ctx.sampleRate * 0.18);
-          const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-          const data = buf.getChannelData(0);
-          for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
-          const src = ctx.createBufferSource();
-          src.buffer = buf;
-          const lp = ctx.createBiquadFilter();
-          lp.type = 'lowpass';
-          lp.frequency.value = 700;
-          const gain = ctx.createGain();
-          gain.gain.value = 0.9;
-          src.connect(lp); lp.connect(gain); gain.connect(ctx.destination);
-          src.start();
-          setTimeout(() => { ctx.close(); }, 400);
-        } catch (e) {}
-      }
-
-      function setBoarded(ts) {
-        dateEl.textContent = fmt(ts);
-        stub.classList.add('is-boarded');
-      }
-
-      const SESSION_KEY = 'ts2027-boarded-session';
-      // Alter Test-Zustand wird gelöscht, damit das Ticket frisch und unbestätigt startet:
-      store(s => s.removeItem(KEY));
-
-      // Nur falls in dieser Browser-Session bereits geklickt wurde:
-      try {
-        const sessionSaved = window.sessionStorage && window.sessionStorage.getItem(SESSION_KEY);
-        if (sessionSaved && !/[?&]reset\b/.test(location.search)) {
-          setBoarded(+sessionSaved);
-        }
-      } catch (e) {}
-
-      btn.addEventListener('click', function () {
-        const ts = Date.now();
-        try { if (window.sessionStorage) window.sessionStorage.setItem(SESSION_KEY, String(ts)); } catch (e) {}
-        setBoarded(ts);
-        stamp.classList.remove('slam');
-        void stamp.offsetWidth;
-        stamp.classList.add('slam');
-        setTimeout(() => {
-          thudSound();
-          stub.classList.add('thud');
-          if (navigator.vibrate) navigator.vibrate(40);
-        }, 260);
-        setTimeout(() => { stub.classList.remove('thud'); }, 600);
-
-        // Sofortige Benachrichtigung an Samuel via ntfy.sh (Echtzeit-Push)
-        try {
-          const timeStr = fmt(ts);
-          fetch('https://ntfy.sh/horsch-ts2027-samuel-haas', {
-            method: 'POST',
-            headers: {
-              'Title': '✈️ Boarding Pass bestätigt!',
-              'Priority': 'urgent',
-              'Tags': 'airplane,tada,ticket'
-            },
-            body: 'Dein Boarding Pass für die Talentschmiede Lauf 2 wurde soeben freigegeben!\nZeitpunkt: ' + timeStr
-          }).catch(err => console.log('Notification delivery:', err));
-        } catch (e) {
-          console.log('Notification error:', e);
-        }
-      });
-    })();
-
-    // ==========================================
-    // AUDIO ENGINE & COCKPIT CONTROLLER
-    // ==========================================
-    let isPlaying = false;
+    'use strict';
     const nativeAudio = document.getElementById('nativeAudio');
-    let audioCtx = null;
-    const canvas = document.getElementById('audioVisualizer');
-    const ctx = canvas.getContext('2d');
-    let animationFrame = null;
-    let waveOffset = 0;
+    const pttButton = document.getElementById('pttButton');
+    const commStatus = document.getElementById('commStatus');
+    const progressBar = document.getElementById('progressBar');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let playbackPending = false;
+    let audioFailed = false;
 
-    function resizeCanvas() {
-      if (!canvas || !canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth * (window.devicePixelRatio || 1);
-      canvas.height = canvas.parentElement.clientHeight * (window.devicePixelRatio || 1);
+    function formatTime(seconds) {
+      const value = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+      return String(Math.floor(value / 60)).padStart(2, '0') + ':' + String(value % 60).padStart(2, '0');
     }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function initAudioContext() {
-      if (!audioCtx) {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (AudioCtx) audioCtx = new AudioCtx();
-      }
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+    function setPlayingUI(playing, status) {
+      pttButton.setAttribute('aria-pressed', String(playing));
+      pttButton.setAttribute('aria-label', playing ? 'Durchsage pausieren' : 'Durchsage abspielen');
+      document.getElementById('pttTitle').textContent = playing ? 'Pause' : 'Abspielen';
+      document.getElementById('playIconSvg').innerHTML = playing ? '<path d="M6 4h4v16H6zm8 0h4v16h-4z"/>' : '<path d="M7 4v16l13-8z"/>';
+      commStatus.textContent = status || (playing ? 'Durchsage läuft' : 'Pausiert');
     }
-
-    function playRadioSound(type) {
+    async function togglePlayback() {
+      if (playbackPending) return;
+      if (!nativeAudio.paused) { nativeAudio.pause(); return; }
+      playbackPending = true;
+      pttButton.disabled = true;
+      commStatus.textContent = 'Wird geladen';
       try {
-        initAudioContext();
-        if (!audioCtx) return;
-        const now = audioCtx.currentTime;
-
-        if (type === 'start') {
-          // Double Avionics Chime
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(659.25, now); // E5
-          osc.frequency.setValueAtTime(523.25, now + 0.14); // C5
-          gain.gain.setValueAtTime(0.12, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.45);
-        } else {
-          // Radio squelch click
-          const bufferSize = Math.floor(audioCtx.sampleRate * 0.05);
-          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-          const output = buffer.getChannelData(0);
-          for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
-          const whiteNoise = audioCtx.createBufferSource();
-          whiteNoise.buffer = buffer;
-          const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-          whiteNoise.connect(gain);
-          gain.connect(audioCtx.destination);
-          whiteNoise.start();
-        }
-      } catch (e) {
-        console.log('Avionics chime skipped:', e);
+        if (audioFailed) { nativeAudio.load(); audioFailed = false; }
+        await nativeAudio.play();
+      } catch (error) {
+        setPlayingUI(false, error.name === 'NotAllowedError' ? 'Bitte erneut abspielen' : 'Audio nicht verfügbar');
+      } finally {
+        playbackPending = false;
+        pttButton.disabled = false;
       }
     }
-
-    function togglePlayback() {
-      if (isPlaying) {
-        stopPlayback();
-      } else {
-        startPlayback();
-      }
-    }
-
-    function startPlayback() {
-      initAudioContext();
-      playRadioSound('start');
-
-      const playPromise = nativeAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          isPlaying = true;
-          setPlayingUI(true);
-          renderVisualizer();
-        }).catch(err => {
-          console.log('Playback error/permission:', err);
-          isPlaying = true;
-          setPlayingUI(true);
-          renderVisualizer();
-        });
-      } else {
-        isPlaying = true;
-        setPlayingUI(true);
-        renderVisualizer();
-      }
-    }
-
-    function stopPlayback() {
-      isPlaying = false;
-      playRadioSound('end');
-      nativeAudio.pause();
-      setPlayingUI(false);
-      if (animationFrame) cancelAnimationFrame(animationFrame);
-      drawIdleWave();
-    }
-
-    function setPlayingUI(playing) {
-      const ptt = document.getElementById('pttButton');
-      const comm = document.getElementById('commStatus');
-      const pttTitle = document.getElementById('pttTitle');
-      const pttSub = document.getElementById('pttSubtitle');
-      const iconSvg = document.getElementById('playIconSvg');
-
-      if (playing) {
-        ptt.classList.add('is-transmitting');
-        comm.innerText = 'TRANSMITTING...';
-        comm.style.color = 'var(--cyan)';
-        pttTitle.innerText = 'Boarddurchsage pausieren';
-        pttSub.innerText = 'HORSCH FLIGHT TS-02 // DURCHSAGE LÄUFT';
-        iconSvg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-      } else {
-        ptt.classList.remove('is-transmitting');
-        comm.innerText = 'STANDBY';
-        comm.style.color = 'var(--amber)';
-        pttTitle.innerText = 'Boarddurchsage abspielen';
-        pttSub.innerText = 'HORSCH // SPRACHMEMO SAMUEL HAAS';
-        iconSvg.innerHTML = '<path d="M8 5v14l11-7z"/>';
-      }
-    }
-
-    // Audio Event Handlers
-    nativeAudio.addEventListener('timeupdate', () => {
-      const cur = nativeAudio.currentTime;
-      const dur = nativeAudio.duration || 21;
-      document.getElementById('currentTime').innerText = formatTime(cur);
-      const percent = Math.min((cur / dur) * 100, 100);
+    function updateProgress() {
+      const duration = nativeAudio.duration;
+      const ready = Number.isFinite(duration) && duration > 0;
+      const current = Number.isFinite(nativeAudio.currentTime) ? nativeAudio.currentTime : 0;
+      const percent = ready ? Math.max(0, Math.min(100, current / duration * 100)) : 0;
+      document.getElementById('currentTime').textContent = formatTime(current);
+      document.getElementById('totalDuration').textContent = ready ? formatTime(duration) : '--:--';
       document.getElementById('progressFill').style.width = percent + '%';
+      progressBar.setAttribute('aria-valuenow', String(Math.round(percent)));
+      progressBar.setAttribute('aria-disabled', String(!ready));
+      progressBar.setAttribute('aria-valuetext', formatTime(current) + (ready ? ' von ' + formatTime(duration) : ', Dauer unbekannt'));
+    }
+    function seekAudio(event) {
+      if (!Number.isFinite(nativeAudio.duration) || nativeAudio.duration <= 0) return;
+      const rect = progressBar.getBoundingClientRect();
+      if (!rect.width) return;
+      nativeAudio.currentTime = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)) * nativeAudio.duration;
+      updateProgress();
+    }
+    progressBar.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      if (!Number.isFinite(nativeAudio.duration) || nativeAudio.duration <= 0) return;
+      const step = ['ArrowRight', 'ArrowUp'].includes(event.key) ? 5 : -5;
+      const target = event.key === 'Home' ? 0 : event.key === 'End' ? nativeAudio.duration : nativeAudio.currentTime + step;
+      nativeAudio.currentTime = Math.max(0, Math.min(nativeAudio.duration, target));
+      updateProgress();
+    });
+    ['timeupdate', 'loadedmetadata', 'durationchange', 'seeked'].forEach(name => nativeAudio.addEventListener(name, updateProgress));
+    nativeAudio.addEventListener('playing', () => { audioFailed = false; setPlayingUI(true); });
+    nativeAudio.addEventListener('pause', () => setPlayingUI(false, audioFailed ? 'Audio nicht verfügbar' : nativeAudio.ended ? 'Durchsage beendet' : 'Pausiert'));
+    nativeAudio.addEventListener('waiting', () => { commStatus.textContent = 'Wird geladen'; });
+    nativeAudio.addEventListener('ended', () => { setPlayingUI(false, 'Durchsage beendet'); updateProgress(); });
+    nativeAudio.addEventListener('error', () => { audioFailed = true; setPlayingUI(false, 'Audio nicht verfügbar'); });
+
+    // Session persistence and notification are retained from the original logic.
+    const sessionKey = 'ts2027-boarded-session';
+    const coupon = document.querySelector('.pass-stub');
+    const stamp = document.getElementById('boardingStamp');
+    const boardBtn = document.getElementById('boardBtn');
+    function stampTime(timestamp) {
+      const date = new Date(timestamp);
+      const months = ['JAN','FEB','MÄR','APR','MAI','JUN','JUL','AUG','SEP','OKT','NOV','DEZ'];
+      const pad = value => String(value).padStart(2, '0');
+      return pad(date.getDate()) + ' ' + months[date.getMonth()] + ' ' + date.getFullYear() + ' · ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ' · TS-02';
+    }
+    function setBoarded(timestamp) {
+      const date = document.getElementById('stampDate');
+      date.textContent = stampTime(timestamp);
+      date.dateTime = new Date(timestamp).toISOString();
+      coupon.classList.add('is-boarded');
+    }
+    function thudSound() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        const context = new AudioContextClass();
+        const length = Math.floor(context.sampleRate * .16);
+        const buffer = context.createBuffer(1, length, context.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 3);
+        const source = context.createBufferSource();
+        source.buffer = buffer;
+        const filter = context.createBiquadFilter();
+        filter.type = 'lowpass'; filter.frequency.value = 650;
+        const gain = context.createGain(); gain.gain.value = .35;
+        source.connect(filter); filter.connect(gain); gain.connect(context.destination);
+        source.start(context.currentTime + .22);
+        if (context.state === 'suspended') context.resume().catch(() => {});
+        setTimeout(() => { context.close().catch(() => {}); }, 700);
+      } catch (_) { /* Optional feedback; boarding does not depend on audio. */ }
+    }
+    try {
+      if (new URLSearchParams(location.search).has('reset')) sessionStorage.removeItem(sessionKey);
+      else {
+        const saved = Number(sessionStorage.getItem(sessionKey));
+        if (saved > 0 && Number.isFinite(new Date(saved).getTime())) setBoarded(saved);
+      }
+    } catch (_) { /* Storage may be unavailable on local files. */ }
+    boardBtn.addEventListener('click', () => {
+      if (coupon.classList.contains('is-boarded')) return;
+      const timestamp = Date.now();
+      try { sessionStorage.setItem(sessionKey, String(timestamp)); } catch (_) {}
+      setBoarded(timestamp);
+      stamp.focus({ preventScroll:true });
+      if (!reducedMotion.matches) {
+        stamp.classList.add('slam');
+        thudSound();
+        try { if (navigator.vibrate) navigator.vibrate(40); } catch (_) {}
+      }
+      // ASCII headers avoid the original non-ByteString header failure.
+      try {
+        fetch('https://ntfy.sh/horsch-ts2027-samuel-haas', {
+          method:'POST',
+          headers:{ 'Title':'Boarding Pass bestaetigt!', 'Priority':'urgent', 'Tags':'airplane,ticket' },
+          body:'Dein Boarding Pass für die Talentschmiede Lauf 2 wurde soeben freigegeben!\nZeitpunkt: ' + stampTime(timestamp),
+          keepalive:true
+        }).catch(() => { /* Push delivery must not undo the local confirmation. */ });
+      } catch (_) {}
     });
 
-    nativeAudio.addEventListener('loadedmetadata', updateDurationDisplay);
-
-    nativeAudio.addEventListener('ended', () => {
-      stopPlayback();
-      nativeAudio.currentTime = 0;
-      document.getElementById('currentTime').innerText = '00:00';
-      document.getElementById('progressFill').style.width = '0%';
-    });
-
-    function updateDurationDisplay() {
-      const dur = nativeAudio.duration;
-      if (!isNaN(dur) && isFinite(dur)) {
-        document.getElementById('totalDuration').innerText = formatTime(dur);
-      }
-    }
-
-    function seekAudio(e) {
-      const bar = document.getElementById('progressBar');
-      const rect = bar.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const ratio = Math.max(0, Math.min(1, clickX / rect.width));
-      const dur = nativeAudio.duration || 21;
-      nativeAudio.currentTime = ratio * dur;
-    }
-
-    function formatTime(sec) {
-      const m = Math.floor(sec / 60).toString().padStart(2, '0');
-      const s = Math.floor(sec % 60).toString().padStart(2, '0');
-      return `${m}:${s}`;
-    }
-
-    // Spectrum Visualizer
-    function renderVisualizer() {
-      if (!isPlaying) return;
-
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-
-      const numBars = 44;
-      const barWidth = (w / numBars) - 2.5;
-      waveOffset += 0.18;
-
-      for (let i = 0; i < numBars; i++) {
-        const noise = Math.sin(i * 0.38 + waveOffset) * Math.cos(i * 0.24 - waveOffset * 0.8);
-        const dynamicHeight = Math.max(0.12, Math.abs(noise)) * (h * 0.82);
-
-        const x = i * (barWidth + 2.5);
-        const y = (h - dynamicHeight) / 2;
-
-        const grad = ctx.createLinearGradient(0, y, 0, y + dynamicHeight);
-        if (i % 3 === 0) {
-          grad.addColorStop(0, '#da291c');
-          grad.addColorStop(1, '#991b1b');
-        } else {
-          grad.addColorStop(0, '#38bdf8');
-          grad.addColorStop(1, '#0369a1');
-        }
-
-        ctx.fillStyle = grad;
-        ctx.fillRect(x, y, barWidth, dynamicHeight);
-
-        // Peak needle dot
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(x, Math.max(0, y - 3), barWidth, 2);
-      }
-
-      animationFrame = requestAnimationFrame(renderVisualizer);
-    }
-
-    function drawIdleWave() {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-
-      const numBars = 44;
-      const barWidth = (w / numBars) - 2.5;
-
-      for (let i = 0; i < numBars; i++) {
-        const x = i * (barWidth + 2.5);
-        const y = h / 2 - 1.5;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
-        ctx.fillRect(x, y, barWidth, 3);
-      }
-    }
-    drawIdleWave();
-
-    // ==========================================
-    // EASTER EGG: 3-KLICK & SHAKE DETECTOR
-    // ==========================================
+    const secretTrigger = document.getElementById('secret-trigger');
+    const secretModal = document.getElementById('easter-modal');
     let clickCount = 0;
-    const trigger = document.getElementById('secret-trigger');
-
-    function checkTripleClick() {
-      clickCount++;
-      if (clickCount >= 3) {
-        openSecret();
-        clickCount = 0;
-      }
-      setTimeout(() => { clickCount = 0; }, 1500);
-    }
-
-    if (trigger) trigger.addEventListener('click', checkTripleClick);
-
+    let clickTimer;
+    let previousFocus;
     function openSecret() {
-      const modal = document.getElementById('easter-modal');
-      modal.style.display = 'flex';
-      if (navigator.vibrate) { navigator.vibrate([100, 50, 100]); }
+      if (secretModal.open) return;
+      previousFocus = document.activeElement;
+      secretModal.showModal();
     }
-
-    function closeSecret() {
-      document.getElementById('easter-modal').style.display = 'none';
-    }
-
-    // Shake to reveal
-    let lastX, lastY, lastZ;
-    let lastTime = 0;
-    window.addEventListener('devicemotion', function(e) {
-      const current = e.accelerationIncludingGravity;
-      if (!current) return;
+    function closeSecret() { secretModal.close(); }
+    secretModal.addEventListener('close', () => { if (previousFocus && previousFocus.focus) previousFocus.focus({ preventScroll:true }); });
+    secretModal.addEventListener('click', event => {
+      const rect = secretModal.getBoundingClientRect();
+      if (event.target === secretModal && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) closeSecret();
+    });
+    secretTrigger.addEventListener('click', () => {
+      clickCount++;
+      clearTimeout(clickTimer);
+      if (clickCount === 3) { clickCount = 0; openSecret(); }
+      else clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+    });
+    // Shake remains available where the browser already permits motion events.
+    let lastMotion = null;
+    let lastShake = 0;
+    window.addEventListener('devicemotion', event => {
+      const acceleration = event.accelerationIncludingGravity;
+      if (!acceleration || reducedMotion.matches) return;
       const now = Date.now();
-      if ((now - lastTime) > 120) {
-        const diffTime = now - lastTime;
-        lastTime = now;
-        const speed = Math.abs((current.x||0) + (current.y||0) + (current.z||0) - (lastX || 0) - (lastY || 0) - (lastZ || 0)) / diffTime * 10000;
-        if (speed > 800) openSecret();
-        lastX = current.x; lastY = current.y; lastZ = current.z;
+      if (lastMotion && now - lastMotion.time < 120) return;
+      const value = (acceleration.x || 0) + (acceleration.y || 0) + (acceleration.z || 0);
+      if (lastMotion && now - lastMotion.time < 1000 && now - lastShake > 2000 && Math.abs(value - lastMotion.value) / (now - lastMotion.time) * 10000 > 800) {
+        lastShake = now; openSecret();
       }
+      lastMotion = { value, time:now };
     });
   </script>
-
 </body>
 </html>
