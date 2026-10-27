@@ -201,6 +201,7 @@
       width: 38px; height: 38px; display: grid; place-items: center;
     }
     @keyframes holo { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+    .foto img ~ .holo { opacity: 0.32; }
     .felder { display: grid; gap: 9px; align-content: start; }
     .feld dt { font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--papier-ink-2); text-transform: uppercase; }
     .feld dd { font-weight: 700; font-size: 15px; line-height: 1.25; }
@@ -210,7 +211,7 @@
     .unterschrift .hand { font-family: var(--hand); font-size: 28px; line-height: 1.1; color: var(--tinte-blau); }
     .mrz {
       margin-top: auto; font-family: var(--mono); font-weight: 500; font-size: clamp(9px, 2.75vw, 12.5px);
-      letter-spacing: 0.02em; line-height: 1.6; background: rgba(127, 127, 127, 0.07); padding: 8px 6px; border-radius: 4px; overflow: hidden;
+      letter-spacing: 0; line-height: 1.6; background: rgba(127, 127, 127, 0.07); padding: 8px 6px; border-radius: 4px; overflow: hidden;
     }
     .mrz span { display: block; white-space: pre; overflow: hidden; width: 44ch; max-width: 100%; }
     .sichtbar .mrz span { animation: tippen 1.4s steps(44) both; }
@@ -251,6 +252,9 @@
     .stempel .marke-s { display: inline-block; margin-top: 4px; padding: 1px 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; background: var(--farbe); color: var(--papier); border-radius: 3px; }
     .stempel.rund { border-radius: 50%; aspect-ratio: 1; display: grid; place-content: center; max-width: 140px; padding: 14px; }
     .stempel.oval { border-radius: 50% / 42%; padding: 14px 12px; }
+    .stempel.breit { grid-column: 1 / -1; max-width: 250px; }
+    .stempel.mitte { grid-column: 1 / -1; }
+    .stempel.rund .zeit { font-size: 13.5px; }
     .stempel.geplant { border-style: dashed; filter: none; }
     .stempel.geplant::before { display: none; }
     .sichtbar .stempel { animation: knall 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; animation-delay: calc(var(--i) * 0.18s + 0.15s); }
@@ -463,7 +467,7 @@
         <section class="seite" data-seite="personalien" data-titel="Personalien">
           <div class="seite-kopf"><span>Personalien · Personal data</span><span>Seite 1</span></div>
           <div class="personalien-raster">
-            <div class="foto" role="img" aria-label="Passfoto als Monogramm S">S<span class="holo"></span></div>
+            <div class="foto">S<img src="medien/portrait.webp" alt="Passfoto von Samuel Haas" onerror="this.remove()"><span class="holo"></span></div>
             <dl class="felder">
               <div class="feld"><dt>Name · Surname</dt><dd class="gross">HAAS</dd></div>
               <div class="feld"><dt>Vorname · Given name</dt><dd class="gross">SAMUEL</dd></div>
@@ -504,16 +508,15 @@
           <span class="seite-nr">2</span>
         </section>
 
-        <!-- 3 Visa: Stationen -->
-        <section class="seite" data-seite="visa" data-titel="Visa: Stationen">
+        <!-- 3 Stationen bisher -->
+        <section class="seite" data-seite="visa" data-titel="Stationen bisher">
           <div class="seite-kopf"><span>Visa · Stationen bei HORSCH</span><span>Seite 3</span></div>
           <div class="stempel-feld">
-            <div class="stempel" style="--i: 0; --dreh: -7deg; --farbe: var(--tinte-blau);"><span class="ort">Produktion SAD</span><span class="zeit">bis 07/2026</span><span class="was">Logistik · QS · Arbeitsvorbereitung</span></div>
-            <div class="stempel rund" style="--i: 1; --dreh: 8deg; --farbe: var(--tinte-gruen);"><span class="ort">Lernen &amp; Ausbildung</span><span class="zeit">08/2026</span><span class="was">montags weiter dort</span></div>
-            <div class="stempel oval" style="--i: 2; --dreh: 5deg; --farbe: var(--tinte-rot);"><span class="ort">Global Exchange Curitiba</span><span class="zeit">17.08. bis 29.09.</span><span class="was">Brasil · 2026</span></div>
-            <div class="stempel" style="--i: 3; --dreh: -4deg; --farbe: var(--tinte-violett);"><span class="ort">Marketing SAD</span><span class="zeit">seit 06.10.2026</span><span class="marke-s">Aktuell</span></div>
-            <div class="stempel geplant" style="--i: 4; --dreh: 3deg; --farbe: var(--tinte-grau);"><span class="ort">Vertriebsinnendienst &amp; Zoll</span><span class="zeit">ab 12/2026</span><span class="marke-s">Geplant</span></div>
-            <div class="stempel rund" style="--i: 5; --dreh: -9deg; --farbe: var(--tinte-amber);"><span class="ort">Global Exchange USA</span><span class="zeit">ca. 07/2027</span><span class="marke-s">Zusage</span></div>
+            <div class="stempel" style="--i: 0; --dreh: -7deg; --farbe: var(--tinte-blau);"><span class="ort">IT</span><span class="zeit">09/2025 bis 11/2025</span><span class="was">Ausbildungsstart</span></div>
+            <div class="stempel oval" style="--i: 1; --dreh: 6deg; --farbe: var(--tinte-gruen);"><span class="ort">Sekretariat</span><span class="zeit">12/2025 bis 03/2026</span></div>
+            <div class="stempel" style="--i: 2; --dreh: 4deg; --farbe: var(--tinte-amber);"><span class="ort">Produktion SAD</span><span class="zeit">04/2026 bis 07/2026</span><span class="was">Logistik · QS · Arbeitsvorbereitung</span></div>
+            <div class="stempel oval" style="--i: 3; --dreh: -5deg; --farbe: var(--tinte-rot);"><span class="ort">Global Exchange Curitiba</span><span class="zeit">17.08. bis 29.09.2026</span><span class="was">Brasil</span></div>
+            <div class="stempel breit" style="--i: 4; --dreh: -2deg; --farbe: var(--tinte-violett);"><span class="ort">Marketing SAD</span><span class="zeit">10/2026 bis 11/2026</span><span class="marke-s">Aktuell</span></div>
           </div>
           <p class="schule"><b>Berufsschule:</b> donnerstags und jeden zweiten Freitag. Letztes Teamprojekt: ein QM-Handbuch auf Englisch als Website.</p>
           <span class="uv-text">Niemand baut allein</span>
@@ -556,9 +559,24 @@
           <span class="seite-nr">5</span>
         </section>
 
+        <!-- 6 Nächste Stationen (Einsatzplan 2. Lehrjahr) -->
+        <section class="seite" data-seite="naechste" data-titel="Nächste Stationen">
+          <div class="seite-kopf"><span>Visa · 2. Lehrjahr</span><span>Seite 6</span></div>
+          <h2>Die nächsten Stationen.</h2>
+          <div class="stempel-feld">
+            <div class="stempel geplant" style="--i: 0; --dreh: -3deg; --farbe: var(--tinte-blau);"><span class="ort">Vertriebsinnendienst &amp; Zoll</span><span class="zeit">12/2026 bis 02/2027</span><span class="marke-s">Geplant</span></div>
+            <div class="stempel geplant" style="--i: 1; --dreh: 3deg; --farbe: var(--tinte-gruen);"><span class="ort">Einkauf</span><span class="zeit">03/2027 bis 05/2027</span><span class="marke-s">Geplant</span></div>
+            <div class="stempel geplant breit" style="--i: 2; --dreh: 1.5deg; --farbe: var(--tinte-violett);"><span class="ort">People Operations &amp; International · Learning &amp; Apprenticeship</span><span class="zeit">06/2027 bis 08/2027</span><span class="marke-s">Geplant</span></div>
+            <div class="stempel rund mitte" style="--i: 3; --dreh: -9deg; --farbe: var(--tinte-amber);"><span class="ort">Global Exchange USA</span><span class="zeit">ca. 07/2027</span><span class="marke-s">Zusage</span></div>
+          </div>
+          <p class="klein">Einsatzplan für das 2. Lehrjahr, Stand Oktober 2026.</p>
+          <span class="uv-text">Fortsetzung folgt</span>
+          <span class="seite-nr">6</span>
+        </section>
+
         <!-- 6 Handgepäck: KI -->
         <section class="seite" data-seite="handgepaeck" data-titel="Handgepäck: KI">
-          <div class="seite-kopf"><span>Handgepäck</span><span>Seite 6</span></div>
+          <div class="seite-kopf"><span>Handgepäck</span><span>Seite 7</span></div>
           <h2>Was ich mit KI baue.</h2>
           <div class="anhaenger">
             <div class="tag" style="--i: 0; --dreh: -2deg;"><div class="code">AIK</div><div class="titel">AIKIDO</div><div class="satz">Werkzeuge für unsere KI-Initiative im Team Lernen &amp; Ausbildung. Bei den KI-Terminen bin ich Support.</div><div class="strich" aria-hidden="true"></div></div>
@@ -568,12 +586,12 @@
           </div>
           <p class="setup"><b>Mein Setup:</b> ein Wissensordner, in dem Claude nachliest, und ein Steckbrief pro Projekt, immer mit Datum.</p>
           <span class="uv-text">Die Person bleibt Trägerin der Verantwortung</span>
-          <span class="seite-nr">6</span>
+          <span class="seite-nr">7</span>
         </section>
 
         <!-- 7 Woran ich arbeite -->
         <section class="seite" data-seite="arbeit" data-titel="Woran ich arbeite">
-          <div class="seite-kopf"><span>Woran ich arbeite</span><span>Seite 7</span></div>
+          <div class="seite-kopf"><span>Woran ich arbeite</span><span>Seite 8</span></div>
           <h2>Woran ich gerade an mir arbeite.</h2>
           <div class="vorsaetze">
             <div class="vorsatz kamae" style="--i: 0;"><span class="nr">01</span><div><b>Ein Codewort: Kamae.</b><span>Sagt es jemand, gehen wir zurück zum eigentlichen Ziel. Das gilt auch für meine KI.</span></div></div>
@@ -582,12 +600,12 @@
           </div>
           <p class="tandem">Der Wingfinder rät mir zu Leuten, die <b>pragmatisch und genau</b> sind. Wenn du so tickst: Lass uns ein Tandem machen.</p>
           <span class="uv-text">Ein Stolperer ist Eintrittskarte</span>
-          <span class="seite-nr">7</span>
+          <span class="seite-nr">8</span>
         </section>
 
         <!-- 8 Visum Talentschmiede -->
         <section class="seite" data-seite="visum" data-titel="Visum Talentschmiede">
-          <div class="seite-kopf"><span>Nächstes Visum</span><span>Seite 8</span></div>
+          <div class="seite-kopf"><span>Nächstes Visum</span><span>Seite 9</span></div>
           <div class="visum">
             <div class="visum-kopf"><span>VISUM · VISA</span><span>TS-2027</span></div>
             <h3>Talentschmiede Lauf 2</h3>
@@ -605,16 +623,9 @@
           <p class="zitat">„Endlich was machen können. Und es gibt noch so viel mehr zu tun.“</p>
           <a class="zur-bordkarte" href="../">← Zurück zur Bordkarte</a>
           <span class="uv-text">Erst tun, dann erklären</span>
-          <span class="seite-nr">8</span>
+          <span class="seite-nr">9</span>
         </section>
 
-        <!-- Innenseite hinten (nur Doppelseite) -->
-        <section class="seite innen" data-seite="hinten" data-titel="Notizen">
-          <div class="seite-kopf"><span>Notizen</span><span>TS-2027</span></div>
-          <p class="notiz">Platz für die nächsten Stempel.</p>
-          <div class="linien" aria-hidden="true"></div>
-          <p class="klein">Stand 27.10.2026 · HORSCH Talentschmiede Lauf 2</p>
-        </section>
       </div>
     </main>
   </div>
@@ -641,7 +652,7 @@
       const buch = document.getElementById('buch');
       const seiten = {};
       document.querySelectorAll('#vorrat .seite').forEach(s => { seiten[s.dataset.seite] = s; });
-      const reihe = ['personalien', 'kennzeichen', 'visa', 'einreise', 'fotos', 'handgepaeck', 'arbeit', 'visum'];
+      const reihe = ['personalien', 'kennzeichen', 'visa', 'einreise', 'fotos', 'naechste', 'handgepaeck', 'arbeit', 'visum'];
 
       // ==========================================
       // SICHERHEITSDRUCK: Guilloche-Wellen und Rosette, einmal erzeugt
@@ -693,7 +704,7 @@
 
       function bauen() {
         ansichten = doppel
-          ? [[null, 'deckel'], ['innen', 'personalien'], ['kennzeichen', 'visa'], ['einreise', 'fotos'], ['handgepaeck', 'arbeit'], ['visum', 'hinten']]
+          ? [[null, 'deckel'], ['innen', 'personalien'], ['kennzeichen', 'visa'], ['einreise', 'fotos'], ['naechste', 'handgepaeck'], ['arbeit', 'visum']]
           : [['deckel']].concat(reihe.map(k => [k]));
       }
 
@@ -789,7 +800,7 @@
         weiter.disabled = index === ansichten.length - 1;
         weiter.textContent = index === 0 ? 'Öffnen →' : '→';
         weiter.setAttribute('aria-label', index === 0 ? 'Pass öffnen' : 'Weiterblättern');
-        stand.textContent = index === 0 ? 'Deckel' : v.map(nr).join(' · ') + ' / 8';
+        stand.textContent = index === 0 ? 'Deckel' : v.map(nr).join(' · ') + ' / ' + reihe.length;
         const erste = v[0];
         document.getElementById('kopfEtikett').textContent = index === 0
           ? 'Zur Bordkarte TS-2027'
