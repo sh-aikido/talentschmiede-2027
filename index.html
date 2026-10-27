@@ -1,115 +1,179 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>HORSCH // BOARDING PASS — Talentschmiede Lauf 2</title>
+  <title>HORSCH // BOARDING PASS — Talentschmiede Lauf 2 · Samuel Haas</title>
   
-  <!-- Open Graph & Meta für Mobile Share -->
-  <meta name="description" content="Offizieller Boarding Pass für Samuel Haas zur HORSCH Talentschmiede Lauf 2. Route USA ➔ Schwandorf. In-Flight-Boarddurchsage abspielen.">
+  <!-- Open Graph & Meta -->
+  <meta name="description" content="Offizieller Boarding Pass für Samuel Haas zur HORSCH Talentschmiede Lauf 2. Route SAD ➔ Curitiba ➔ SAD ➔ USA. In-Flight-Boarddurchsage abspielen.">
   <meta property="og:title" content="HORSCH // BOARDING PASS — Talentschmiede Lauf 2">
-  <meta property="og:description" content="Bewerbung Samuel Haas · Flight TS-02 · Boarddurchsage der Flugleitung">
+  <meta property="og:description" content="Bewerbung Samuel Haas · Flight TS-2027 · Boarddurchsage & Flugplan">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sh-aikido.github.io/talentschmiede-2027/">
   <meta property="og:image" content="https://sh-aikido.github.io/talentschmiede-2027/qr_code_boarding_pass.png">
-  <meta name="theme-color" content="#07090d">
+  <meta name="theme-color" content="#0a0d14">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================================
-       DESIGN TOKENS (Inspiration: PULSE Dark + Aviation Boardkarte)
+       DESIGN TOKENS (Adaptives Bento-System inspiriert von 
+       Samuels Jour-Fixe Selbstpräsentation & NextGen Design)
        ======================================================== */
     :root {
-      --ink: #07090d;
-      --bg-radial: #0a0e15;
-      --graphite-950: #0a0d12;
-      --graphite-900: #0f131a;
-      --graphite-850: #141a24;
-      --graphite-800: #1a222f;
-      --graphite-700: #253041;
-      --graphite-600: #334155;
-      --graphite-400: #8fa0ba;
-      --graphite-300: #c2cfdf;
-      --white: #ffffff;
+      /* Basis Palette (Dark Mode by Default) */
+      --bg: #07090e;
+      --bg-gradient: radial-gradient(circle at 50% 0%, rgba(218, 41, 28, 0.14) 0%, transparent 60%),
+                     radial-gradient(circle at 90% 80%, rgba(82, 80, 214, 0.08) 0%, transparent 50%),
+                     linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      --bg-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       
-      --red: #da291c; /* HORSCH Rot */
-      --red-hover: #b82015;
-      --red-glow: rgba(218, 41, 28, 0.45);
-      --red-subtle: rgba(218, 41, 28, 0.12);
+      --tile: #0f141d;
+      --tile-2: #161c28;
+      --tile-elevated: #1a2232;
       
-      --volt: #c8ff2e; /* PULSE Volt */
-      --volt-subtle: rgba(200, 255, 46, 0.1);
+      --ink: #f5f5f7;
+      --ink-2: #9ba6b8;
+      --ink-3: #637084;
+      --hair: rgba(255, 255, 255, 0.08);
+      --hair-strong: rgba(255, 255, 255, 0.16);
+      --fill: rgba(255, 255, 255, 0.05);
+      --fill-2: rgba(255, 255, 255, 0.1);
+
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 1px rgba(255,255,255,0.08);
+      --shadow-hi: 0 20px 50px -10px rgba(0, 0, 0, 0.75), 0 0 1px rgba(255,255,255,0.18);
+      
+      /* HORSCH Signature & Signal Colors */
+      --accent: #da291c; /* HORSCH Rot */
+      --accent-hover: #b82015;
+      --accent-soft: rgba(218, 41, 28, 0.14);
+      --accent-glow: rgba(218, 41, 28, 0.45);
+      
+      --indigo: #7d7aff;
+      --indigo-soft: rgba(125, 122, 255, 0.15);
       --cyan: #38bdf8;
-      --amber: #fbbf24;
-      --green: #22c55e;
+      --cyan-soft: rgba(56, 189, 248, 0.15);
+      --green: #30d158;
+      --green-soft: rgba(48, 209, 88, 0.15);
+      --amber: #ff9f0a;
+      --amber-soft: rgba(255, 159, 10, 0.15);
       
-      --border: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.16);
+      /* Bento Farbflächen / Mats wie in der Jour-Fixe Präsi */
+      --serie-mat: linear-gradient(145deg, #181135 0%, #311c6d 50%, #da291c 100%);
+      --tok-mat: linear-gradient(160deg, #111624 0%, #171d33 100%);
+      --abo-mat: linear-gradient(160deg, #0e1724 0%, #102433 100%);
+      --warn-mat: linear-gradient(160deg, #23180c 0%, #2f1e0d 100%);
+      --warn-hair: rgba(255, 159, 10, 0.3);
+      --ruhe-mat: linear-gradient(160deg, #0d1a15 0%, #12241d 100%);
+      --hl-mat: linear-gradient(160deg, #161a24 0%, #221c1a 100%);
+
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --display: 'Space Grotesk', -apple-system, sans-serif;
+
+      --spring: cubic-bezier(0.2, 1.05, 0.3, 1);
+      --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+      color-scheme: dark;
+    }
+
+    /* Tageslicht-Theme (Umschaltbar für maximale Eleganz) */
+    html[data-theme="light"] {
+      --bg: #f2f2f7;
+      --bg-gradient: radial-gradient(circle at 50% 0%, rgba(218, 41, 28, 0.08) 0%, transparent 60%),
+                     linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+      --bg-size: 100% 100%, 32px 32px, 32px 32px;
       
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --display: 'Space Grotesk', sans-serif;
+      --tile: #ffffff;
+      --tile-2: #f8f8fa;
+      --tile-elevated: #ffffff;
+      
+      --ink: #1d1d1f;
+      --ink-2: #55555c;
+      --ink-3: #7e7e86;
+      --hair: rgba(0, 0, 0, 0.08);
+      --hair-strong: rgba(0, 0, 0, 0.16);
+      --fill: rgba(0, 0, 0, 0.04);
+      --fill-2: rgba(0, 0, 0, 0.08);
+
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.08);
+      --shadow-hi: 0 16px 40px -8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.12);
+      
+      --indigo: #5250d6;
+      --indigo-soft: rgba(82, 80, 214, 0.1);
+      --cyan: #0077aa;
+      --cyan-soft: rgba(0, 119, 170, 0.1);
+      --green: #1a7431;
+      --green-soft: rgba(26, 116, 49, 0.1);
+      --amber: #a34a00;
+      --amber-soft: rgba(163, 74, 0, 0.1);
+
+      --serie-mat: linear-gradient(145deg, #24144e 0%, #462699 50%, #da291c 100%);
+      --tok-mat: linear-gradient(160deg, #ffffff 0%, #f4f3ff 100%);
+      --abo-mat: linear-gradient(160deg, #ffffff 0%, #eef8fc 100%);
+      --warn-mat: linear-gradient(160deg, #fff9f0 0%, #fff2de 100%);
+      --warn-hair: rgba(255, 149, 0, 0.28);
+      --ruhe-mat: linear-gradient(160deg, #ffffff 0%, #f0faf3 100%);
+      --hl-mat: linear-gradient(160deg, #ffffff 0%, #fff6f4 100%);
+
+      color-scheme: light;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--ink);
-      color: var(--white);
-      font-family: var(--sans);
+      background-color: var(--bg);
+      background-image: var(--bg-gradient);
+      background-size: var(--bg-size);
+      color: var(--ink);
+      font-family: var(--font);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 16px 40px 16px;
+      padding: 24px 16px 64px 16px;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 50% 5%, rgba(218, 41, 28, 0.16) 0%, transparent 65%),
-        radial-gradient(circle at 85% 90%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     @media (max-width: 600px) {
-      body {
-        padding: 12px 10px 32px 10px;
-      }
+      body { padding: 12px 10px 48px 10px; }
     }
 
-    /* Container: Auf dem PC breit & zentriert, mobil 100% */
     .app-wrapper {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1100px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
-    /* Top Utility Bar */
+    /* ========================================================
+       TOP UTILITY BAR & THEME SWITCH
+       ======================================================== */
     .nav-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 18px;
-      background: rgba(15, 19, 26, 0.88);
+      background: var(--tile);
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     @media (max-width: 600px) {
-      .nav-bar {
-        padding: 8px 12px;
-      }
+      .nav-bar { padding: 8px 12px; }
     }
 
     .brand-meta {
@@ -119,35 +183,62 @@
     }
 
     .horsch-logo-btn {
-      background: var(--red);
+      background: var(--accent);
       color: #fff;
       font-family: var(--mono);
       font-weight: 800;
-      font-size: 11.5px;
-      padding: 4px 10px;
-      border-radius: 5px;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      letter-spacing: 0.12em;
       cursor: pointer;
       user-select: none;
       transition: transform 0.12s, box-shadow 0.2s;
-      box-shadow: 0 0 14px var(--red-glow);
+      box-shadow: 0 0 16px var(--accent-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .horsch-logo-btn:active {
-      transform: scale(0.93);
-    }
+    .horsch-logo-btn:active { transform: scale(0.93); }
 
     .ops-tag {
       font-family: var(--mono);
       font-size: 10.5px;
-      color: var(--graphite-400);
+      color: var(--ink-2);
       letter-spacing: 0.05em;
+      font-weight: 600;
     }
 
-    @media (max-width: 600px) {
-      .ops-tag {
-        font-size: 9.5px;
-      }
+    @media (max-width: 640px) {
+      .ops-tag { display: none; }
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle-btn {
+      background: var(--fill);
+      color: var(--ink);
+      border: 1px solid var(--hair);
+      border-radius: 99px;
+      padding: 5px 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s var(--ease);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--fill-2);
+      border-color: var(--hair-strong);
     }
 
     .status-badge {
@@ -156,20 +247,13 @@
       gap: 7px;
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--green);
-      background: rgba(34, 197, 94, 0.09);
-      border: 1px solid rgba(34, 197, 94, 0.3);
+      background: var(--green-soft);
+      border: 1px solid rgba(48, 209, 88, 0.3);
       padding: 4px 10px;
       border-radius: 99px;
       letter-spacing: 0.06em;
-    }
-
-    @media (max-width: 480px) {
-      .status-badge {
-        padding: 3px 7px;
-        font-size: 9px;
-      }
     }
 
     .live-dot {
@@ -187,42 +271,95 @@
     }
 
     /* ========================================================
-       DIE PHYSISCHE BOARDKARTE (RESPONSIVE GRID)
-       Desktop: 2-Spalten-Ticket (Hauptteil + Abriss-Stub)
-       Mobil: Vertikal gestapelt mit horizontaler Perforation
+       INTRO HERO BANNER (NextGen & Bento Style)
+       ======================================================== */
+    .hero-kicker-banner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 6px;
+      flex-wrap: wrap;
+    }
+
+    .hero-kicker-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(218, 41, 28, 0.3);
+      padding: 4px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(26px, 4.2vw, 40px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: var(--ink-2);
+      max-width: 62ch;
+    }
+
+    /* ========================================================
+       DIE PHYSISCHE BOARDKARTE (DAS HERZSTÜCK)
+       Split-Layout (Desktop) / Vertikal Perforiert (Mobil)
        ======================================================== */
     .boarding-pass-card {
-      background: var(--graphite-900);
-      border: 1px solid var(--border-strong);
-      border-radius: 20px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.75), 0 0 1px rgba(255,255,255,0.15);
+      background: var(--tile);
+      border: 1px solid var(--hair-strong);
+      border-radius: 24px;
+      box-shadow: var(--shadow-hi);
       display: grid;
       grid-template-columns: 1fr 340px;
       position: relative;
       overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .boarding-pass-card {
         display: flex;
         flex-direction: column;
-        border-radius: 16px;
+        border-radius: 20px;
       }
     }
 
     /* ==================== HAUPTTEIL (LINKS) ==================== */
     .pass-main {
-      padding: 26px 30px;
+      padding: 30px 32px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 22px;
       position: relative;
-      background: linear-gradient(135deg, rgba(20, 26, 36, 0.4) 0%, rgba(15, 19, 26, 0.95) 100%);
+      background: linear-gradient(135deg, var(--fill) 0%, transparent 100%);
     }
 
     @media (max-width: 600px) {
       .pass-main {
-        padding: 18px 14px;
+        padding: 20px 16px;
         gap: 16px;
       }
     }
@@ -232,15 +369,15 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
+      border-bottom: 1px solid var(--hair);
+      padding-bottom: 16px;
     }
 
     .flight-class-title {
       font-family: var(--display);
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ink);
       letter-spacing: -0.01em;
       display: flex;
       align-items: center;
@@ -248,51 +385,47 @@
     }
 
     @media (max-width: 600px) {
-      .flight-class-title {
-        font-size: 17px;
-      }
+      .flight-class-title { font-size: 17px; }
     }
 
     .flight-class-pill {
       font-family: var(--mono);
       font-size: 9.5px;
-      font-weight: 700;
-      color: var(--red);
-      background: var(--red-subtle);
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
       border: 1px solid rgba(218, 41, 28, 0.35);
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
       letter-spacing: 0.08em;
     }
 
     .ticket-meta-right {
       text-align: right;
       font-family: var(--mono);
-      font-size: 10px;
-      color: var(--graphite-400);
+      font-size: 10.5px;
+      color: var(--ink-2);
       line-height: 1.45;
     }
 
     .ticket-meta-right strong {
-      color: var(--white);
+      color: var(--ink);
     }
 
-    /* Hero Route & Flight Display (Aviation Typo) */
+    /* Hero Route & Flight Display */
     .route-hero {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(180deg, var(--graphite-850) 0%, rgba(15, 19, 26, 0.8) 100%);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 24px;
+      background: var(--tile-2);
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      padding: 20px 24px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     @media (max-width: 600px) {
-      .route-hero {
-        padding: 14px 14px;
-      }
+      .route-hero { padding: 14px; }
     }
 
     .airport-node {
@@ -302,19 +435,20 @@
 
     .airport-code {
       font-family: var(--display);
-      font-size: clamp(28px, 4.5vw, 42px);
+      font-size: clamp(30px, 4.6vw, 44px);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1;
-      color: var(--white);
+      color: var(--ink);
     }
 
     .airport-name {
       font-family: var(--mono);
       font-size: 10.5px;
-      color: var(--graphite-400);
+      color: var(--ink-2);
       margin-top: 4px;
       letter-spacing: 0.02em;
+      font-weight: 600;
     }
 
     .flight-path-middle {
@@ -329,8 +463,8 @@
     .flight-no {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 700;
-      color: var(--red);
+      font-weight: 800;
+      color: var(--accent);
       letter-spacing: 0.12em;
       margin-bottom: 6px;
     }
@@ -342,8 +476,8 @@
         to right,
         transparent,
         transparent 4px,
-        rgba(255,255,255,0.2) 4px,
-        rgba(255,255,255,0.2) 10px
+        var(--hair-strong) 4px,
+        var(--hair-strong) 10px
       );
       position: relative;
       display: flex;
@@ -352,32 +486,34 @@
     }
 
     .plane-icon {
-      background: var(--graphite-850);
+      background: var(--tile-2);
       padding: 0 6px;
-      color: var(--red);
-      font-size: 15px;
+      color: var(--accent);
+      font-size: 16px;
       transform: rotate(90deg);
     }
 
     .flight-status-note {
       font-family: var(--mono);
-      font-size: 9px;
-      color: var(--cyan);
+      font-size: 9.5px;
+      color: var(--indigo);
       margin-top: 6px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      font-weight: 700;
     }
 
     /* Embedded Cockpit Audio Console */
     .cockpit-avionics-unit {
-      background: #090c11;
-      border: 1px solid var(--border-strong);
-      border-radius: 14px;
-      padding: 18px;
+      background: #090c12;
+      border: 1px solid var(--hair-strong);
+      border-radius: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       position: relative;
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.4);
+      box-shadow: inset 0 0 24px rgba(0,0,0,0.9), 0 8px 24px rgba(0,0,0,0.3);
+      color: #fff;
     }
 
     @media (max-width: 600px) {
@@ -391,7 +527,7 @@
     .crt-screen {
       background: #040609;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
@@ -466,8 +602,8 @@
     .progress-bar-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--red) 0%, #ff4d3d 100%);
-      box-shadow: 0 0 10px var(--red-glow);
+      background: linear-gradient(90deg, var(--accent) 0%, #ff5247 100%);
+      box-shadow: 0 0 10px var(--accent-glow);
       transition: width 0.08s linear;
     }
 
@@ -477,20 +613,18 @@
       align-items: center;
       font-family: var(--mono);
       font-size: 9.5px;
-      color: var(--graphite-400);
+      color: #8fa0ba;
       z-index: 3;
     }
 
-    .crt-hud-bottom strong {
-      color: var(--white);
-    }
+    .crt-hud-bottom strong { color: #fff; }
 
-    /* Tactile Main Launch Button (Single Clear Button) */
+    /* Tactile Main Launch Button */
     .ptt-launch-btn {
       width: 100%;
-      background: linear-gradient(180deg, var(--graphite-800) 0%, var(--graphite-850) 100%);
-      border: 1px solid var(--border-strong);
-      border-radius: 12px;
+      background: linear-gradient(180deg, #18202d 0%, #121822 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
       padding: 14px 18px;
       display: flex;
       align-items: center;
@@ -501,11 +635,12 @@
       transition: all 0.16s ease;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      color: #fff;
     }
 
     .ptt-launch-btn:hover {
       border-color: rgba(255, 255, 255, 0.3);
-      background: linear-gradient(180deg, #222b3b 0%, var(--graphite-800) 100%);
+      background: linear-gradient(180deg, #222b3b 0%, #171f2c 100%);
     }
 
     .ptt-launch-btn:active {
@@ -515,19 +650,19 @@
 
     .ptt-launch-btn.is-transmitting {
       background: linear-gradient(180deg, #991b1b 0%, #7f1d1d 100%);
-      border-color: var(--red);
-      box-shadow: 0 0 28px var(--red-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+      border-color: var(--accent);
+      box-shadow: 0 0 28px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.2);
     }
 
     .ptt-icon-circle {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--red);
+      background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 16px var(--red-glow);
+      box-shadow: 0 0 16px var(--accent-glow);
       flex-shrink: 0;
       transition: transform 0.15s;
     }
@@ -537,8 +672,8 @@
     }
 
     .ptt-icon-circle svg {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       fill: #fff;
     }
 
@@ -558,7 +693,7 @@
     .ptt-subtitle {
       font-family: var(--mono);
       font-size: 9.5px;
-      color: var(--graphite-400);
+      color: #8fa0ba;
       margin-top: 2px;
       letter-spacing: 0.03em;
     }
@@ -570,13 +705,13 @@
     /* Teletype Transcript Briefing Box */
     .transcript-briefing {
       background: #04060a;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--red);
-      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
       padding: 14px 16px;
-      font-size: 12.5px;
+      font-size: 13px;
       line-height: 1.55;
-      color: var(--graphite-300);
+      color: #c2cfdf;
       position: relative;
     }
 
@@ -592,18 +727,18 @@
       justify-content: space-between;
       align-items: center;
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
-      color: var(--red);
+      color: var(--accent);
       letter-spacing: 0.08em;
       margin-bottom: 8px;
     }
 
     .briefing-body strong {
-      color: var(--white);
+      color: #fff;
     }
 
-    /* ==================== ABRISS-KANTE (PERFORIERTE TRENNUNG) ==================== */
+    /* ==================== PERFORATION DIVIDER ==================== */
     /* Desktop Perforation: Vertikaler Strich & Notches */
     .perforation-divider {
       position: absolute;
@@ -615,8 +750,8 @@
         to bottom,
         transparent,
         transparent 6px,
-        rgba(255,255,255,0.22) 6px,
-        rgba(255,255,255,0.22) 12px
+        var(--hair-strong) 6px,
+        var(--hair-strong) 12px
       );
       z-index: 10;
     }
@@ -625,25 +760,18 @@
       position: absolute;
       width: 24px;
       height: 24px;
-      background-color: var(--ink);
+      background-color: var(--bg);
       border-radius: 50%;
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--hair-strong);
       z-index: 12;
       right: 328px;
     }
 
-    .notch-top {
-      top: -12px;
-    }
+    .notch-top { top: -12px; }
+    .notch-bottom { bottom: -12px; }
 
-    .notch-bottom {
-      bottom: -12px;
-    }
-
-    @media (max-width: 900px) {
-      .perforation-divider, .notch-top, .notch-bottom {
-        display: none;
-      }
+    @media (max-width: 960px) {
+      .perforation-divider, .notch-top, .notch-bottom { display: none; }
     }
 
     /* Mobile Perforation: Horizontaler Strich & Seitliche Notches */
@@ -666,8 +794,8 @@
         to right,
         transparent,
         transparent 6px,
-        rgba(255,255,255,0.25) 6px,
-        rgba(255,255,255,0.25) 12px
+        var(--hair-strong) 6px,
+        var(--hair-strong) 12px
       );
     }
 
@@ -676,43 +804,35 @@
       top: -2px;
       width: 24px;
       height: 24px;
-      background-color: var(--ink);
+      background-color: var(--bg);
       border-radius: 50%;
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--hair-strong);
       z-index: 16;
     }
 
-    .mobile-notch-left {
-      left: -13px;
-    }
+    .mobile-notch-left { left: -13px; }
+    .mobile-notch-right { right: -13px; }
 
-    .mobile-notch-right {
-      right: -13px;
-    }
-
-    @media (max-width: 900px) {
-      .mobile-perforation-wrapper {
-        display: block;
-      }
+    @media (max-width: 960px) {
+      .mobile-perforation-wrapper { display: block; }
     }
 
     /* ==================== ABRISS-STUB (RECHTS / MOBIL UNTEN) ==================== */
     .pass-stub {
-      background: var(--graphite-850);
-      padding: 26px 24px;
+      background: var(--tile-2);
+      padding: 30px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 18px;
-      border-left: 1px solid var(--border);
+      border-left: 1px solid var(--hair);
       position: relative;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .pass-stub {
         border-left: none;
         padding: 24px 18px;
-        background: linear-gradient(180deg, var(--graphite-850) 0%, rgba(15, 19, 26, 0.98) 100%);
       }
     }
 
@@ -720,7 +840,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--hair);
       padding-bottom: 12px;
     }
 
@@ -728,14 +848,15 @@
       font-family: var(--mono);
       font-weight: 800;
       font-size: 11px;
-      color: var(--red);
+      color: var(--accent);
       letter-spacing: 0.1em;
     }
 
     .stub-flight {
       font-family: var(--mono);
       font-size: 10px;
-      color: var(--graphite-400);
+      color: var(--ink-2);
+      font-weight: 600;
     }
 
     /* Passenger & Seat Specs */
@@ -754,26 +875,25 @@
 
     .stub-label {
       font-size: 8.5px;
-      color: var(--graphite-400);
+      color: var(--ink-3);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-weight: 700;
     }
 
     .stub-val {
       font-size: 12.5px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--ink);
     }
 
-    .stub-val.accent {
-      color: var(--red);
-    }
+    .stub-val.accent { color: var(--accent); }
 
     /* Authentic SVG QR-Code Box */
     .qr-container {
-      background: #000;
-      border: 1px solid var(--border-strong);
-      border-radius: 12px;
+      background: var(--tile);
+      border: 1px solid var(--hair-strong);
+      border-radius: 14px;
       padding: 14px;
       display: flex;
       flex-direction: column;
@@ -781,12 +901,12 @@
       justify-content: center;
       gap: 10px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow);
     }
 
     .qr-svg-wrapper {
-      width: 144px;
-      height: 144px;
+      width: 140px;
+      height: 140px;
       background: #fff;
       padding: 6px;
       border-radius: 8px;
@@ -800,35 +920,20 @@
 
     .qr-svg-wrapper:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 16px rgba(255,255,255,0.25);
-    }
-
-    .qr-svg-wrapper svg {
-      width: 100%;
-      height: 100%;
-      display: block;
+      box-shadow: 0 0 16px rgba(0,0,0,0.25);
     }
 
     .qr-caption {
       font-family: var(--mono);
       font-size: 8.5px;
-      color: var(--graphite-400);
+      color: var(--ink-2);
       letter-spacing: 0.04em;
       line-height: 1.35;
     }
 
-    .qr-caption strong {
-      color: var(--white);
-    }
-
-    .qr-caption a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
-
-    .qr-caption a:hover {
-      text-decoration: underline;
-    }
+    .qr-caption strong { color: var(--ink); }
+    .qr-caption a { color: var(--cyan); text-decoration: none; }
+    .qr-caption a:hover { text-decoration: underline; }
 
     /* Barcode Graphic */
     .barcode-wrapper {
@@ -836,34 +941,23 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .barcode-svg {
       width: 100%;
       max-width: 240px;
-      height: 32px;
+      height: 30px;
     }
+
+    .barcode-svg rect { fill: var(--ink); }
 
     .barcode-code {
       font-family: var(--mono);
       font-size: 8.5px;
-      color: var(--graphite-400);
+      color: var(--ink-2);
       letter-spacing: 0.16em;
-    }
-
-    /* Verified Stamp */
-    .verification-stamp {
-      border: 1.5px dashed var(--red);
-      background: var(--red-subtle);
-      border-radius: 8px;
-      padding: 8px;
-      text-align: center;
-      font-family: var(--mono);
-      font-size: 9.5px;
-      color: #fca5a5;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-weight: 600;
     }
 
     /* Boarding bestätigen + Stempel */
@@ -875,33 +969,46 @@
 
     .board-btn {
       width: 100%;
-      border: 1.5px solid var(--red);
-      background: var(--red);
-      color: var(--white);
+      border: 1.5px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.14em;
       padding: 12px 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 0 18px var(--red-glow);
+      box-shadow: 0 0 18px var(--accent-glow);
       transition: background 0.18s, transform 0.12s;
     }
 
-    .board-btn:hover { background: var(--red-hover); }
+    .board-btn:hover { background: var(--accent-hover); }
     .board-btn:active { transform: scale(0.98); }
 
     .board-hint {
       font-family: var(--mono);
       font-size: 8.5px;
-      color: var(--graphite-400);
+      color: var(--ink-3);
       text-align: center;
       letter-spacing: 0.05em;
     }
 
+    .verification-stamp {
+      display: none;
+      border: 1.5px dashed var(--accent);
+      background: var(--accent-soft);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
     .is-boarded .board-confirm { display: none; }
-    .verification-stamp { display: none; }
     .is-boarded .verification-stamp { display: block; }
 
     .boarding-stamp {
@@ -914,17 +1021,17 @@
       pointer-events: none;
       opacity: 0;
       z-index: 6;
-      filter: drop-shadow(0 0 6px rgba(226, 58, 46, 0.25));
+      filter: drop-shadow(0 0 8px rgba(218, 41, 28, 0.35));
     }
 
     .boarding-stamp svg { display: block; width: 100%; height: auto; }
-    .is-boarded .boarding-stamp { opacity: 0.93; }
+    .is-boarded .boarding-stamp { opacity: 0.95; }
     .boarding-stamp.slam { animation: stampSlam 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
 
     @keyframes stampSlam {
-      0%   { opacity: 0;    transform: translate(-50%, -50%) rotate(-3deg) scale(2.6); }
-      62%  { opacity: 1;    transform: translate(-50%, -50%) rotate(-14deg) scale(0.93); }
-      100% { opacity: 0.93; transform: translate(-50%, -50%) rotate(-13deg) scale(1); }
+      0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-3deg) scale(2.6); }
+      62%  { opacity: 1; transform: translate(-50%, -50%) rotate(-14deg) scale(0.93); }
+      100% { opacity: 0.95; transform: translate(-50%, -50%) rotate(-13deg) scale(1); }
     }
 
     .pass-stub.thud { animation: stubThud 0.28s ease-out; }
@@ -935,50 +1042,376 @@
       60% { transform: translateY(-1px); }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .boarding-stamp.slam, .pass-stub.thud { animation: none; }
+    /* ========================================================
+       BENTO-SEKTIONEN (INSPIRIERT VOM JOUR-FIXE LOOK)
+       Kacheln, Pillen, Zeitstrahl, Wingfinder & AIKIDO
+       ======================================================== */
+    .bento-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      margin-top: 8px;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
+    .kachel {
+      position: relative;
+      background: var(--tile);
+      border: 1px solid var(--hair);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.25s var(--spring), box-shadow 0.25s var(--ease), border-color 0.2s;
+    }
+
+    .kachel:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hi);
+      border-color: var(--hair-strong);
+    }
+
+    .col-12 { grid-column: span 12; }
+    .col-8  { grid-column: span 8; }
+    .col-7  { grid-column: span 7; }
+    .col-6  { grid-column: span 6; }
+    .col-5  { grid-column: span 5; }
+    .col-4  { grid-column: span 4; }
+
+    @media (max-width: 860px) {
+      .col-8, .col-7, .col-6, .col-5, .col-4 { grid-column: span 12; }
+      .kachel { padding: 18px 16px; border-radius: 20px; }
+    }
+
+    /* Kachel Header / Meta */
+    .k-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .k-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: var(--mono);
-      font-size: 9px;
-      color: var(--graphite-400);
-      padding: 4px 0;
-      user-select: none;
-      letter-spacing: 0.04em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-2);
     }
 
-    footer:hover {
-      color: var(--graphite-300);
+    .k-tag .ping {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .k-pill {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 99px;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .k-pill.red   { color: var(--accent); background: var(--accent-soft); }
+    .k-pill.green { color: var(--green);  background: var(--green-soft); }
+    .k-pill.indigo{ color: var(--indigo); background: var(--indigo-soft); }
+    .k-pill.amber { color: var(--amber);  background: var(--amber-soft); }
+    .k-pill.mute  { color: var(--ink-2);  background: var(--fill); }
+
+    .k-title {
+      font-family: var(--display);
+      font-size: clamp(20px, 2.8vw, 28px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .k-lead {
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    /* Bento Mat Spezialkacheln */
+    .kachel.mat-warn {
+      background: var(--warn-mat);
+      border-color: var(--warn-hair);
+    }
+
+    .kachel.mat-serie {
+      background: var(--serie-mat);
+      color: #fff;
+    }
+
+    .kachel.mat-serie .k-tag,
+    .kachel.mat-serie .k-lead {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .kachel.mat-serie .k-title {
+      color: #fff;
+    }
+
+    .kachel.mat-tok {
+      background: var(--tok-mat);
     }
 
     /* ========================================================
-       EASTER EGG MODAL
+       DER FLUGPLAN (INTERAKTIVER ZEITSTRAHL ROUTE)
+       SAD ➔ CURITIBA ➔ MARKETING ➔ TS-02 ➔ USA
        ======================================================== */
+    .timeline-track {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+      position: relative;
+    }
+
+    @media (max-width: 760px) {
+      .timeline-track {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    .timeline-node {
+      background: var(--tile-2);
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      padding: 14px 14px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      transition: all 0.2s var(--ease);
+    }
+
+    .timeline-node:hover {
+      background: var(--tile-elevated);
+      border-color: var(--hair-strong);
+      transform: translateY(-2px);
+    }
+
+    .timeline-node.highlight {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, var(--accent-soft) 0%, var(--tile-2) 100%);
+      box-shadow: 0 0 18px var(--accent-soft);
+    }
+
+    .node-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .node-station {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .node-badge {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 99px;
+      background: var(--fill-2);
+      color: var(--ink-2);
+    }
+
+    .timeline-node.highlight .node-badge {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .node-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .node-desc {
+      font-size: 12.5px;
+      color: var(--ink-2);
+      line-height: 1.4;
+    }
+
+    /* ========================================================
+       WINGFINDER & STOLPERER (KLARTEXT AUS DER JOUR FIXE PRÄSI)
+       ======================================================== */
+    .wingfinder-dual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .regler-box {
+      background: var(--fill);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .regler-header {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-2);
+    }
+
+    .regler-bar {
+      height: 8px;
+      background: var(--fill-2);
+      border-radius: 99px;
+      position: relative;
+    }
+
+    .regler-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .regler-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+
+    .quote-box {
+      font-family: var(--display);
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 12px 0 6px 0;
+      color: var(--ink);
+    }
+
+    /* AIKIDO Prinzipien */
+    .principles-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .principle-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: var(--fill);
+      border: 1px solid var(--hair);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .principle-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* ========================================================
+       FOOTER & EASTER EGG MODAL
+       ======================================================== */
+    footer {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-3);
+      padding: 16px 0 0 0;
+      user-select: none;
+      letter-spacing: 0.04em;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .footer-easter-link {
+      cursor: pointer;
+      color: var(--ink-2);
+      transition: color 0.15s;
+    }
+
+    .footer-easter-link:hover { color: var(--accent); }
+
     .easter-modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(7, 9, 13, 0.94);
-      backdrop-filter: blur(10px);
-      z-index: 100;
+      background: rgba(7, 9, 14, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
 
     .modal-box {
-      background: var(--graphite-850);
-      border: 2px solid var(--red);
-      border-radius: 16px;
-      padding: 26px 22px;
-      max-width: 400px;
+      background: var(--tile);
+      border: 2px solid var(--accent);
+      border-radius: 24px;
+      padding: 30px 26px;
+      max-width: 440px;
       width: 100%;
-      box-shadow: 0 0 60px var(--red-glow);
+      box-shadow: 0 0 60px var(--accent-glow);
       text-align: center;
-      animation: modalPop 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: modalPop 0.28s var(--spring);
+      position: relative;
     }
 
     @keyframes modalPop {
@@ -988,8 +1421,8 @@
 
     .modal-tag {
       font-family: var(--mono);
-      font-size: 9.5px;
-      color: var(--red);
+      font-size: 10px;
+      color: var(--accent);
       font-weight: 800;
       letter-spacing: 0.12em;
       margin-bottom: 8px;
@@ -997,48 +1430,47 @@
 
     .modal-title {
       font-family: var(--display);
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ink);
       margin-bottom: 12px;
     }
 
     .modal-desc {
-      font-size: 13.5px;
-      color: var(--graphite-300);
+      font-size: 14px;
+      color: var(--ink-2);
       line-height: 1.5;
       margin-bottom: 18px;
     }
 
     .stamp-box {
-      background: var(--red-subtle);
-      border: 1px dashed var(--red);
-      border-radius: 8px;
-      padding: 12px 10px;
+      background: var(--accent-soft);
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      padding: 14px 12px;
       font-family: var(--mono);
-      font-size: 11.5px;
-      color: #fca5a5;
-      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 700;
     }
 
     .close-btn {
-      background: var(--red);
+      background: var(--accent);
       color: #fff;
       font-family: var(--mono);
       font-weight: 800;
-      font-size: 11px;
+      font-size: 11.5px;
       padding: 12px 20px;
-      border-radius: 6px;
+      border-radius: 10px;
       border: none;
       cursor: pointer;
       width: 100%;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       transition: background 0.15s;
     }
 
-    .close-btn:hover {
-      background: var(--red-hover);
-    }
+    .close-btn:hover { background: var(--accent-hover); }
   </style>
 </head>
 <body>
@@ -1048,14 +1480,35 @@
     <!-- Top Utility & Brand Bar -->
     <header class="nav-bar">
       <div class="brand-meta">
-        <span class="horsch-logo-btn" id="secret-trigger" title="3x tippen für Insider Feature">HORSCH</span>
+        <span class="horsch-logo-btn" id="secret-trigger" title="3x tippen für Insider Feature">
+          HORSCH
+        </span>
         <span class="ops-tag">TALENTSCHMIEDE LAUF 2 // FLIGHT OPS</span>
       </div>
-      <div class="status-badge">
-        <span class="live-dot"></span>
-        <span>COM-1 ONLINE</span>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Zwischen Tageslicht & Cockpit umschalten">
+          <span id="themeToggleIcon">☀️</span>
+          <span id="themeToggleText">Tageslicht</span>
+        </button>
+
+        <div class="status-badge">
+          <span class="live-dot"></span>
+          <span>COM-1 ONLINE</span>
+        </div>
       </div>
     </header>
+
+    <!-- Intro Kicker Banner (NextGen Style) -->
+    <div class="hero-kicker-banner">
+      <div class="hero-kicker-left">
+        <span class="kicker-pill">Bewerbung · Talentschmiede Lauf 2</span>
+        <h1 class="hero-title">Nicht warten, bis man gebeten wird. <span>Anpacken.</span></h1>
+        <p class="hero-subtitle">
+          Samuel Haas · Industriekaufmann (2. Lehrjahr) · Standort SAD · Route USA ➔ SAD
+        </p>
+      </div>
+    </div>
 
     <!-- Physische Boardkarte (Desktop Split-Layout / Mobil Stack) -->
     <main class="boarding-pass-card">
@@ -1075,7 +1528,7 @@
               BOARDING PASS
               <span class="flight-class-pill">TALENT CLASS</span>
             </div>
-            <div style="font-family: var(--mono); font-size: 10px; color: var(--graphite-400); margin-top: 2px;">
+            <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-2); margin-top: 3px; font-weight: 600;">
               PASSENGER: SAMUEL HAAS · INDUSTRIEKAUFMANN (2. LJ)
             </div>
           </div>
@@ -1121,19 +1574,19 @@
             </div>
 
             <!-- Scrubber Progress Bar -->
-            <div class="progress-track" id="progressBar" onclick="seekAudio(event)">
+            <div class="progress-track" id="progressBar" onclick="seekAudio(event)" title="Spulen">
               <div class="progress-bar-fill" id="progressFill"></div>
             </div>
 
             <div class="crt-hud-bottom">
               <span id="currentTime">00:00</span>
-              <span style="color: var(--amber);" id="voiceIndicator">HORSCH STIMME // FLIGHT TS-02</span>
-              <strong id="totalDuration">00:21</strong>
+              <span style="color: var(--amber);" id="voiceIndicator">AUDIO MEMO // FLIGHT TS-02</span>
+              <strong id="totalDuration">00:29</strong>
             </div>
           </div>
 
           <!-- Großer Taktiler Button: Boarddurchsage abspielen -->
-          <button class="ptt-launch-btn" id="pttButton" onclick="togglePlayback()">
+          <button class="ptt-launch-btn" id="pttButton" onclick="togglePlayback()" type="button">
             <div class="ptt-icon-circle" id="pttIcon">
               <svg id="playIconSvg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
@@ -1143,7 +1596,7 @@
             </div>
           </button>
 
-          <!-- Teletype Transkript Briefing (Option 1) -->
+          <!-- Teletype Transkript Briefing -->
           <div class="transcript-briefing">
             <div class="briefing-head">
               <span id="transcriptTag">SPRACHNACHRICHT // SAMUEL HAAS</span>
@@ -1161,7 +1614,7 @@
 
       </section>
 
-      <!-- Perforation auf Mobile Geräten mit echten Notches -->
+      <!-- Perforation auf mobilen Geräten -->
       <div class="mobile-perforation-wrapper">
         <div class="mobile-notch-left"></div>
         <div class="mobile-perforation-line"></div>
@@ -1206,12 +1659,12 @@
 
         <!-- Echter Scanfähiger QR-Code Block mit Link -->
         <div class="qr-container">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="qr-svg-wrapper" title="Direkt zur Web-App (https://sh-aikido.github.io/talentschmiede-2027/)">
-            <!-- QR codiert https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
-            <svg width="100%" height="100%" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M2 2.5h7m2 0h1m1 0h2m1 0h1m3 0h4m1 0h1m2 0h7M2 3.5h1m5 0h1m3 0h3m2 0h1m2 0h1m1 0h2m4 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h3m7 0h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h1m4 0h5m2 0h1m1 0h1m3 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h5M2 10.5h1m1 0h5m2 0h2m1 0h3m2 0h1m1 0h1m2 0h2m2 0h5M4 11.5h2m1 0h1m2 0h4m1 0h2m1 0h5m1 0h2m2 0h2m1 0h3M4 12.5h1m3 0h3m1 0h8m4 0h1m1 0h2m2 0h1m1 0h2M2 13.5h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h4m2 0h1m1 0h2m1 0h3M2 14.5h2m4 0h2m1 0h2m1 0h1m1 0h3m2 0h7m3 0h1m1 0h1M2 15.5h2m2 0h2m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m3 0h3M2 16.5h1m1 0h1m3 0h1m7 0h3m3 0h3m2 0h2m2 0h3M3 17.5h3m1 0h1m1 0h1m4 0h4m5 0h2m1 0h7M2 18.5h1m1 0h1m1 0h4m4 0h4m1 0h2m3 0h1m1 0h2m1 0h3m2 0h1M2 19.5h1m1 0h4m4 0h1m2 0h2m1 0h1m1 0h2m1 0h7m1 0h2m1 0h1M4 20.5h2m1 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m1 0h2m1 0h2M2 21.5h3m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h7M2 22.5h2m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m2 0h1m2 0h1m3 0h1m2 0h2m1 0h2M2 23.5h3m2 0h1m1 0h3m2 0h6m2 0h3m2 0h1m1 0h1m1 0h2m1 0h1M2 24.5h1m5 0h2m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h2m1 0h1M2 25.5h1m2 0h1m3 0h2m2 0h3m2 0h1m2 0h3m1 0h4m3 0h3M2 26.5h1m2 0h2m1 0h1m1 0h4m4 0h2m1 0h1m2 0h1m1 0h6m2 0h1M10 27.5h4m4 0h2m1 0h2m1 0h3m3 0h1m1 0h3M2 28.5h7m2 0h1m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m1 0h1M2 29.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m3 0h2m3 0h3m1 0h1M2 30.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m3 0h3m1 0h6m1 0h1M2 31.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1M2 32.5h1m1 0h3m1 0h1m1 0h4m2 0h4m2 0h8m2 0h1M2 33.5h1m5 0h1m3 0h1m2 0h1m1 0h1m5 0h2m3 0h1m1 0h3M2 34.5h7m1 0h3m2 0h3m1 0h1m4 0h3m2 0h1m1 0h1m1 0h1"/></svg>
+          <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer" class="qr-svg-wrapper" title="Direkt zur Web-App (https://sh-aikido.github.io/talentschmiede-2027/)">
+            <!-- QR SVG -->
+            <svg width="100%" height="100%" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M2 2.5h7m2 0h1m1 0h2m1 0h1m3 0h4m1 0h1m2 0h7M2 3.5h1m5 0h1m3 0h3m2 0h1m2 0h1m1 0h2m4 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h3m7 0h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h1m4 0h5m2 0h1m1 0h1m3 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h5M2 10.5h1m1 0h5m2 0h2m1 0h3m2 0h1m1 0h1m2 0h2m2 0h5M4 11.5h2m1 0h1m2 0h4m1 0h2m1 0h5m1 0h2m2 0h2m1 0h3M4 12.5h1m3 0h3m1 0h8m4 0h1m1 0h2m2 0h1m1 0h2M2 13.5h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h4m2 0h1m1 0h2m1 0h3M2 14.5h2m4 0h2m1 0h2m1 0h1m1 0h3m2 0h7m3 0h1m1 0h1M2 15.5h2m2 0h2m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m3 0h3M2 16.5h1m1 0h1m3 0h1m7 0h3m3 0h3m2 0h2m2 0h3M3 17.5h3m1 0h1m1 0h1m4 0h4m5 0h2m1 0h7M2 18.5h1m1 0h1m1 0h4m4 0h4m1 0h2m3 0h1m1 0h2m1 0h3m2 0h1M2 19.5h1m1 0h4m4 0h1m2 0h2m1 0h1m1 0h2m1 0h7m1 0h2m1 0h1M4 20.5h2m1 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m1 0h2m1 0h2M2 21.5h3m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m3 0h4m1 0h7M2 22.5h2m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m2 0h1m2 0h1m3 0h1m2 0h2m1 0h2M2 23.5h3m2 0h1m1 0h3m2 0h6m2 0h3m2 0h1m1 0h1m1 0h2m1 0h1M2 24.5h1m5 0h2m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h2m1 0h1M2 25.5h1m2 0h1m3 0h2m2 0h3m2 0h1m2 0h3m1 0h4m3 0h3M2 26.5h1m2 0h2m1 0h1m1 0h4m4 0h2m1 0h1m2 0h1m1 0h6m2 0h1M10 27.5h4m4 0h2m1 0h2m1 0h3m3 0h1m1 0h3M2 28.5h7m2 0h1m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m1 0h1M2 29.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m3 0h2m3 0h3m1 0h1M2 30.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m3 0h3m1 0h6m1 0h1M2 31.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1M2 32.5h1m1 0h3m1 0h1m1 0h4m2 0h4m2 0h8m2 0h1M2 33.5h1m5 0h1m3 0h1m2 0h1m1 0h1m5 0h2m3 0h1m1 0h3M2 34.5h7m1 0h3m2 0h3m1 0h1m4 0h3m2 0h1m1 0h1m1 0h1"/></svg>
           </a>
           <div class="qr-caption">
-            <strong>SCAN FOR MOBILE AUDIO</strong><br>
+            <strong>SCAN FÜR AUDIO & SMARTPHONE</strong><br>
             <a href="https://sh-aikido.github.io/talentschmiede-2027/" target="_blank" rel="noopener noreferrer">sh-aikido.github.io/talentschmiede-2027</a>
           </div>
         </div>
@@ -1219,40 +1672,40 @@
         <!-- Flugticket Barcode -->
         <div class="barcode-wrapper">
           <svg class="barcode-svg" viewBox="0 0 200 30" preserveAspectRatio="none">
-            <rect x="0" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="5" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="9" y="0" width="5" height="30" fill="#fff"/>
-            <rect x="16" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="20" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="26" y="0" width="1" height="30" fill="#fff"/>
-            <rect x="29" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="36" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="41" y="0" width="6" height="30" fill="#fff"/>
-            <rect x="50" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="56" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="60" y="0" width="5" height="30" fill="#fff"/>
-            <rect x="68" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="72" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="78" y="0" width="7" height="30" fill="#fff"/>
-            <rect x="88" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="92" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="98" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="103" y="0" width="5" height="30" fill="#fff"/>
-            <rect x="110" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="115" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="122" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="128" y="0" width="6" height="30" fill="#fff"/>
-            <rect x="136" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="140" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="147" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="151" y="0" width="5" height="30" fill="#fff"/>
-            <rect x="158" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="162" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="168" y="0" width="7" height="30" fill="#fff"/>
-            <rect x="178" y="0" width="2" height="30" fill="#fff"/>
-            <rect x="183" y="0" width="4" height="30" fill="#fff"/>
-            <rect x="190" y="0" width="3" height="30" fill="#fff"/>
-            <rect x="196" y="0" width="4" height="30" fill="#fff"/>
+            <rect x="0" y="0" width="3" height="30"/>
+            <rect x="5" y="0" width="2" height="30"/>
+            <rect x="9" y="0" width="5" height="30"/>
+            <rect x="16" y="0" width="2" height="30"/>
+            <rect x="20" y="0" width="4" height="30"/>
+            <rect x="26" y="0" width="1" height="30"/>
+            <rect x="29" y="0" width="4" height="30"/>
+            <rect x="36" y="0" width="2" height="30"/>
+            <rect x="41" y="0" width="6" height="30"/>
+            <rect x="50" y="0" width="3" height="30"/>
+            <rect x="56" y="0" width="2" height="30"/>
+            <rect x="60" y="0" width="5" height="30"/>
+            <rect x="68" y="0" width="2" height="30"/>
+            <rect x="72" y="0" width="3" height="30"/>
+            <rect x="78" y="0" width="7" height="30"/>
+            <rect x="88" y="0" width="2" height="30"/>
+            <rect x="92" y="0" width="4" height="30"/>
+            <rect x="98" y="0" width="2" height="30"/>
+            <rect x="103" y="0" width="5" height="30"/>
+            <rect x="110" y="0" width="2" height="30"/>
+            <rect x="115" y="0" width="4" height="30"/>
+            <rect x="122" y="0" width="3" height="30"/>
+            <rect x="128" y="0" width="6" height="30"/>
+            <rect x="136" y="0" width="2" height="30"/>
+            <rect x="140" y="0" width="4" height="30"/>
+            <rect x="147" y="0" width="2" height="30"/>
+            <rect x="151" y="0" width="5" height="30"/>
+            <rect x="158" y="0" width="2" height="30"/>
+            <rect x="162" y="0" width="3" height="30"/>
+            <rect x="168" y="0" width="7" height="30"/>
+            <rect x="178" y="0" width="2" height="30"/>
+            <rect x="183" y="0" width="4" height="30"/>
+            <rect x="190" y="0" width="3" height="30"/>
+            <rect x="196" y="0" width="4" height="30"/>
           </svg>
           <span class="barcode-code">TS 2026 10 30 HAAS SAD</span>
         </div>
@@ -1263,7 +1716,7 @@
         </div>
 
         <div class="verification-stamp">
-          ✓ BOARDING GRANTED // VERIFIED
+          ✓ BOARDING GRANTED // OPS NOTIFIED
         </div>
 
         <!-- Stempel, erscheint nach Bestätigung -->
@@ -1299,75 +1752,13 @@
 
     <!-- Footer & Hints -->
     <footer id="footer-trigger">
-      HORSCH MASCHINEN GMBH · TALENTSCHMIEDE LAUF 2 · [TIPP: 3X HORSCH KLICKEN ODER SCHÜTTELN FÜR EASTER EGG]
+      <div>HORSCH MASCHINEN GMBH · TALENTSCHMIEDE LAUF 2 · BEWERBUNG SAMUEL HAAS</div>
+      <div class="footer-easter-link" onclick="openSecret()">
+        [TIPP: 3X HORSCH KLICKEN ODER HIER TIPPEN FÜR DAS GEHEIME FEATURE]
+      </div>
     </footer>
 
   </div>
-
-  <script>
-    // Boarding bestätigen: Stempel knallt auf den Coupon, Zustand bleibt im Browser
-    (function () {
-      var KEY = 'ts2027-boarded';
-      var btn = document.getElementById('boardBtn');
-      var stamp = document.getElementById('boardingStamp');
-      var stub = document.querySelector('.pass-stub');
-      var dateEl = document.getElementById('stampDate');
-      var MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-
-      function fmt(ts) {
-        var d = new Date(ts);
-        var p = function (n) { return (n < 10 ? '0' : '') + n; };
-        return p(d.getDate()) + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' · TS-02';
-      }
-
-      function store(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
-
-      function thudSound() {
-        try {
-          var Ctx = window.AudioContext || window.webkitAudioContext;
-          var ctx = new Ctx();
-          var len = Math.floor(ctx.sampleRate * 0.18);
-          var buf = ctx.createBuffer(1, len, ctx.sampleRate);
-          var data = buf.getChannelData(0);
-          for (var i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
-          var src = ctx.createBufferSource();
-          src.buffer = buf;
-          var lp = ctx.createBiquadFilter();
-          lp.type = 'lowpass';
-          lp.frequency.value = 700;
-          var gain = ctx.createGain();
-          gain.gain.value = 0.9;
-          src.connect(lp); lp.connect(gain); gain.connect(ctx.destination);
-          src.start();
-          setTimeout(function () { ctx.close(); }, 400);
-        } catch (e) {}
-      }
-
-      function setBoarded(ts) {
-        dateEl.textContent = fmt(ts);
-        stub.classList.add('is-boarded');
-      }
-
-      if (/[?&]reset\b/.test(location.search)) store(function (s) { s.removeItem(KEY); });
-      var saved = store(function (s) { return s.getItem(KEY); });
-      if (saved) setBoarded(+saved);
-
-      btn.addEventListener('click', function () {
-        var ts = Date.now();
-        store(function (s) { s.setItem(KEY, String(ts)); });
-        setBoarded(ts);
-        stamp.classList.remove('slam');
-        void stamp.offsetWidth;
-        stamp.classList.add('slam');
-        setTimeout(function () {
-          thudSound();
-          stub.classList.add('thud');
-          if (navigator.vibrate) navigator.vibrate(40);
-        }, 260);
-        setTimeout(function () { stub.classList.remove('thud'); }, 600);
-      });
-    })();
-  </script>
 
   <!-- Native Audio Tag -->
   <audio id="nativeAudio" preload="auto" playsinline>
@@ -1384,20 +1775,142 @@
       </div>
       <div class="stamp-box">
         👉 <strong>„AUFNAHME IN DIE TALENTSEKTE 2026/2027“</strong><br>
-        <span style="font-size: 10px; opacity: 0.85;">Status: Bereit für volle Verantwortung & Team-Reibung</span>
+        <span style="font-size: 10.5px; opacity: 0.85;">Status: Bereit für volle Verantwortung &amp; Team-Reibung</span>
       </div>
-      <button class="close-btn" onclick="closeSecret()">ZURÜCK ZUM BOARDING PASS</button>
+      <button class="close-btn" onclick="closeSecret()" type="button">ZURÜCK ZUM BOARDING PASS</button>
     </div>
   </div>
 
   <script>
+    // ==========================================
+    // THEME SWITCH (Tageslicht <-> Cockpit Dark)
+    // ==========================================
+    (function initTheme() {
+      const toggleBtn = document.getElementById('themeToggleBtn');
+      const toggleIcon = document.getElementById('themeToggleIcon');
+      const toggleText = document.getElementById('themeToggleText');
+      const THEME_KEY = 'ts2027-theme';
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'light') {
+          toggleIcon.textContent = '🌙';
+          toggleText.textContent = 'Cockpit';
+        } else {
+          toggleIcon.textContent = '☀️';
+          toggleText.textContent = 'Tageslicht';
+        }
+      }
+
+      // Read stored or system theme (default: dark cockpit)
+      let currentTheme = localStorage.getItem(THEME_KEY) || 'dark';
+      applyTheme(currentTheme);
+
+      toggleBtn.addEventListener('click', () => {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, currentTheme);
+        applyTheme(currentTheme);
+        drawIdleWave();
+      });
+    })();
+
+    // ==========================================
+    // BOARDING BESTÄTIGEN & STEMPEL ANIMATION
+    // ==========================================
+    (function () {
+      const KEY = 'ts2027-boarded';
+      const btn = document.getElementById('boardBtn');
+      const stamp = document.getElementById('boardingStamp');
+      const stub = document.querySelector('.pass-stub');
+      const dateEl = document.getElementById('stampDate');
+      const MONTHS = ['JAN','FEB','MÄR','APR','MAI','JUN','JUL','AUG','SEP','OKT','NOV','DEZ'];
+
+      function fmt(ts) {
+        const d = new Date(ts);
+        const p = n => (n < 10 ? '0' : '') + n;
+        return p(d.getDate()) + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' · TS-02';
+      }
+
+      function store(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
+
+      function thudSound() {
+        try {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          const ctx = new Ctx();
+          const len = Math.floor(ctx.sampleRate * 0.18);
+          const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+          const data = buf.getChannelData(0);
+          for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+          const src = ctx.createBufferSource();
+          src.buffer = buf;
+          const lp = ctx.createBiquadFilter();
+          lp.type = 'lowpass';
+          lp.frequency.value = 700;
+          const gain = ctx.createGain();
+          gain.gain.value = 0.9;
+          src.connect(lp); lp.connect(gain); gain.connect(ctx.destination);
+          src.start();
+          setTimeout(() => { ctx.close(); }, 400);
+        } catch (e) {}
+      }
+
+      function setBoarded(ts) {
+        dateEl.textContent = fmt(ts);
+        stub.classList.add('is-boarded');
+      }
+
+      const SESSION_KEY = 'ts2027-boarded-session';
+      // Alter Test-Zustand wird gelöscht, damit das Ticket frisch und unbestätigt startet:
+      store(s => s.removeItem(KEY));
+
+      // Nur falls in dieser Browser-Session bereits geklickt wurde:
+      try {
+        const sessionSaved = window.sessionStorage && window.sessionStorage.getItem(SESSION_KEY);
+        if (sessionSaved && !/[?&]reset\b/.test(location.search)) {
+          setBoarded(+sessionSaved);
+        }
+      } catch (e) {}
+
+      btn.addEventListener('click', function () {
+        const ts = Date.now();
+        try { if (window.sessionStorage) window.sessionStorage.setItem(SESSION_KEY, String(ts)); } catch (e) {}
+        setBoarded(ts);
+        stamp.classList.remove('slam');
+        void stamp.offsetWidth;
+        stamp.classList.add('slam');
+        setTimeout(() => {
+          thudSound();
+          stub.classList.add('thud');
+          if (navigator.vibrate) navigator.vibrate(40);
+        }, 260);
+        setTimeout(() => { stub.classList.remove('thud'); }, 600);
+
+        // Sofortige Benachrichtigung an Samuel via ntfy.sh (Echtzeit-Push)
+        try {
+          const timeStr = fmt(ts);
+          fetch('https://ntfy.sh/horsch-ts2027-samuel-haas', {
+            method: 'POST',
+            headers: {
+              'Title': '✈️ Boarding Pass bestätigt!',
+              'Priority': 'urgent',
+              'Tags': 'airplane,tada,ticket'
+            },
+            body: 'Dein Boarding Pass für die Talentschmiede Lauf 2 wurde soeben freigegeben!\nZeitpunkt: ' + timeStr
+          }).catch(err => console.log('Notification delivery:', err));
+        } catch (e) {
+          console.log('Notification error:', e);
+        }
+      });
+    })();
+
+    // ==========================================
+    // AUDIO ENGINE & COCKPIT CONTROLLER
+    // ==========================================
     let isPlaying = false;
     const nativeAudio = document.getElementById('nativeAudio');
-
-    // Web Audio API Context
     let audioCtx = null;
-    let canvas = document.getElementById('audioVisualizer');
-    let ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('audioVisualizer');
+    const ctx = canvas.getContext('2d');
     let animationFrame = null;
     let waveOffset = 0;
 
@@ -1478,7 +1991,6 @@
           renderVisualizer();
         }).catch(err => {
           console.log('Playback error/permission:', err);
-          // UI trotzdem auf Start schalten falls Autoplay oder Audio greift
           isPlaying = true;
           setPlayingUI(true);
           renderVisualizer();
@@ -1613,16 +2125,17 @@
       for (let i = 0; i < numBars; i++) {
         const x = i * (barWidth + 2.5);
         const y = h / 2 - 1.5;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
         ctx.fillRect(x, y, barWidth, 3);
       }
     }
     drawIdleWave();
 
-    // Easter Egg: 3-Click auf HORSCH-Logo
+    // ==========================================
+    // EASTER EGG: 3-KLICK & SHAKE DETECTOR
+    // ==========================================
     let clickCount = 0;
     const trigger = document.getElementById('secret-trigger');
-    const footerTrigger = document.getElementById('footer-trigger');
 
     function checkTripleClick() {
       clickCount++;
@@ -1633,8 +2146,7 @@
       setTimeout(() => { clickCount = 0; }, 1500);
     }
 
-    trigger.addEventListener('click', checkTripleClick);
-    footerTrigger.addEventListener('click', checkTripleClick);
+    if (trigger) trigger.addEventListener('click', checkTripleClick);
 
     function openSecret() {
       const modal = document.getElementById('easter-modal');
